@@ -2,17 +2,16 @@ import com.google.maps.GeoApiContext;
 import com.google.maps.NearbySearchRequest;
 import com.google.maps.PlaceDetailsRequest;
 import com.google.maps.PlacesApi;
-import com.google.maps.model.LatLng;
-import com.google.maps.model.PlaceDetails;
-import com.google.maps.model.PlaceType;
-import com.google.maps.model.PlacesSearchResponse;
+import com.google.maps.model.*;
 import model.Place;
 import model.Location;
 import model.Place.Type;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+
 
 /**
  * @author : Alexander Serebriyan
@@ -21,16 +20,16 @@ public class PlacesFetcher {
 
     private static final String KEY = "AIzaSyAd-eoNEpt5faRRvZribmZxha6VrPRcOIY";
 
-    public static List<Place> fetchPlaces(Location location, Type type,  int radius) {
+    public static List<Place> fetchPlaces(Location location, int radius, Type... type) {
         GeoApiContext context = getGeoContext();
 
         final LatLng latLng = new LatLng(location.getLat(), location.getLng());
         final NearbySearchRequest request = PlacesApi.nearbySearchQuery(context, latLng);
-        request.type(PlaceType.BANK).radius(radius);
+        request.type(getPlaceTypes(type)).radius(radius);
 
-        final Optional<PlacesSearchResponse> placesSearchResponse = searchForPlaces(request);
+        List<PlacesSearchResult> places = retrievePlacesDetails(request);
 
-        System.out.println(placesSearchResponse.get());
+        System.out.println(places);
 
         return new LinkedList<>();
     }
@@ -58,6 +57,10 @@ public class PlacesFetcher {
         return Optional.empty();
     }
 
+    static PlaceType [] getPlaceTypes(Type... types) {
+        return new PlaceType[] {PlaceType.BANK};
+    }
+
     private static Optional<PlaceDetails> getPlaceDetails(PlaceDetailsRequest request) {
         try {
             final PlaceDetails details = request.await();
@@ -69,15 +72,22 @@ public class PlacesFetcher {
         return Optional.empty();
     }
 
-    private static Optional<PlacesSearchResponse> searchForPlaces(NearbySearchRequest request) {
+    private static List<PlacesSearchResult> retrievePlacesDetails(NearbySearchRequest request) {
+        final LinkedList<PlacesSearchResult> placeDetails = new LinkedList<>();
+
         try {
-            final PlacesSearchResponse response = request.await();
-            return Optional.of(response);
+            PlacesSearchResponse response = request.await();
+            placeDetails.addAll(Arrays.asList(response.results));
+            while(response.nextPageToken != null) {
+                response = PlacesApi.nearbySearchNextPage(getGeoContext(), response.nextPageToken).await();
+                placeDetails.addAll(Arrays.asList(response.results));
+            }
+            return placeDetails;
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return Optional.empty();
+        return placeDetails;
     }
 
 
