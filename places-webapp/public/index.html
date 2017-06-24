@@ -19,10 +19,9 @@
         <div class="list-group">
 
             <a href="#" class="list-group-item list-group-item-action"
-               ng-bind="place.name"
                ng-click="selectPlace(place)"
                data-toggle="modal" data-target="#place-details"
-            ></a>
+            >{{$index +1 + '.  ' + place.name}}</a>
 
         </div>
 

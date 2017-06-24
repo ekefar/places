@@ -20,10 +20,12 @@ import java.util.*;
  */
 public class PlacesFetcher {
 
-    private static final long REQUST_DELAY = 2000;
+    private static final GeoApiContext context = createGeoContext();
+
+    private static final long REQUST_DELAY = 5000;
     private static final Logger LOG = LoggerFactory.getLogger(PlacesFetcher.class);
 
-    private static final String KEY = "AIzaSyAd-eoNEpt5faRRvZribmZxha6VrPRcOIY";
+    private static final String KEY = "AIzaSyBUesV2KgJPKO1vWczzp3uglksfrRLXNds";
 
     public static List<Place> fetchPlacesLimitless(Location location, int radius, Type... types) {
         LOG.info("# Fetching places details avoiding google API limits. Initial location: {}", location);
@@ -97,7 +99,7 @@ public class PlacesFetcher {
     }
 
     static PlaceType [] getPlaceTypes(Type... types) {
-        return new PlaceType[] {PlaceType.BANK};
+        return new PlaceType[] {PlaceType.BEAUTY_SALON};
     }
 
     private static Optional<PlaceDetails> getPlaceDetails(PlaceDetailsRequest request) {
@@ -130,9 +132,12 @@ public class PlacesFetcher {
         return placeDetails;
     }
 
+    private static GeoApiContext createGeoContext() {
+        return new GeoApiContext().setApiKey(KEY);
+    }
 
     private static GeoApiContext getGeoContext() {
-        return new GeoApiContext().setApiKey(KEY);
+        return context;
     }
 
 }
