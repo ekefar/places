@@ -1,20 +1,18 @@
+package service;
+
 import com.google.common.base.Joiner;
 import com.google.maps.GeoApiContext;
 import com.google.maps.NearbySearchRequest;
 import com.google.maps.PlaceDetailsRequest;
 import com.google.maps.PlacesApi;
 import com.google.maps.model.*;
-import com.sun.tools.javac.util.ArrayUtils;
 import model.Place;
 import model.Location;
 import model.Place.Type;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 
 /**
@@ -26,6 +24,21 @@ public class PlacesFetcher {
     private static final Logger LOG = LoggerFactory.getLogger(PlacesFetcher.class);
 
     private static final String KEY = "AIzaSyAd-eoNEpt5faRRvZribmZxha6VrPRcOIY";
+
+    public static List<Place> fetchPlacesLimitless(Location location, int radius, Type... types) {
+        LOG.info("# Fetching places details avoiding google API limits. Initial location: {}", location);
+        final Set<Location> locations = CoordinatesCalculator.calculateLocations(location, radius);
+
+        LOG.info("# Transformed initial location into: {}", locations);
+
+        final LinkedList<Place> places = new LinkedList<>();
+        for (Location loc : locations) {
+            places.addAll(fetchPlaces(loc, CoordinatesCalculator.STEP_IN_METERS, types));
+        }
+
+        return places;
+    }
+
 
     public static List<Place> fetchPlaces(Location location, int radius, Type... types) {
         LOG.info("# Fetching list of places near next location: {}", location);
