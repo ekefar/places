@@ -6,8 +6,6 @@ import com.google.firebase.auth.FirebaseCredentials;
 import com.google.firebase.database.*;
 import model.Place;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
@@ -17,12 +15,11 @@ import java.util.List;
  */
 public class PlacesRepository {
 
-    private DatabaseReference places;
+    private DatabaseReference placesRepo;
 
     public PlacesRepository() {
         try {
             final InputStream is = PlacesRepository.class.getClassLoader().getResourceAsStream("firebase.json");
-
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredential(FirebaseCredentials.fromCertificate(is))
@@ -30,7 +27,7 @@ public class PlacesRepository {
                     .build();
 
             final FirebaseApp firebaseApp = FirebaseApp.initializeApp(options);
-            places = FirebaseDatabase.getInstance().getReference().child("places");
+            placesRepo = FirebaseDatabase.getInstance().getReference().child("places");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -43,8 +40,16 @@ public class PlacesRepository {
     public void save(Place place) {
         final HashMap<String, Object> placesMap = new HashMap<>();
         placesMap.put(place.getId(), place);
-        places.setValue(placesMap);
+        placesRepo.setValue(placesMap);
 
+    }
+
+    public void save(List<Place> places) {
+        final HashMap<String, Object> placesMap = new HashMap<>();
+        for (Place place : places) {
+            placesMap.put(place.getId(), place);
+        }
+        placesRepo.setValue(placesMap);
     }
 
     public Place find(String id){
