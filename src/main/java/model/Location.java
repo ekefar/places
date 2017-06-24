@@ -19,4 +19,12 @@ public class Location {
     public double getLng() {
         return lng;
     }
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                "lat=" + lat +
+                ", lng=" + lng +
+                '}';
+    }
 }

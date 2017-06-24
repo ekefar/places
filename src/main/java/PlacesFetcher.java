@@ -26,14 +26,20 @@ public class PlacesFetcher {
 
     private static final String KEY = "AIzaSyAd-eoNEpt5faRRvZribmZxha6VrPRcOIY";
 
-    public static List<Place> fetchPlaces(Location location, int radius, Type... type) {
-        GeoApiContext context = getGeoContext();
+    public static List<Place> fetchPlaces(Location location, int radius, Type... types) {
+        LOG.info("# Fetching list of places near next location: {}", location);
+        LOG.info("# Types to search: {}", types);
 
+        GeoApiContext context = getGeoContext();
         final LatLng latLng = new LatLng(location.getLat(), location.getLng());
         final NearbySearchRequest request = PlacesApi.nearbySearchQuery(context, latLng);
-        request.type(getPlaceTypes(type)).radius(radius);
+        request.type(getPlaceTypes(types)).radius(radius);
 
         List<PlacesSearchResult> basicPlacesDetails = retrieveBasicPlacesDetails(request);
+
+        LOG.info("# Search complete. Items found: {}", basicPlacesDetails.size());
+        LOG.info("# Retrieving detailed info for each item...");
+
         final List<Place> places = retrieveFullPlacesDetails(basicPlacesDetails);
 
         return places;
@@ -44,20 +50,24 @@ public class PlacesFetcher {
         LOG.info("# Fetching details for place with id: {}", id);
         final GeoApiContext context = getGeoContext();
         final PlaceDetailsRequest request = PlacesApi.placeDetails(context, id);
-        final Optional<PlaceDetails> placeDetails = getPlaceDetails(request);
+        final Optional<PlaceDetails> placeDetailsOptional = getPlaceDetails(request);
 
-        if(placeDetails.isPresent()) {
-            final PlaceDetails place = placeDetails.get();
-            final LatLng location = place.geometry.location;
-            return Optional.ofNullable(new Place.Builder().setId(id)
-                    .setAddress(place.formattedAddress)
+        if(placeDetailsOptional.isPresent()) {
+            final PlaceDetails placeDetails = placeDetailsOptional.get();
+            final LatLng location = placeDetails.geometry.location;
+            final Place place = new Place.Builder().setId(id)
+                    .setAddress(placeDetails.formattedAddress)
                     .setLocation(new Location(location.lat, location.lng))
-                    .setName(place.name)
-                    .setPhoneNumber(place.formattedPhoneNumber)
-                    .setOpeningHours(Joiner.on("\n").join(place.openingHours.weekdayText))
-                    .setMapUrl(place.url.toString())
-                    .setWebsiteUrl(place.website.toString())
-                    .build());
+                    .setName(placeDetails.name)
+                    .setPhoneNumber(placeDetails.formattedPhoneNumber)
+                    .setOpeningHours(Joiner.on("\n").join(placeDetails.openingHours.weekdayText))
+                    .setMapUrl(placeDetails.url.toString())
+                    .setWebsiteUrl(placeDetails.website.toString())
+                    .build();
+
+            LOG.info("# Returning next details: {}", place);
+
+            return Optional.ofNullable(place);
         }
 
         return Optional.empty();

@@ -15,5 +15,7 @@ public class Application {
         final Optional<Place> place = PlacesFetcher.fetchPlace("ChIJp9FD9LSmJ0ERVfQetGJx8QA");
 
 //        repository.save(place.get());
+
+        System.exit(0);
     }
 }

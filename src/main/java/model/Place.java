@@ -120,4 +120,18 @@ public class Place {
             return new Place(id, name, address, location, phoneNumber, openingHours, mapUrl, websiteUrl);
         }
     }
+
+    @Override
+    public String toString() {
+        return "Place{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", location=" + location +
+                ", openingHours='" + openingHours + '\'' +
+                ", mapUrl='" + mapUrl + '\'' +
+                ", websiteUrl='" + websiteUrl + '\'' +
+                '}';
+    }
 }
