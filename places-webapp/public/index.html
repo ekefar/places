@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Welcome to Firebase Hosting</title>
@@ -15,20 +15,24 @@
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    <script src="script/app.js"></script>
 
 
     <style media="screen">
 
     </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
+</head>
+<body>
+<div ng-controller="AppCtrl" ng-app="places-app">
 
+    <div ng-repeat="(id, place) in places">
+        <a href="" ng-click="displayDetails(place)">{{place.name}}</a>
     </div>
+</div>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
         // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
         // // The Firebase SDK is initialized and available here!
         //
@@ -42,18 +46,8 @@
         //
         // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
-        try {
-          var app = firebase.app();
-            var places = firebase.database().ref('/places').once('value').then(function(snapshot) {
-                console.log(snapshot.val());
-            });
-            console.log(places);
 
-        } catch (e) {
-          console.error(e);
-          document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
-  </body>
+    });
+</script>
+</body>
 </html>

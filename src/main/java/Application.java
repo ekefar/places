@@ -12,7 +12,7 @@ public class Application {
 
     public static void main(String[] args) {
         final PlacesRepository repository = new PlacesRepository();
-        final List<Place> places = PlacesFetcher.fetchPlaces(new Location(50.034435, 36.220569), 1500, Place.Type.BANK);
+        final List<Place> places = PlacesFetcher.fetchPlaces(new Location(49.989834, 36.232656), 20000, Place.Type.BANK);
 //        final Optional<Place> place = PlacesFetcher.fetchPlace("ChIJp9FD9LSmJ0ERVfQetGJx8QA");
 
         repository.save(places);
