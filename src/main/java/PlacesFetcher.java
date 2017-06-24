@@ -22,6 +22,7 @@ import java.util.Optional;
  */
 public class PlacesFetcher {
 
+    private static final long REQUST_DELAY = 2000;
     private static final Logger LOG = LoggerFactory.getLogger(PlacesFetcher.class);
 
     private static final String KEY = "AIzaSyAd-eoNEpt5faRRvZribmZxha6VrPRcOIY";
@@ -60,9 +61,9 @@ public class PlacesFetcher {
                     .setLocation(new Location(location.lat, location.lng))
                     .setName(placeDetails.name)
                     .setPhoneNumber(placeDetails.formattedPhoneNumber)
-                    .setOpeningHours(Joiner.on("\n").join(placeDetails.openingHours.weekdayText))
-                    .setMapUrl(placeDetails.url.toString())
-                    .setWebsiteUrl(placeDetails.website.toString())
+                    .setOpeningHours(placeDetails.openingHours != null ? Joiner.on("\n").join(placeDetails.openingHours.weekdayText): "")
+                    .setMapUrl(placeDetails.url != null ? placeDetails.url.toString():"")
+                    .setWebsiteUrl(placeDetails.website != null ? placeDetails.website.toString():"")
                     .build();
 
             LOG.info("# Returning next details: {}", place);
@@ -104,6 +105,7 @@ public class PlacesFetcher {
             PlacesSearchResponse response = initialRequest.await();
             placeDetails.addAll(Arrays.asList(response.results));
             while(response.nextPageToken != null) {
+                Thread.sleep(REQUST_DELAY);
                 response = PlacesApi.nearbySearchNextPage(getGeoContext(), response.nextPageToken).await();
                 placeDetails.addAll(Arrays.asList(response.results));
             }
