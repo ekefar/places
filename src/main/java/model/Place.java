@@ -1,8 +1,12 @@
 package model;
 
+import com.google.firebase.database.IgnoreExtraProperties;
+
 /**
  * @author : Alexander Serebriyan
  */
+
+@IgnoreExtraProperties
 public class Place {
 
     private String id;
