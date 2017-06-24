@@ -3,7 +3,7 @@ angular.module('places-app', [])
     .controller('AppCtrl', function($scope) {
 
 
-        $scope.displayDetails = displayDetails;
+        $scope.selectPlace = selectPlace;
 
         init();
 
@@ -18,7 +18,7 @@ angular.module('places-app', [])
             });
         }
 
-        function displayDetails(place) {
+        function selectPlace(place) {
             $scope.selectedPlace = place;
         }
 
