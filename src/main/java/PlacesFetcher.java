@@ -8,6 +8,8 @@ import com.sun.tools.javac.util.ArrayUtils;
 import model.Place;
 import model.Location;
 import model.Place.Type;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -19,6 +21,8 @@ import java.util.Optional;
  * @author : Alexander Serebriyan
  */
 public class PlacesFetcher {
+
+    private static final Logger LOG = LoggerFactory.getLogger(PlacesFetcher.class);
 
     private static final String KEY = "AIzaSyAd-eoNEpt5faRRvZribmZxha6VrPRcOIY";
 
@@ -37,6 +41,7 @@ public class PlacesFetcher {
 
 
     public static Optional<Place> fetchPlace(final String id) {
+        LOG.info("# Fetching details for place with id: {}", id);
         final GeoApiContext context = getGeoContext();
         final PlaceDetailsRequest request = PlacesApi.placeDetails(context, id);
         final Optional<PlaceDetails> placeDetails = getPlaceDetails(request);
