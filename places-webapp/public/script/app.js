@@ -2,10 +2,13 @@ angular.module('places-app', [])
 
     .controller('AppCtrl', function($scope) {
 
+
+        $scope.displayDetails = displayDetails;
+
         init();
+
+
         function init() {
-
-
             var app = firebase.app();
             firebase.auth();
             var places = firebase.database().ref('/places').once('value').then(function (response) {
@@ -14,4 +17,9 @@ angular.module('places-app', [])
                 console.log($scope.places)
             });
         }
+
+        function displayDetails(place) {
+            $scope.selectedPlace = place;
+        }
+
     });
