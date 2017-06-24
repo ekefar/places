@@ -23,6 +23,7 @@ public class Place {
         this.openingHours = openingHours;
         this.mapUrl = mapUrl;
         this.websiteUrl = websiteUrl;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getId() {
@@ -110,8 +111,6 @@ public class Place {
             this.phoneNumber = phoneNumber;
             return this;
         }
-
-
 
         public Place build() {
             return new Place(id, name, address, location, phoneNumber, openingHours, mapUrl, websiteUrl);
