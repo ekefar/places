@@ -66,6 +66,7 @@ public class PlacesFetcher {
         LOG.info("# Fetching details for place with id: {}", id);
         final GeoApiContext context = getGeoContext();
         final PlaceDetailsRequest request = PlacesApi.placeDetails(context, id);
+
         final Optional<PlaceDetails> placeDetailsOptional = getPlaceDetails(request);
 
         if(placeDetailsOptional.isPresent()) {
