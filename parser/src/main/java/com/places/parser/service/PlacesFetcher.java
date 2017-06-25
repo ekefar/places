@@ -1,4 +1,4 @@
-package service;
+package com.places.parser.service;
 
 import com.google.common.base.Joiner;
 import com.google.maps.GeoApiContext;
@@ -6,9 +6,8 @@ import com.google.maps.NearbySearchRequest;
 import com.google.maps.PlaceDetailsRequest;
 import com.google.maps.PlacesApi;
 import com.google.maps.model.*;
-import model.Place;
-import model.Location;
-import model.Place.Type;
+import com.places.model.entity.Location;
+import com.places.model.entity.Place;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +26,7 @@ public class PlacesFetcher {
 
     private static final String KEY = "AIzaSyBUesV2KgJPKO1vWczzp3uglksfrRLXNds";
 
-    public static List<Place> fetchPlacesLimitless(Location location, int radius, Type... types) {
+    public static List<Place> fetchPlacesLimitless(Location location, int radius, Place.Type... types) {
         LOG.info("# Fetching places details avoiding google API limits. Initial location: {}", location);
         final Set<Location> locations = CoordinatesCalculator.calculateLocations(location, radius);
 
@@ -42,7 +41,7 @@ public class PlacesFetcher {
     }
 
 
-    public static List<Place> fetchPlaces(Location location, int radius, Type... types) {
+    public static List<Place> fetchPlaces(Location location, int radius, Place.Type... types) {
         LOG.info("# Fetching list of places near next location: {}", location);
         LOG.info("# Types to search: {}", types);
 
@@ -99,7 +98,7 @@ public class PlacesFetcher {
         return places;
     }
 
-    static PlaceType [] getPlaceTypes(Type... types) {
+    static PlaceType [] getPlaceTypes(Place.Type... types) {
         return new PlaceType[] {PlaceType.BEAUTY_SALON};
     }
 

@@ -1,4 +1,4 @@
-package model;
+package com.places.model.entity;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 

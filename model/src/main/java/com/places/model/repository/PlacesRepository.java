@@ -1,10 +1,11 @@
-package db;
+package com.places.model.repository;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.FirebaseCredentials;
 import com.google.firebase.database.*;
-import model.Place;
+import com.places.model.entity.Place;
+
 
 import java.io.InputStream;
 import java.util.HashMap;

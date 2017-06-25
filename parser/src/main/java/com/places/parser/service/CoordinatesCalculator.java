@@ -1,6 +1,7 @@
-package service;
+package com.places.parser.service;
 
-import model.Location;
+
+import com.places.model.entity.Location;
 
 import java.util.HashSet;
 import java.util.Set;
