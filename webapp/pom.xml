@@ -13,6 +13,7 @@
 
     <properties>
         <spring.version>4.3.8.RELEASE</spring.version>
+        <spring.boot.version>1.5.3.RELEASE</spring.boot.version>
     </properties>
 
     <dependencies>
@@ -37,8 +38,41 @@
             <version>${spring.version}</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring.boot.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+
+
+      <!--  &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter &ndash;&gt;
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>-->
+
+
     </dependencies>
     <build>
         <finalName>webapp</finalName>
+
+
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
+            </plugins>
+
     </build>
 </project>

@@ -2,16 +2,18 @@ package com.places.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * @author : Alexander Serebriyan
  */
 @Controller
+@RequestMapping(value = "/")
 public class HomeController {
 
-    @RequestMapping(value = "/")
-    public String home() {
-        return "WEB-INF/views/index.html";
+    @RequestMapping(method = RequestMethod.GET)
+    public String index() {
+        return "list/places.html";
     }
 
 }
