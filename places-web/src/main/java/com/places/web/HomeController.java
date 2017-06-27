@@ -1,8 +1,8 @@
-package com.places.web.controller;
+package com.places.web;
 
 import com.places.model.entity.Place;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -17,10 +17,12 @@ import static com.google.common.collect.Lists.newArrayList;
 @Controller
 public class HomeController {
 
-    @GetMapping("/")
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Map<String, Object> model) {
+
         model.put("places", createList());
-        return "list/places";
+
+        return "places";
     }
 
 

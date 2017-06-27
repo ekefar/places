@@ -5,6 +5,8 @@
     <title>Title</title>
 </head>
 <body>
-places
+<#list places as place>
+    <tr><td>${place.id}<td>${place.name}
+</#list>
 </body>
 </html>

@@ -13,8 +13,13 @@
         <module>parser</module>
         <module>service</module>
         <module>webapp</module>
+        <module>places-web</module>
     </modules>
 
+    <properties>
+        <spring.version>4.3.8.RELEASE</spring.version>
+        <spring.boot.version>1.5.3.RELEASE</spring.boot.version>
+    </properties>
 
     <dependencies>
 
