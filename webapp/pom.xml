@@ -6,9 +6,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>places-web</artifactId>
+    <artifactId>webapp</artifactId>
     <packaging>war</packaging>
-    <name>places-web Maven Webapp</name>
+    <name>Places Webapp</name>
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
@@ -43,6 +43,6 @@
 
     </dependencies>
     <build>
-        <finalName>places-web</finalName>
+        <finalName>webapp</finalName>
     </build>
 </project>
