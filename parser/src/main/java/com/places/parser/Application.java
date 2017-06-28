@@ -25,6 +25,7 @@ public class Application {
         final Optional<Place> place = com.places.parser.service.PlacesFetcher.fetchPlace("ChIJp9FD9LSmJ0ERVfQetGJx8QA");
 
         repository.save(place.get());
+        final Place savedPlace = repository.find("ChIJp9FD9LSmJ0ERVfQetGJx8QA");
 //        System.exit(0);
     }
 

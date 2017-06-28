@@ -34,8 +34,8 @@ public class PlacesRepository {
         mongoTemplate.save(place);
     }
 
-    public Place find(String id) {
-        return mongoTemplate.findOne(query(where("id").is(id)), Place.class);
+    public Place find(String mapsId) {
+        return mongoTemplate.findOne(query(where("mapsId").is(mapsId)), Place.class);
     }
 
 }
