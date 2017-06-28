@@ -3,6 +3,9 @@ package com.places.model.entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * @author : Alexander Serebriyan
  */
@@ -12,6 +15,10 @@ public class Place {
 
     @Id
     private String id;
+    private String country;
+    private String city;
+
+    // google maps specific
     private String mapsId;
     private String name;
     private String address;
@@ -20,6 +27,9 @@ public class Place {
     private String openingHours;
     private String mapUrl;
     private String websiteUrl;
+    private double rating;
+    private List<String> photos = new LinkedList<>();
+    private List<Review> reviews = new LinkedList<>();
 
     public Place() {
     }
