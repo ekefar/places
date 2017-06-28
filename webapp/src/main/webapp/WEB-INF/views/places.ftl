@@ -6,7 +6,7 @@
 </head>
 <body>
 <#list places as place>
-    <tr><td>${place.id}<td>${place.name}
+    <tr><td>${place.mapsId}<td>${place.name}
 </#list>
 </body>
 </html>

@@ -1,15 +1,18 @@
 package com.places.model.entity;
 
-import com.google.firebase.database.IgnoreExtraProperties;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * @author : Alexander Serebriyan
  */
 
-@IgnoreExtraProperties
+@Document(collection = "places")
 public class Place {
 
+    @Id
     private String id;
+    private String mapsId;
     private String name;
     private String address;
     private String phoneNumber;
@@ -18,9 +21,12 @@ public class Place {
     private String mapUrl;
     private String websiteUrl;
 
-    private Place(String id, String name, String address, Location location, String phoneNumber,
+    public Place() {
+    }
+
+    private Place(String mapsId, String name, String address, Location location, String phoneNumber,
                   String openingHours, String mapUrl, String websiteUrl) {
-        this.id = id;
+        this.mapsId = mapsId;
         this.name = name;
         this.address = address;
         this.location = location;
@@ -34,32 +40,87 @@ public class Place {
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getMapsId() {
+        return mapsId;
+    }
+
+    public void setMapsId(String mapsId) {
+        this.mapsId = mapsId;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getAddress() {
         return address;
     }
 
-    public Location getLocation() {
-        return location;
-    }
-
-    public String getMapUrl() {
-        return mapUrl;
-    }
-
-    public String getWebsiteUrl() {
-        return websiteUrl;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
     public String getOpeningHours() {
         return openingHours;
+    }
+
+    public void setOpeningHours(String openingHours) {
+        this.openingHours = openingHours;
+    }
+
+    public String getMapUrl() {
+        return mapUrl;
+    }
+
+    public void setMapUrl(String mapUrl) {
+        this.mapUrl = mapUrl;
+    }
+
+    public String getWebsiteUrl() {
+        return websiteUrl;
+    }
+
+    public void setWebsiteUrl(String websiteUrl) {
+        this.websiteUrl = websiteUrl;
+    }
+
+    @Override
+    public String toString() {
+        return "Place{" +
+                "id='" + id + '\'' +
+                ", mapsId='" + mapsId + '\'' +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", location=" + location +
+                ", openingHours='" + openingHours + '\'' +
+                ", mapUrl='" + mapUrl + '\'' +
+                ", websiteUrl='" + websiteUrl + '\'' +
+                '}';
     }
 
     public enum Type {
@@ -121,17 +182,4 @@ public class Place {
         }
     }
 
-    @Override
-    public String toString() {
-        return "Place{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", location=" + location +
-                ", openingHours='" + openingHours + '\'' +
-                ", mapUrl='" + mapUrl + '\'' +
-                ", websiteUrl='" + websiteUrl + '\'' +
-                '}';
-    }
 }

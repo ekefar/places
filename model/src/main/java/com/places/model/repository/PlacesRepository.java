@@ -1,60 +1,28 @@
 package com.places.model.repository;
 
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.FirebaseOptions;
-import com.google.firebase.auth.FirebaseCredentials;
-import com.google.firebase.database.*;
 import com.places.model.entity.Place;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
-
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
+import javax.inject.Inject;
 
 /**
  * @author : Alexander Serebriyan
  */
+@Service
 public class PlacesRepository {
 
-    private DatabaseReference placesRepo;
+    private final MongoTemplate mongoTemplate;
 
-    public PlacesRepository() {
-        try {
-            final InputStream is = PlacesRepository.class.getClassLoader().getResourceAsStream("firebase.json");
-
-            FirebaseOptions options = new FirebaseOptions.Builder()
-                    .setCredential(FirebaseCredentials.fromCertificate(is))
-                    .setDatabaseUrl("https://places-31cec.firebaseio.com")
-                    .build();
-
-            final FirebaseApp firebaseApp = FirebaseApp.initializeApp(options);
-            placesRepo = FirebaseDatabase.getInstance().getReference().child("places");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public List<Place> find(){
-        return null;
+    @Inject
+    public PlacesRepository(MongoTemplate mongoTemplate) {
+        this.mongoTemplate = mongoTemplate;
     }
 
     public void save(Place place) {
-        final HashMap<String, Object> placesMap = new HashMap<>();
-        placesMap.put(place.getId(), place);
-        placesRepo.setValue(placesMap);
-
-    }
-
-    public void save(List<Place> places) {
-        final HashMap<String, Object> placesMap = new HashMap<>();
-        for (Place place : places) {
-            placesMap.put(place.getId(), place);
-        }
-        placesRepo.setValue(placesMap);
-    }
-
-    public Place find(String id){
-        return null;
+        mongoTemplate.save(place);
     }
 
 }

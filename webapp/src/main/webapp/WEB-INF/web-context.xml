@@ -21,7 +21,7 @@
     </bean>
 
     <!-- freemarker config -->
-    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+    <bean mapsId="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
         <property name="templateLoaderPath" value="/WEB-INF/views/"/>
     </bean>
 
