@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
 import java.util.Collection;
+import java.util.List;
 
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
@@ -33,6 +34,10 @@ public class PlacesRepository {
 
     public Place find(String mapsId) {
         return mongoTemplate.findOne(query(where("mapsId").is(mapsId)), Place.class);
+    }
+
+    public List<Place> findAll() {
+        return mongoTemplate.findAll(Place.class);
     }
 
 }
