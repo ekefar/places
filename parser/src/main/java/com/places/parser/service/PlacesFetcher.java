@@ -38,12 +38,16 @@ public class PlacesFetcher {
 
         LOG.info("# Transformed initial location into: {}", locations);
 
-        final LinkedList<Place> places = new LinkedList<>();
+        final HashMap<String, Place> placesMap = new HashMap<>();
+
         for (Location loc : locations) {
-            places.addAll(fetchPlaces(loc, CoordinatesCalculator.STEP_IN_METERS, types));
+            final List<Place> placesFromLocation = fetchPlaces(loc, CoordinatesCalculator.STEP_IN_METERS, types);
+            for (Place place : placesFromLocation) {
+                placesMap.put(place.getMapsId(), place);
+            }
         }
 
-        return places;
+        return new LinkedList<>(placesMap.values());
     }
 
 
