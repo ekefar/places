@@ -36,10 +36,9 @@ public class Place {
     public Place() {
     }
 
-    public Place(String id, String country, String city, String mapsId, String name, String address,
+    public Place(String country, String city, String mapsId, String name, String address,
                  String phoneNumber, Location location, String openingHours, String mapUrl, String websiteUrl,
                  float rating) {
-        this.id = id;
         this.country = country;
         this.city = city;
         this.mapsId = mapsId;
@@ -55,10 +54,6 @@ public class Place {
 
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getCountry() {

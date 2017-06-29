@@ -1,6 +1,8 @@
 package com.places.parser.service;
 
 import com.google.common.base.Joiner;
+import com.google.maps.model.AddressComponent;
+import com.google.maps.model.AddressComponentType;
 import com.google.maps.model.LatLng;
 import com.google.maps.model.PlaceDetails;
 import com.places.model.entity.Location;
@@ -27,7 +29,11 @@ public class PlaceDetailsTransformer {
 
         final LatLng location = details.geometry.location;
         final Place place = new Place();
-        place.setId(details.placeId);
+
+        place.setCountry(parseCountry(details));
+        place.setCity(parseCity(details));
+
+        place.setMapsId(details.placeId);
         place.setAddress(details.formattedAddress);
         place.setLocation(new Location(location.lat, location.lng));
         place.setName(details.name);
@@ -36,10 +42,36 @@ public class PlaceDetailsTransformer {
         place.setMapUrl(details.url != null ? details.url.toString() : "");
         place.setWebsiteUrl(details.website != null ? details.website.toString() : "");
         place.setRating(details.rating);
-        place.setPhotos(Arrays.stream(details.photos).map(p -> p.photoReference).collect(Collectors.toList()));
-        place.setReviews(fromPlaceDetailsReviewArray(details.reviews));
+
+        if (details.photos != null) {
+            place.setPhotos(Arrays.stream(details.photos).map(p -> p.photoReference).collect(Collectors.toList()));
+        }
+
+        if (details.reviews != null) {
+            place.setReviews(fromPlaceDetailsReviewArray(details.reviews));
+        }
 
         return place;
+    }
+
+    private static String parseCity(PlaceDetails placeDetails) {
+        return parseAddressComponent(placeDetails, AddressComponentType.POSTAL_TOWN);
+    }
+
+    private static String parseCountry(PlaceDetails placeDetails) {
+        return parseAddressComponent(placeDetails, AddressComponentType.COUNTRY);
+    }
+
+    private static String parseAddressComponent(PlaceDetails placeDetails, AddressComponentType targetAddressType) {
+        for (AddressComponent addressComponent : placeDetails.addressComponents) {
+            for (AddressComponentType type : addressComponent.types) {
+                if(type == targetAddressType) {
+                    return addressComponent.longName;
+                }
+            }
+        }
+
+        return "";
     }
 
     private static List<Review> fromPlaceDetailsReviewArray(PlaceDetails.Review[] detailsReview) {

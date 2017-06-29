@@ -1,6 +1,5 @@
 package com.places.parser.service;
 
-import com.google.common.base.Joiner;
 import com.google.maps.GeoApiContext;
 import com.google.maps.NearbySearchRequest;
 import com.google.maps.PlaceDetailsRequest;
@@ -21,10 +20,11 @@ public class PlacesFetcher {
 
     private static final Logger LOG = LoggerFactory.getLogger(PlacesFetcher.class);
 
-    private static final GeoApiContext context = createGeoContext();
     private static final long REQUST_DELAY = 5000;
 
     private static final String KEY = "AIzaSyBUesV2KgJPKO1vWczzp3uglksfrRLXNds";
+
+    private static final GeoApiContext GEO_CONTEXT = createGeoContext();
 
     public static List<Place> fetchPlacesLimitless(Location location, int radius, Place.Type... types) {
         LOG.info("# Fetching places details avoiding google API limits. Initial location: {}", location);
@@ -129,7 +129,7 @@ public class PlacesFetcher {
     }
 
     private static GeoApiContext getGeoContext() {
-        return context;
+        return GEO_CONTEXT;
     }
 
 }
