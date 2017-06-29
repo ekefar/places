@@ -1,6 +1,5 @@
 package com.places.model.repository;
 
-import com.mongodb.BasicDBList;
 import com.places.model.entity.Place;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
@@ -29,8 +28,6 @@ public class PlacesRepository {
     }
 
     public void save(Collection<Place> places) {
-        final BasicDBList toSave = new BasicDBList();
-        toSave.addAll(places);
         mongoTemplate.insert(places, Place.class);
     }
 
