@@ -1,5 +1,7 @@
 package com.places.model.entity;
 
+import java.util.Date;
+
 /**
  * @author : Alexander Serebriyan
  */
@@ -9,18 +11,18 @@ public class Review {
     private String language;
     private float rating;
     private String text;
-    private long timestamp;
+    private Date date;
 
     public Review() {
     }
 
-    public Review(String authorName, String authorUrl, String language, float rating, String text, long timestamp) {
+    public Review(String authorName, String authorUrl, String language, float rating, String text, Date date) {
         this.authorName = authorName;
         this.authorUrl = authorUrl;
         this.language = language;
         this.rating = rating;
         this.text = text;
-        this.timestamp = timestamp;
+        this.date = date;
     }
 
     public String getAuthorName() {
@@ -63,12 +65,12 @@ public class Review {
         this.text = text;
     }
 
-    public long getTimestamp() {
-        return timestamp;
+    public Date getDate() {
+        return date;
     }
 
-    public void setTimestamp(long timestamp) {
-        this.timestamp = timestamp;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     @Override
@@ -79,7 +81,7 @@ public class Review {
                 ", language='" + language + '\'' +
                 ", rating=" + rating +
                 ", text='" + text + '\'' +
-                ", timestamp=" + timestamp +
+                ", date=" + date +
                 '}';
     }
 }

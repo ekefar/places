@@ -86,7 +86,7 @@ public class PlaceDetailsTransformer {
         review.setLanguage(detailsReview.language);
         review.setRating(detailsReview.rating);
         review.setText(detailsReview.text);
-        review.setTimestamp(detailsReview.time != null ? detailsReview.time.getMillis() : 0);
+        review.setDate(detailsReview.time != null ? detailsReview.time.toDate() : null);
 
         return review;
     }
