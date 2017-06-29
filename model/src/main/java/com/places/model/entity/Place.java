@@ -28,7 +28,7 @@ public class Place {
     private String mapUrl;
     private String websiteUrl;
     private float rating;
-    private List<String> type = new LinkedList<>();
+    private List<String> types = new LinkedList<>();
     private List<String> photos = new LinkedList<>();
     private List<Review> reviews = new LinkedList<>();
 
@@ -144,12 +144,12 @@ public class Place {
         this.rating = rating;
     }
 
-    public List<String> getType() {
-        return type;
+    public List<String> getTypes() {
+        return types;
     }
 
-    public void setType(List<String> type) {
-        this.type = type;
+    public void setTypes(List<String> types) {
+        this.types = types;
     }
 
     public List<String> getPhotos() {
@@ -183,14 +183,48 @@ public class Place {
                 ", mapUrl='" + mapUrl + '\'' +
                 ", websiteUrl='" + websiteUrl + '\'' +
                 ", rating=" + rating +
-                ", type=" + type +
+                ", types=" + types +
                 ", photos=" + photos +
                 ", reviews=" + reviews +
                 '}';
     }
 
+
     public enum Type {
-        BANK
+
+        ACCOUNTING("accounting"),
+        ATM("atm"),
+        BANK("bank"),
+        BAR("bar"),
+        BEAUTY_SALON("beauty_salon"),
+        CAFE("cafe"),
+        CASINO("casino"),
+        DENTIST("dentist"),
+        DOCTOR("doctor"),
+        ESTABLISHMENT("establishment"),
+        FINANCE("finance"),
+        FOOD("food"),
+        HAIR_CARE("hair_care"),
+        HEALTH("health"),
+        HOSPITAL("hospital"),
+        INSURANCE_AGENCY("insurance_agency"),
+        LAWYER("lawyer"),
+        NIGHT_CLUB("night_club"),
+        PHARMACY("pharmacy"),
+        PHYSIOTHERAPIST("physiotherapist"),
+        RESTAURANT("restaurant"),
+        SPA("spa");
+
+        Type(final String type) {
+            this.type = type;
+        }
+
+        private String type;
+
+        @Override
+        public String toString() {
+            return type;
+        }
     }
 
 }

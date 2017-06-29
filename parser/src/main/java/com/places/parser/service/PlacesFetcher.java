@@ -1,8 +1,6 @@
 package com.places.parser.service;
 
-import com.google.common.base.Throwables;
 import com.google.maps.*;
-import com.google.maps.errors.ApiException;
 import com.google.maps.model.*;
 import com.places.model.entity.Location;
 import com.places.model.entity.Place;
@@ -12,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
-import java.io.IOException;
 import java.util.*;
 
 
@@ -58,7 +55,7 @@ public class PlacesFetcher {
         GeoApiContext context = getGeoContext();
         final LatLng latLng = new LatLng(location.getLat(), location.getLng());
         final NearbySearchRequest request = PlacesApi.nearbySearchQuery(context, latLng);
-        request.type(getPlaceTypes(types)).radius(radius);
+        request.type(transformPlaceTypes(types)).radius(radius);
 
         List<PlacesSearchResult> basicPlacesDetails = retrieveBasicPlacesDetails(request);
 
@@ -100,8 +97,13 @@ public class PlacesFetcher {
         return places;
     }
 
-    static PlaceType[] getPlaceTypes(Place.Type... types) {
-        return new PlaceType[]{PlaceType.CASINO};
+    static PlaceType[] transformPlaceTypes(Place.Type... types) {
+        final PlaceType[] placeTypes = new PlaceType[types.length];
+        for (int i = 0; i < types.length; i++) {
+            Place.Type type = types[i];
+            placeTypes[i] = PlaceType.valueOf(type.name());
+        }
+        return placeTypes;
     }
 
     private void storePhoto(String photoReference) {

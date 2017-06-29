@@ -11,7 +11,6 @@ import com.places.model.entity.Review;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -65,7 +64,7 @@ public class PlaceDetailsTransformer {
     private static String parseAddressComponent(PlaceDetails placeDetails, AddressComponentType targetAddressType) {
         for (AddressComponent addressComponent : placeDetails.addressComponents) {
             for (AddressComponentType type : addressComponent.types) {
-                if(type == targetAddressType) {
+                if (type == targetAddressType) {
                     return addressComponent.longName;
                 }
             }
@@ -83,11 +82,11 @@ public class PlaceDetailsTransformer {
     private static Review fromPlaceDetailsReview(PlaceDetails.Review detailsReview) {
         final Review review = new Review();
         review.setAuthorName(detailsReview.authorName);
-        review.setAuthorUrl(detailsReview.authorUrl.toString());
+        review.setAuthorUrl(detailsReview.authorUrl != null ? detailsReview.authorUrl.toString() : null);
         review.setLanguage(detailsReview.language);
         review.setRating(detailsReview.rating);
         review.setText(detailsReview.text);
-        review.setTimestamp(detailsReview.time.getMillis());
+        review.setTimestamp(detailsReview.time != null ? detailsReview.time.getMillis() : 0);
 
         return review;
     }
