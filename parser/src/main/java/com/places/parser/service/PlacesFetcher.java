@@ -1,15 +1,18 @@
 package com.places.parser.service;
 
-import com.google.maps.GeoApiContext;
-import com.google.maps.NearbySearchRequest;
-import com.google.maps.PlaceDetailsRequest;
-import com.google.maps.PlacesApi;
+import com.google.common.base.Throwables;
+import com.google.maps.*;
+import com.google.maps.errors.ApiException;
 import com.google.maps.model.*;
 import com.places.model.entity.Location;
 import com.places.model.entity.Place;
+import com.places.parser.service.photo.PhotosPersister;
+import com.places.parser.service.photo.PhotosPersisterFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.inject.Inject;
+import java.io.IOException;
 import java.util.*;
 
 
@@ -17,6 +20,9 @@ import java.util.*;
  * @author : Alexander Serebriyan
  */
 public class PlacesFetcher {
+
+    @Inject
+    private PhotosPersisterFactory photosPersisterFactory;
 
     private static final Logger LOG = LoggerFactory.getLogger(PlacesFetcher.class);
 
@@ -92,6 +98,19 @@ public class PlacesFetcher {
 
     static PlaceType[] getPlaceTypes(Place.Type... types) {
         return new PlaceType[]{PlaceType.CASINO};
+    }
+
+    private void storePhoto(String photoReference) {
+
+        try {
+            final PhotosPersister persister = photosPersisterFactory.instance();
+            final PhotoRequest photoRequest = PlacesApi.photo(getGeoContext(), photoReference);
+            final PhotoResult photo = photoRequest.await();
+            persister.persist("~/photos/" + photoReference, photo.imageData);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 
     private static Optional<PlaceDetails> getPlaceDetails(PlaceDetailsRequest request) {
