@@ -1,10 +1,8 @@
 package com.places.model.repository;
 
+import com.mongodb.BasicDBList;
 import com.places.model.entity.Place;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -30,8 +28,10 @@ public class PlacesRepository {
         mongoTemplate.save(place);
     }
 
-    public void save(Collection<Place> place) {
-        mongoTemplate.save(place);
+    public void save(Collection<Place> places) {
+        final BasicDBList toSave = new BasicDBList();
+        toSave.addAll(places);
+        mongoTemplate.insert(places, Place.class);
     }
 
     public Place find(String mapsId) {

@@ -1,9 +1,10 @@
 package com.places.model.entity;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,10 +16,13 @@ public class Place {
 
     @Id
     private String id;
+    @Indexed
     private String country;
+    @Indexed
     private String city;
 
     // google maps specific
+    @Indexed
     private String mapsId;
     private String name;
     private String address;
@@ -28,9 +32,9 @@ public class Place {
     private String mapUrl;
     private String websiteUrl;
     private float rating;
-    private List<String> types = new LinkedList<>();
-    private List<String> photos = new LinkedList<>();
-    private List<Review> reviews = new LinkedList<>();
+    private List<String> types = new ArrayList<>();
+    private List<String> photos = new ArrayList<>();
+    private List<Review> reviews = new ArrayList<>();
 
 
     public Place() {

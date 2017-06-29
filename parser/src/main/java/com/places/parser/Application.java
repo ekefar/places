@@ -22,9 +22,11 @@ public class Application {
         final PlacesRepository repository = getRepository();
 
         final List<Place> places = PlacesFetcher.fetchPlacesLimitless(new Location(53.409919, -2.979781), 500, Place.Type.BANK);
-//        final Optional<Place> place = PlacesFetcher.fetchPlace("ChIJp9FD9LSmJ0ERVfQetGJx8QA");
-
         repository.save(places);
+
+//        final Optional<Place> place = PlacesFetcher.fetchPlace("ChIJMQr5yighe0gRaX65MXb98lQ");
+//        repository.save(place.get());
+
 //        final Place savedPlace = repository.find("ChIJp9FD9LSmJ0ERVfQetGJx8QA");
 //        System.exit(0);
     }
