@@ -11,8 +11,7 @@ public class Review {
     private String text;
     private long timestamp;
 
-    public Review(String authorName) {
-        this.authorName = authorName;
+    public Review() {
     }
 
     public Review(String authorName, String authorUrl, String language, float rating, String text, long timestamp) {
