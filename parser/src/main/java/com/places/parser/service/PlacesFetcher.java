@@ -99,7 +99,7 @@ public class PlacesFetcher {
     }
 
     static PlaceType [] getPlaceTypes(Place.Type... types) {
-        return new PlaceType[] {PlaceType.BEAUTY_SALON};
+        return new PlaceType[] {PlaceType.CASINO};
     }
 
     private static Optional<PlaceDetails> getPlaceDetails(PlaceDetailsRequest request) {

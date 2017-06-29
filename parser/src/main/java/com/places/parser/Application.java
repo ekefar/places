@@ -2,13 +2,16 @@ package com.places.parser;
 
 
 import com.mongodb.MongoClient;
+import com.places.model.entity.Location;
 import com.places.model.entity.Place;
 import com.places.model.repository.PlacesRepository;
+import com.places.parser.service.PlacesFetcher;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
 import java.net.UnknownHostException;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -21,10 +24,10 @@ public class Application {
 
         final PlacesRepository repository = getRepository();
 
-//        final List<Place> places = PlacesFetcher.fetchPlacesLimitless(new Location(53.409919, -2.979781), 5000, Place.Type.BANK);
-        final Optional<Place> place = com.places.parser.service.PlacesFetcher.fetchPlace("ChIJp9FD9LSmJ0ERVfQetGJx8QA");
+        final List<Place> places = PlacesFetcher.fetchPlacesLimitless(new Location(53.409919, -2.979781), 5000, Place.Type.BANK);
+//        final Optional<Place> place = PlacesFetcher.fetchPlace("ChIJp9FD9LSmJ0ERVfQetGJx8QA");
 
-        repository.save(place.get());
+//        repository.save(place.get());
         final Place savedPlace = repository.find("ChIJp9FD9LSmJ0ERVfQetGJx8QA");
 //        System.exit(0);
     }

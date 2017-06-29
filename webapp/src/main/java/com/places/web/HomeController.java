@@ -35,13 +35,15 @@ public class HomeController {
     }
 
     private Place createPlace(String id) {
-        return new Place.Builder().setId(id)
-                .setAddress("London St " + id)
-                .setName("Bank 1")
-                .setPhoneNumber("123-4234-43")
-                .setOpeningHours("6:00-17:00")
-                .setMapUrl("url")
-                .setWebsiteUrl("url2")
-                .build();
+        final Place place = new Place();
+        place.setId(id);
+        place.setAddress("London St " + id);
+        place.setName("Bank 1");
+        place.setPhoneNumber("123-4234-43");
+        place.setOpeningHours("6:00-17:00");
+        place.setMapUrl("url");
+        place.setWebsiteUrl("url2");
+
+        return place;
     }
 }
