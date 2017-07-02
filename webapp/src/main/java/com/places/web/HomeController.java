@@ -27,13 +27,21 @@ public class HomeController {
         return "places";
     }
 
-    @RequestMapping(value = "/{country}/{city}/{page}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{country}/{city}/{page}/", method = RequestMethod.GET)
     public String placesByCityPaged(@PathVariable("city") String city,
                                     @PathVariable("page") int page,
                                     Map<String, Object> model) {
 
         final PageInfo pageInfo = new PageInfo(page - 1);
         model.put("places", placesReader.listByCity(city, pageInfo));
+        return "places";
+    }
+
+    @RequestMapping(value = "/casino/{id}/", method = RequestMethod.GET)
+    public String placesByCityPaged(@PathVariable("id") String id,
+                                    Map<String, Object> model) {
+
+        model.put("places", placesReader.byId(id));
         return "places";
     }
 

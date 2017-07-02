@@ -33,8 +33,8 @@ public class PlacesRepository {
         mongoTemplate.insert(places, Place.class);
     }
 
-    public Place find(String mapsId) {
-        return mongoTemplate.findOne(query(where("mapsId").is(mapsId)), Place.class);
+    public Place find(String id) {
+        return mongoTemplate.findOne(query(where("_id").is(id)), Place.class);
     }
 
     public List<Place> findAll() {
