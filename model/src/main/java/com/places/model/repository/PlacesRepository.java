@@ -1,6 +1,7 @@
 package com.places.model.repository;
 
 import com.places.model.entity.Place;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +39,10 @@ public class PlacesRepository {
 
     public List<Place> findAll() {
         return mongoTemplate.findAll(Place.class);
+    }
+
+    public List<Place> findByCity(String city, Pageable pagable) {
+        return mongoTemplate.find(query(where("city").is(city)).with(pagable), Place.class);
     }
 
 }
