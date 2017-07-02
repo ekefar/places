@@ -1,4 +1,4 @@
-package com.places.web;
+package com.places.web.controller;
 
 import com.places.service.read.PlacesReader;
 import org.springframework.stereotype.Controller;
