@@ -125,23 +125,30 @@ $(document).ready(function(){
     ];
 
     function initMap() {
-        var myLatLng = {lat: -33.91722, lng: 151.23064};
 
-        var map = new google.maps.Map(document.getElementById('map'), {
+        var mapContainer = document.getElementById('map');
+
+        var lat = mapContainer.attributes["lat"].nodeValue;
+        var lng = mapContainer.attributes["lng"].nodeValue;
+
+        var initialLocation = {lat:lat, lng: lng};
+
+        var map = new google.maps.Map(mapContainer, {
             zoom: 16,
-            center: myLatLng,
+            center: initialLocation,
             styles:mapStyles
         });
 
         var image = '../img/map/marker.png';
         var marker = new google.maps.Marker({
-            position: myLatLng,
+            position: initialLocation,
             map: map,
             icon : image
         });
 
     }
     var id = document.getElementById('map');
+
     if (id) {
         initMap();
     }

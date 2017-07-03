@@ -43,7 +43,7 @@
 </head>
 
 <body class="body-wrapper">
-<div class="page-loader" style="background: url(img/preloader.gif) center no-repeat #fff;"></div>
+<div class="page-loader" style="background: url(/img/preloader.gif) center no-repeat #fff;"></div>
 <div class="main-wrapper">
     <!-- HEADER -->
     <header id="pageTop" class="header">
@@ -98,7 +98,7 @@
                                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                                     </ul>
-                                    <h2><a href="/casino/${place.id}" style="color: #222222">${place.name}</a> </h2>
+                                    <h2><a href="/casino/${place.id}/" style="color: #222222">${place.name}</a> </h2>
                                     <p>${place.address} <span class="placeName">${place.city}</span></p>
 
                                 </div>
@@ -137,7 +137,7 @@
 
 
     <!-- FOOTER -->
-    <footer style="background-image: url(img/background/bg-footer.jpg);">
+    <footer style="background-image: url(/img/background/bg-footer.jpg);">
         <!-- FOOTER INFO -->
         <div class="clearfix footerInfo">
             <div class="container">
@@ -265,12 +265,14 @@
 <script src="/plugins/isotope/isotope.min.js"></script>
 <script src="/plugins/fancybox/jquery.fancybox.pack.js"></script>
 <script src="/plugins/isotope/isotope-triger.min.js"></script>
-<script src="/https://maps.googleapis.com/maps/api/js?key=AIzaSyBEDfNcQRmKQEyulDN8nGWjLYPm8s4YB58"></script>
 <script src="/plugins/map/js/rich-marker.js"></script>
 <script src="/plugins/map/js/infobox_packed.js"></script>
 <script src="/js/single-map.js"></script>
 <script src="/js/map.js"></script>
 <script src="/js/custom.js"></script>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUesV2KgJPKO1vWczzp3uglksfrRLXNds"></script>
 
 </body>
 
