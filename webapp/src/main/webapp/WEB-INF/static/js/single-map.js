@@ -139,7 +139,7 @@ $(document).ready(function(){
             styles:mapStyles
         });
 
-        var image = '../img/map/marker.png';
+        var image = '/img/map/marker.png';
         var marker = new google.maps.Marker({
             position: initialLocation,
             map: map,
