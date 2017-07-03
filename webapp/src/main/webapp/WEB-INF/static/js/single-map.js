@@ -128,8 +128,8 @@ $(document).ready(function(){
 
         var mapContainer = document.getElementById('map');
 
-        var lat = mapContainer.attributes["lat"].nodeValue;
-        var lng = mapContainer.attributes["lng"].nodeValue;
+        var lat = parseFloat(mapContainer.attributes["lat"].nodeValue.replace(",", "."));
+        var lng = parseFloat(mapContainer.attributes["lng"].nodeValue.replace(",", "."));
 
         var initialLocation = {lat:lat, lng: lng};
 
