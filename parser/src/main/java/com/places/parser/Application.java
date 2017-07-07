@@ -11,6 +11,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.net.UnknownHostException;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -23,20 +24,21 @@ public class Application {
 
         final List<PredefinedLocation> locations = PredefinedLocationReader.read();
 
-        final PlacesRepository repository = getRepository();
+        final LinkedList<Place> places = new LinkedList<>();
+        for (PredefinedLocation location : locations) {
+            places.addAll(PlacesFetcher.fetchPlacesLimitless(
+                    new Location(location.getLat(), location.getLng()),
+                    location.getRadius(),
+                    Place.Type.CASINO));
+        }
 
-        final int radius = 500;
-        final List<Place> places = PlacesFetcher.fetchPlacesLimitless(
-                new Location(53.409919, -2.979781),
-                radius,
-                Place.Type.CASINO);
+        final PlacesRepository repository = getRepository();
         repository.save(places);
 
 //        final Optional<Place> place = PlacesFetcher.fetchPlace("ChIJMQr5yighe0gRaX65MXb98lQ");
 //        repository.save(place.get());
 
 //        final Place savedPlace = repository.find("ChIJp9FD9LSmJ0ERVfQetGJx8QA");
-//        System.exit(0);
     }
 
     private static PlacesRepository getRepository() {
