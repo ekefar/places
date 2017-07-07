@@ -59,7 +59,7 @@ public class PlaceDetailsTransformer {
         }
 
         for (String dayString : openingHours.weekdayText) {
-            final String[] split = dayString.split(":");
+            final String[] split = dayString.split(": ");
             final String day = split[0];
             final String openingTime = split[1];
             hoursMap.put(day, openingTime);
