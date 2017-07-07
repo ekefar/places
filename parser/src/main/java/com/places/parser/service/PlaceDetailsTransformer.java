@@ -1,10 +1,6 @@
 package com.places.parser.service;
 
-import com.google.common.base.Joiner;
-import com.google.maps.model.AddressComponent;
-import com.google.maps.model.AddressComponentType;
-import com.google.maps.model.LatLng;
-import com.google.maps.model.PlaceDetails;
+import com.google.maps.model.*;
 import com.places.model.entity.Location;
 import com.places.model.entity.Place;
 import com.places.model.entity.Review;
@@ -12,7 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -24,7 +22,7 @@ public class PlaceDetailsTransformer {
     private static final Logger LOG = LoggerFactory.getLogger(PlaceDetailsTransformer.class);
 
     public static Place fromPlaceDetails(PlaceDetails details) {
-        final String openingHours = details.openingHours != null ? Joiner.on("\n").join(details.openingHours.weekdayText) : "";
+        final Map<String, String> openingHours = parseOpeningHours(details);
 
         final LatLng location = details.geometry.location;
         final Place place = new Place();
@@ -51,6 +49,22 @@ public class PlaceDetailsTransformer {
         }
 
         return place;
+    }
+
+    private static Map<String, String> parseOpeningHours(PlaceDetails placeDetails) {
+        final HashMap<String, String> hoursMap = new HashMap<>();
+        final OpeningHours openingHours = placeDetails.openingHours;
+        if(openingHours == null ) {
+            return hoursMap;
+        }
+
+        for (String dayString : openingHours.weekdayText) {
+            final String[] split = dayString.split(":");
+            final String day = split[0];
+            final String openingTime = split[1];
+            hoursMap.put(day, openingTime);
+        }
+        return hoursMap;
     }
 
     private static String parseCity(PlaceDetails placeDetails) {

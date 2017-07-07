@@ -5,7 +5,9 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author : Alexander Serebriyan
@@ -28,7 +30,7 @@ public class Place {
     private String address;
     private String phoneNumber;
     private Location location;
-    private String openingHours;
+    private Map<String, String> openingHours = new HashMap<>();
     private String mapUrl;
     private String websiteUrl;
     private float rating;
@@ -41,8 +43,8 @@ public class Place {
     }
 
     public Place(String country, String city, String mapsId, String name, String address,
-                 String phoneNumber, Location location, String openingHours, String mapUrl, String websiteUrl,
-                 float rating) {
+                 String phoneNumber, Location location, Map<String, String> openingHours, String mapUrl,
+                 String websiteUrl, float rating) {
         this.country = country;
         this.city = city;
         this.mapsId = mapsId;
@@ -116,11 +118,11 @@ public class Place {
         this.location = location;
     }
 
-    public String getOpeningHours() {
+    public Map<String, String> getOpeningHours() {
         return openingHours;
     }
 
-    public void setOpeningHours(String openingHours) {
+    public void setOpeningHours(Map<String, String> openingHours) {
         this.openingHours = openingHours;
     }
 
