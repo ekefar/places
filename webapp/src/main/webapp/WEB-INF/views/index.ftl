@@ -90,7 +90,7 @@
                 <div class="col-xs-12">
                     <div class="banerInfo">
                         <h1>Explore. Discover. Gamble.</h1>
-                        <p>We will help to find out best casinos around you</p>
+                        <p>We will help to find the best casinos around you</p>
                     </div>
                 </div>
             </div>
@@ -145,7 +145,7 @@
     <section class="clearfix thingsArea">
         <div class="container">
             <div class="page-header text-center">
-                <h2>Top casinos<small>These are some of the most popular casinos in all UK</small></h2>
+                <h2>Top casinos<small>These are some of the most popular casinos in UK</small></h2>
             </div>
             <div class="row">
                 <div class="col-xs-12">

@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
@@ -45,4 +47,13 @@ public class PlacesRepository {
         return mongoTemplate.find(query(where("city").is(city)).with(pagable), Place.class);
     }
 
+    public Set<String> findCitiesByCountry(String country) {
+        final List<Place> placesByCountry = mongoTemplate.find(query(where("country").is(country)), Place.class);
+        final HashSet<String> cities = new HashSet<>();
+        for (Place place : placesByCountry) {
+            cities.add(place.getCity());
+        }
+
+        return cities;
+    }
 }

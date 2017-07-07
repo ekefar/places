@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.inject.Inject;
 import java.util.Map;
@@ -18,11 +19,13 @@ public class PlacesController {
     @Inject
     private PlacesReader placesReader;
 
-    @RequestMapping(value = "/{country}/{city}/{page}/", method = RequestMethod.GET)
+    @RequestMapping(value = "/{country}/{city}/", method = RequestMethod.GET)
     public String placesByCityPaged(@PathVariable("city") String city,
-                                    @PathVariable("page") int page,
+                                    @RequestParam("page") Integer page,
                                     Map<String, Object> model) {
-        final PlacesReader.PageInfo pageInfo = new PlacesReader.PageInfo(page - 1);
+
+        int correctPage = page == null ? 0 : page - 1;
+        final PlacesReader.PageInfo pageInfo = new PlacesReader.PageInfo(correctPage - 1);
         model.put("places", placesReader.listByCity(city, pageInfo));
         return "places/list";
     }
