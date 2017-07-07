@@ -1,0 +1,50 @@
+[
+  {
+    "lat": 51.525745,
+    "lng": -0.145594,
+    "radius": 1000,
+    "name": "London"
+  },
+  {
+    "lat": 53.405613,
+    "lng": -2.986668,
+    "radius": 1000,
+    "name": "Liverpool"
+  },
+  {
+    "lat": 53.483784,
+    "lng": -2.242006,
+    "radius": 1000,
+    "name": "Manchester"
+  },
+  {
+    "lat": 55.946652,
+    "lng": -3.191398,
+    "radius": 1000,
+    "name": "Eddinburg"
+  },
+  {
+    "lat": 55.857501,
+    "lng":  -4.255503,
+    "radius": 1000,
+    "name": "Glazgo"
+  },
+  {
+    "lat": 51.681938,
+    "lng":  -4.150615,
+    "radius": 1000,
+    "name": "Llanelli"
+  },
+  {
+    "lat": 51.630121,
+    "lng":  -3.942246,
+    "radius": 1000,
+    "name": "Swansea"
+  },
+  {
+    "lat": 54.607024,
+    "lng":  -5.924162,
+    "radius": 1000,
+    "name": "Belfast"
+  }
+]
