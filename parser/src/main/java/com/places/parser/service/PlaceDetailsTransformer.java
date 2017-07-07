@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -52,7 +52,7 @@ public class PlaceDetailsTransformer {
     }
 
     private static Map<String, String> parseOpeningHours(PlaceDetails placeDetails) {
-        final HashMap<String, String> hoursMap = new HashMap<>();
+        final LinkedHashMap<String, String> hoursMap = new LinkedHashMap<>();
         final OpeningHours openingHours = placeDetails.openingHours;
         if(openingHours == null ) {
             return hoursMap;

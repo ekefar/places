@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -30,7 +30,7 @@ public class Place {
     private String address;
     private String phoneNumber;
     private Location location;
-    private Map<String, String> openingHours = new HashMap<>();
+    private Map<String, String> openingHours = new LinkedHashMap<>();
     private String mapUrl;
     private String websiteUrl;
     private float rating;

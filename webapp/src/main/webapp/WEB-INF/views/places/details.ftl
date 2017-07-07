@@ -145,31 +145,31 @@
                         <ul class="list-unstyled sidebarList">
                             <li>
                                 <span class="pull-left">Monday</span>
-                                <span class="pull-right">08.00am - 05.00pm</span>
+                                <span class="pull-right">${place.openingHours["Monday"]}</span>
                             </li>
                             <li>
                                 <span class="pull-left">Tuesday</span>
-                                <span class="pull-right">08.00am - 05.00pm</span>
+                                <span class="pull-right">${place.openingHours["Tuesday"]}</span>
                             </li>
                             <li>
                                 <span class="pull-left">Wednesday</span>
-                                <span class="pull-right">08.00am - 05.00pm</span>
+                                <span class="pull-right">${place.openingHours["Wednesday"]}</span>
                             </li>
                             <li>
-                                <span class="pull-left">Thrusday</span>
-                                <span class="pull-right">08.00am - 05.00pm</span>
+                                <span class="pull-left">Thursday</span>
+                                <span class="pull-right">${place.openingHours["Thursday"]}</span>
                             </li>
                             <li>
                                 <span class="pull-left">Friday</span>
-                                <span class="pull-right">08.00am - 05.00pm</span>
+                                <span class="pull-right">${place.openingHours["Friday"]}</span>
                             </li>
                             <li>
                                 <span class="pull-left">Saturday</span>
-                                <span class="pull-right"><a href="#">Closed</a></span>
+                                <span class="pull-right">${place.openingHours["Saturday"]}</span>
                             </li>
                             <li>
                                 <span class="pull-left">Sunday</span>
-                                <span class="pull-right"><a href="#">Closed</a></span>
+                                <span class="pull-right">${place.openingHours["Sunday"]}</span>
                             </li>
                         </ul>
                     </div>
