@@ -5,6 +5,8 @@ import com.places.model.entity.Location;
 import com.places.model.entity.Place;
 import com.places.model.repository.PlacesRepository;
 import com.places.parser.service.PlacesFetcher;
+import com.places.parser.service.location.PredefinedLocation;
+import com.places.parser.service.location.PredefinedLocationReader;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -18,6 +20,8 @@ public class Application {
 
 
     public static void main(String[] args) throws UnknownHostException {
+
+        final List<PredefinedLocation> locations = PredefinedLocationReader.read();
 
         final PlacesRepository repository = getRepository();
 
