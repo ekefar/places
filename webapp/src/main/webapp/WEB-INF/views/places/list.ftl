@@ -22,10 +22,10 @@
     <link href="/plugins/map/css/map.css" rel="stylesheet">
 
     <!-- GOOGLE FONT -->
-    <#--<link href="https://fonts.googleapis.com/css?family=Muli:200,300,400,600,700,800,900" rel="stylesheet">-->
-    <#--<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">-->
-    <#--<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">-->
-    <#--<link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet">-->
+<#--<link href="https://fonts.googleapis.com/css?family=Muli:200,300,400,600,700,800,900" rel="stylesheet">-->
+<#--<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">-->
+<#--<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">-->
+<#--<link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet">-->
 
     <!-- CUSTOM CSS -->
     <link href="/css/style.css" rel="stylesheet">
@@ -57,7 +57,8 @@
                 <div class="container">
 
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target=".navbar-ex1-collapse">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
@@ -95,7 +96,8 @@
                         <div class="row">
                             <div class="col-sm-5 col-xs-12">
                                 <div class="categoryImage">
-                                    <img src="/img/things/things-1.jpg" alt="Image category" class="img-responsive img-rounded">
+                                    <img src="/img/things/things-1.jpg" alt="Image category"
+                                         class="img-responsive img-rounded">
                                     <!--<span class="label label-primary">Verified</span>-->
                                 </div>
                             </div>
@@ -108,7 +110,7 @@
                                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                                     </ul>
-                                    <h2><a href="/casino/${place.id}/" style="color: #222222">${place.name}</a> </h2>
+                                    <h2><a href="/casino/${place.id}/" style="color: #222222">${place.name}</a></h2>
                                     <p>${place.address} <span class="placeName">${place.city}</span></p>
 
                                 </div>
@@ -117,6 +119,13 @@
                     </div>
                 </#list>
 
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-6">
                     <div class="paginationCommon blogPagination categoryPagination">
                         <nav aria-label="Page navigation">
                             <ul class="pagination">
@@ -138,8 +147,6 @@
                             </ul>
                         </nav>
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -154,8 +161,12 @@
                 <div class="row">
                     <div class="col-sm-7 col-xs-12">
                         <div class="footerText">
-                            <a href="index.html" class="footerLogo"><img src="/img/logo-footer.png" alt="Footer Logo"></a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor</p>
+                            <a href="index.html" class="footerLogo"><img src="/img/logo-footer.png"
+                                                                         alt="Footer Logo"></a>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                                dolor</p>
                             <ul class="list-styled list-contact">
                                 <li><i class="fa fa-phone" aria-hidden="true"></i>[88] 657 524 332</li>
                                 <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="#">info@listy.com</a></li>
@@ -224,43 +235,6 @@
     </footer>
 </div>
 
-<!-- LOGIN  MODAL -->
-<div id="loginModal" tabindex="-1" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Log In to your Account</h4>
-            </div>
-            <div class="modal-body">
-                <form class="loginForm">
-                    <div class="form-group">
-                        <i class="fa fa-envelope" aria-hidden="true"></i>
-                        <input type="email" class="form-control" id="email" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                        <i class="fa fa-lock" aria-hidden="true"></i>
-                        <input type="password" class="form-control" id="pwd" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block">Log In</button>
-                    </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox"> Remember me</label>
-                        <a href="#" class="pull-right link">Fogot Password?</a>
-                    </div>
-
-                </form>
-            </div>
-            <div class="modal-footer">
-                <p>Don’t have an Account? <a href="#" class="link">Sign up</a></p>
-            </div>
-        </div>
-
-    </div>
-</div>
 
 <!-- JAVASCRIPTS -->
 <script src="/plugins/jquery/jquery.min.js"></script>
