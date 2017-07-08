@@ -27,6 +27,7 @@ public class PlacesController {
         int correctPage = page == null ? 0 : page - 1;
         final PlacesReader.PageInfo pageInfo = new PlacesReader.PageInfo(correctPage);
         model.put("places", placesReader.listByCity(city, pageInfo));
+        model.put("city", city);
         return "places/list";
     }
 

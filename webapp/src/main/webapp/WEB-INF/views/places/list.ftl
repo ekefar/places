@@ -81,6 +81,19 @@
         </div>
     </header>
 
+    <!-- PAGE TITLE SECTION -->
+    <section class="clearfix pageTitleSection" style="background-image: url();">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="pageTitle">
+                        <h2>Casinos in ${city}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CATEGORY LIST SECTION -->
     <section class="clerfix">
         <div class="container">
