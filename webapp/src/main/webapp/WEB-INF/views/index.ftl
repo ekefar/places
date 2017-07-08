@@ -70,10 +70,10 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class=""><a href="blog.html">Home</a></li>
-                            <li class=""><a href="blog.html">List</a></li>
-                            <li class=""><a href="blog.html">About</a></li>
-                            <li class=""><a href="blog.html">Contact</a></li>
+                            <li class=""><a href="/">Home</a></li>
+                            <li class=""><a href="#">List</a></li>
+                            <li class=""><a href="#">About</a></li>
+                            <li class=""><a href="#">Contact</a></li>
                         </ul>
                     </div>
 

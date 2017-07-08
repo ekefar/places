@@ -64,16 +64,16 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="index.html"><img src="img/logo-blue.png" alt="logo"></a>
+                        <a class="navbar-brand" href="index.html"><img src="/img/logo-blue.png" alt="logo"></a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class=""><a href="blog.html">Home</a></li>
-                            <li class=""><a href="blog.html">List</a></li>
-                            <li class=""><a href="blog.html">About</a></li>
-                            <li class=""><a href="blog.html">Contact</a></li>
+                            <li class=""><a href="/">Home</a></li>
+                            <li class=""><a href="#">List</a></li>
+                            <li class=""><a href="#">About</a></li>
+                            <li class=""><a href="#">Contact</a></li>
                         </ul>
                     </div>
 
@@ -125,7 +125,7 @@
                 <div class="row">
                     <div class="col-sm-7 col-xs-12">
                         <div class="footerText">
-                            <a href="index.html" class="footerLogo"><img src="img/logo-footer.png" alt="Footer Logo"></a>
+                            <a href="index.html" class="footerLogo"><img src="/img/logo-footer.png" alt="Footer Logo"></a>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor</p>
                             <ul class="list-styled list-contact">
                                 <li><i class="fa fa-phone" aria-hidden="true"></i>[88] 657 524 332</li>
