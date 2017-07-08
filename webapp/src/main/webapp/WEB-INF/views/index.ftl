@@ -75,7 +75,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-3 col-xs-12">
-                    <a href="/uk/" class="interestContent country-flag">
+                    <a href="/england/" class="interestContent country-flag">
 					<span>
 						<i class="icon-listy flag-icon flag-icon-gb-eng"></i>
 						England
@@ -83,10 +83,10 @@
                     </a>
                 </div>
                 <div class="col-sm-3 col-xs-12">
-                    <a href="/north-ireland/" class="interestContent country-flag">
+                    <a href="/wales/" class="interestContent country-flag">
 					<span>
-                        <i class="icon-listy flag-icon flag-icon-gb-nir"></i>
-						North Ireland
+						<i class="icon-listy flag-icon flag-icon-gb-wls"></i>
+						Wales
 					</span>
                     </a>
                 </div>
@@ -99,10 +99,10 @@
                     </a>
                 </div>
                 <div class="col-sm-3 col-xs-12">
-                    <a href="/welse/" class="interestContent country-flag">
+                    <a href="/north-ireland/" class="interestContent country-flag">
 					<span>
-						<i class="icon-listy flag-icon flag-icon-gb-wls"></i>
-						Welse
+                        <i class="icon-listy flag-icon flag-icon-gb-nir"></i>
+						North Ireland
 					</span>
                     </a>
                 </div>

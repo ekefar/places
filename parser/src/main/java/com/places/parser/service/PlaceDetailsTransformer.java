@@ -29,6 +29,7 @@ public class PlaceDetailsTransformer {
 
         place.setCountry(parseCountry(details));
         place.setCity(parseCity(details));
+        place.setState(parseState(details));
 
         place.setMapsId(details.placeId);
         place.setAddress(details.formattedAddress);
@@ -65,6 +66,10 @@ public class PlaceDetailsTransformer {
             hoursMap.put(day, openingTime);
         }
         return hoursMap;
+    }
+
+    private static String parseState(PlaceDetails placeDetails) {
+        return parseAddressComponent(placeDetails, AddressComponentType.ADMINISTRATIVE_AREA_LEVEL_1);
     }
 
     private static String parseCity(PlaceDetails placeDetails) {

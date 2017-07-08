@@ -29,13 +29,16 @@ public class HomeController {
     @RequestMapping(value = "/{country}/", method = RequestMethod.GET)
     public String getCountryPage(@PathVariable("country") String country,
                                        Map<String, Object> model) {
-        final Set<String> cities = locationsReader.citiesByCountry(country);
+        final Set<String> cities = locationsReader.citiesByState(unURLify(country));  // TODO: change to country in future
         model.put("country", country);
         model.put("cities", new LinkedList(cities));
         model.put("breadcrumbs", BreadcrumbsBuilder.build(country));
         return "locations/country";
     }
 
+    private String unURLify(String url) {
+        return String.join( " ", url.split("-"));
+    }
 
 
 }

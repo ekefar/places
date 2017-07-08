@@ -56,4 +56,14 @@ public class PlacesRepository {
 
         return cities;
     }
+
+    public Set<String> findCitiesByState(String state) {
+        final List<Place> placesByCountry = mongoTemplate.find(query(where("state").regex(state, "i")), Place.class);
+        final HashSet<String> cities = new HashSet<>();
+        for (Place place : placesByCountry) {
+            cities.add(place.getCity());
+        }
+
+        return cities;
+    }
 }

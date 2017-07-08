@@ -22,6 +22,8 @@ public class Place {
     private String country;
     @Indexed
     private String city;
+    @Indexed
+    private String state;
 
     // google maps specific
     @Indexed
@@ -40,22 +42,6 @@ public class Place {
 
 
     public Place() {
-    }
-
-    public Place(String country, String city, String mapsId, String name, String address,
-                 String phoneNumber, Location location, Map<String, String> openingHours, String mapUrl,
-                 String websiteUrl, float rating) {
-        this.country = country;
-        this.city = city;
-        this.mapsId = mapsId;
-        this.name = name;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.location = location;
-        this.openingHours = openingHours;
-        this.mapUrl = mapUrl;
-        this.websiteUrl = websiteUrl;
-        this.rating = rating;
     }
 
     public String getId() {
@@ -174,18 +160,27 @@ public class Place {
         this.reviews = reviews;
     }
 
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
     @Override
     public String toString() {
         return "Place{" +
                 "id='" + id + '\'' +
                 ", country='" + country + '\'' +
                 ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
                 ", mapsId='" + mapsId + '\'' +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", location=" + location +
-                ", openingHours='" + openingHours + '\'' +
+                ", openingHours=" + openingHours +
                 ", mapUrl='" + mapUrl + '\'' +
                 ", websiteUrl='" + websiteUrl + '\'' +
                 ", rating=" + rating +
@@ -194,7 +189,6 @@ public class Place {
                 ", reviews=" + reviews +
                 '}';
     }
-
 
     public enum Type {
 

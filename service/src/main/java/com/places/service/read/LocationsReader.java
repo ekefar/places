@@ -29,4 +29,8 @@ public class LocationsReader {
         return repository.findCitiesByCountry(mapped != null ? mapped : country);
     }
 
+    public Set<String> citiesByState(String state) {
+        return repository.findCitiesByState(state);
+    }
+
 }
