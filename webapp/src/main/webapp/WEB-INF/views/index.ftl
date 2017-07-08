@@ -77,7 +77,8 @@
                 <div class="col-sm-3 col-xs-12">
                     <a href="/uk/" class="interestContent">
 					<span>
-						<i class="icon-listy icon-tea-cup-1"></i>
+
+						<i class="icon-listy flag-icon flag-icon-gb-eng"></i>
 						England
 					</span>
                     </a>
@@ -85,7 +86,7 @@
                 <div class="col-sm-3 col-xs-12">
                     <a href="/north-ireland/" class="interestContent">
 					<span>
-						<i class="icon-listy icon-building"></i>
+                        <i class="icon-listy flag-icon flag-icon-gb-nir"></i>
 						North Ireland
 					</span>
                     </a>
@@ -93,7 +94,7 @@
                 <div class="col-sm-3 col-xs-12">
                     <a href="/scotland/" class="interestContent">
 					<span>
-						<i class="icon-listy icon-martini"></i>
+						<i class="icon-listy flag-icon flag-icon-gb-sct"></i>
 						Scotland
 					</span>
                     </a>
@@ -101,7 +102,7 @@
                 <div class="col-sm-3 col-xs-12">
                     <a href="/welse/" class="interestContent">
 					<span>
-						<i class="icon-listy icon-car-1"></i>
+						<i class="icon-listy flag-icon flag-icon-gb-wls"></i>
 						Welse
 					</span>
                     </a>

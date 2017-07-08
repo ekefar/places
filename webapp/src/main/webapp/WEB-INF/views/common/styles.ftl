@@ -10,6 +10,8 @@
 <link href="/plugins/fancybox/jquery.fancybox.pack.css" rel="stylesheet">
 <link href="/plugins/isotope/isotope.min.css" rel="stylesheet">
 <link href="/plugins/map/css/map.css" rel="stylesheet">
+<link href="/plugins/flag-icons/css/flag-icon.min.css" rel="stylesheet">
+
 
 <!-- GOOGLE FONT -->
 <!-- <link href="https://fonts.googleapis.com/css?family=Muli:200,300,400,600,700,800,900" rel="stylesheet"> -->
