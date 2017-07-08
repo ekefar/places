@@ -1,4 +1,4 @@
-<div class="container breadcrumb-container">
+<div class="breadcrumb-container">
     <div class="row">
         <div class="col-xs-12">
             <ol class="breadcrumb">
@@ -11,6 +11,7 @@
                     </li>
                 </#list>
             </ol>
+
         </div>
     </div>
 </div>

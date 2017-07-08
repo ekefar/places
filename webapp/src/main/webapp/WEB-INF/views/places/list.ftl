@@ -19,6 +19,10 @@
     <!-- HEADER -->
     <#include "../common/header.ftl">
 
+
+    <!-- BREADCRUMBS-->
+    <#include "../common/breadcrumbs.ftl">
+
     <!-- PAGE TITLE SECTION -->
     <section class="clearfix pageTitleSection" style="background-image: url();">
         <div class="container">
@@ -31,9 +35,6 @@
             </div>
         </div>
     </section>
-
-    <!-- BREADCRUMBS-->
-    <#include "../common/breadcrumbs.ftl">
 
 
     <!-- PLACES LIST SECTION -->

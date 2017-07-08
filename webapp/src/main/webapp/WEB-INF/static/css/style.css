@@ -5781,10 +5781,14 @@ body.rtl .main-slider {
   background: #2196f3;
 }
 
-.breadcrumb a {
-    text-transform: capitalize;
-}
-
 .banner-image {
     background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.05) ),url(/img/banner/banner2.jpg);
+}
+
+
+.breadcrumb-container {
+
+}
+.breadcrumb a {
+  text-transform: capitalize;
 }
