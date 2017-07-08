@@ -1,6 +1,8 @@
 package com.places.web.controller;
 
+import com.places.model.entity.Place;
 import com.places.service.read.PlacesReader;
+import com.places.web.BreadcrumbsBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,7 @@ public class PlacesController {
 
     @RequestMapping(value = "/{country}/{city}/", method = RequestMethod.GET)
     public String placesByCityPaged(@PathVariable("city") String city,
+                                    @PathVariable("coutry") String country,
                                     @RequestParam(name = "page", required = false) Integer page,
                                     Map<String, Object> model) {
 
@@ -28,13 +31,18 @@ public class PlacesController {
         final PlacesReader.PageInfo pageInfo = new PlacesReader.PageInfo(correctPage);
         model.put("places", placesReader.listByCity(city, pageInfo));
         model.put("city", city);
+        model.put("breadcrumbs", BreadcrumbsBuilder.build(country, city));
         return "places/list";
     }
 
-    @RequestMapping(value = "/casino/{id}/", method = RequestMethod.GET)
+    @RequestMapping(value = "/{country}/{city}/{id}/", method = RequestMethod.GET)
     public String placesByCityPaged(@PathVariable("id") String id,
+                                    @PathVariable("city") String city,
+                                    @PathVariable("coutry") String country,
                                     Map<String, Object> model) {
-        model.put("place", placesReader.byId(id));
+        final Place place = placesReader.byId(id);
+        model.put("place", place);
+        model.put("breadcrumbs", BreadcrumbsBuilder.build(country, city, place.getName()));
         return "places/details";
     }
 }

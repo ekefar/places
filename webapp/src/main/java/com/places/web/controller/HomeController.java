@@ -1,6 +1,7 @@
 package com.places.web.controller;
 
 import com.places.service.read.LocationsReader;
+import com.places.web.BreadcrumbsBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +32,7 @@ public class HomeController {
         final Set<String> cities = locationsReader.citiesByCountry(country);
         model.put("country", country);
         model.put("cities", new LinkedList(cities));
+        model.put("breadcrumbs", BreadcrumbsBuilder.build(country));
         return "locations/country";
     }
 
