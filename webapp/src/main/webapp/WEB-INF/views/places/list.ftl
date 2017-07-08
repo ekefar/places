@@ -15,8 +15,8 @@
 <body class="body-wrapper">
 <div class="page-loader" style="background: url(/img/preloader.gif) center no-repeat #fff;"></div>
 <div class="main-wrapper">
-    <!-- HEADER -->
 
+    <!-- HEADER -->
     <#include "../common/header.ftl">
 
     <!-- PAGE TITLE SECTION -->
@@ -33,19 +33,10 @@
     </section>
 
     <!-- BREADCRUMBS-->
-
-    <div class="container breadcrumb-container">
-        <div class="row">
-            <div class="col-xs-12">
-                <#list breadcrumbs as crumb>
-                    <a href="#" class="btn-link breadcrumb">${crumb}</a> /
-                </#list>
-            </div>
-        </div>
-    </div>
+    <#include "../common/breadcrumbs.ftl">
 
 
-    <!-- CATEGORY LIST SECTION -->
+    <!-- PLACES LIST SECTION -->
     <section class="clerfix">
         <div class="container">
             <div class="row">

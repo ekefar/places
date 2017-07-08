@@ -33,6 +33,10 @@
         </div>
     </section>
 
+
+    <!-- BREADCRUMBS-->
+    <#include "../common/breadcrumbs.ftl">
+
     <!-- CITIES LIST -->
     <section class="clearfix allBusiness">
         <div class="container">

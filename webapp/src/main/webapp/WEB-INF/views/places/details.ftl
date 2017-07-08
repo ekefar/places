@@ -20,6 +20,9 @@
     <#include "../common/header.ftl">
 
 
+    <!-- BREADCRUMBS-->
+    <#include "../common/breadcrumbs.ftl">
+
     <!-- LISTINGS DETAILS TITLE SECTION -->
     <section class="clearfix paddingAdjustBottom">
         <div class="container">
