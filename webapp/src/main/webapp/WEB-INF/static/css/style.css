@@ -5781,8 +5781,8 @@ body.rtl .main-slider {
   background: #2196f3;
 }
 
-.breadcrumb-container {
-
+.breadcrumb a {
+    text-transform: capitalize;
 }
 
 .banner-image {
