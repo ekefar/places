@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>All business - Listty</title>
+    <title>Country - Casinos List</title>
 
     <#include "../common/styles.ftl">
 
@@ -33,7 +33,7 @@
         </div>
     </section>
 
-    <!-- ALL BUSINESS -->
+    <!-- CITIES LIST -->
     <section class="clearfix allBusiness">
         <div class="container">
             <div class="row">
