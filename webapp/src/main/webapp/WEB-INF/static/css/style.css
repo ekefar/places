@@ -5792,3 +5792,7 @@ body.rtl .main-slider {
 .breadcrumb a {
   text-transform: capitalize;
 }
+
+section.central-block {
+    padding-top: 50px;
+}

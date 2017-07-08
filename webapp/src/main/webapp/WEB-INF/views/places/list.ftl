@@ -38,7 +38,7 @@
 
 
     <!-- PLACES LIST SECTION -->
-    <section class="clerfix">
+    <section class="clerfix central-block">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-xs-12">

@@ -39,7 +39,7 @@
 
 
     <!-- CITIES LIST -->
-    <section class="clearfix allBusiness">
+    <section class="clearfix allBusiness central-block">
         <div class="container">
             <div class="row">
                 <div class="col-sm-2">

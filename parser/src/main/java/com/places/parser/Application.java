@@ -22,6 +22,8 @@ public class Application {
 
     public static void main(String[] args) throws UnknownHostException {
 
+        final long start = System.currentTimeMillis();
+
         final List<PredefinedLocation> locations = PredefinedLocationReader.read();
 
         final LinkedList<Place> places = new LinkedList<>();
@@ -35,6 +37,7 @@ public class Application {
         final PlacesRepository repository = getRepository();
         repository.save(places);
 
+        System.out.println("Done in: " + (System.currentTimeMillis() - start));
 //        final Optional<Place> place = PlacesFetcher.fetchPlace("ChIJMQr5yighe0gRaX65MXb98lQ");
 //        repository.save(place.get());
 
