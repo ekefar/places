@@ -94,6 +94,19 @@
         </div>
     </section>
 
+    <!-- BREADCRUMBS-->
+
+    <div class="container breadcrumb-container">
+        <div class="row">
+            <div class="col-xs-12">
+                <#list breadcrumbs as crumb>
+                    <a href="#" class="btn-link breadcrumb">${crumb}</a> /
+                </#list>
+            </div>
+        </div>
+    </div>
+
+
     <!-- CATEGORY LIST SECTION -->
     <section class="clerfix">
         <div class="container">
@@ -123,7 +136,7 @@
                                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                                     </ul>
-                                    <h2><a href="/casino/${place.id}/" style="color: #222222">${place.name}</a></h2>
+                                    <h2><a href="/${country}/${city}/${place.id}/" style="color: #222222">${place.name}</a></h2>
                                     <p>${place.address} <span class="placeName">${place.city}</span></p>
 
                                 </div>

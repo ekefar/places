@@ -23,7 +23,7 @@ public class PlacesController {
 
     @RequestMapping(value = "/{country}/{city}/", method = RequestMethod.GET)
     public String placesByCityPaged(@PathVariable("city") String city,
-                                    @PathVariable("coutry") String country,
+                                    @PathVariable("country") String country,
                                     @RequestParam(name = "page", required = false) Integer page,
                                     Map<String, Object> model) {
 
@@ -31,6 +31,7 @@ public class PlacesController {
         final PlacesReader.PageInfo pageInfo = new PlacesReader.PageInfo(correctPage);
         model.put("places", placesReader.listByCity(city, pageInfo));
         model.put("city", city);
+        model.put("country", country);
         model.put("breadcrumbs", BreadcrumbsBuilder.build(country, city));
         return "places/list";
     }
@@ -38,7 +39,7 @@ public class PlacesController {
     @RequestMapping(value = "/{country}/{city}/{id}/", method = RequestMethod.GET)
     public String placesByCityPaged(@PathVariable("id") String id,
                                     @PathVariable("city") String city,
-                                    @PathVariable("coutry") String country,
+                                    @PathVariable("country") String country,
                                     Map<String, Object> model) {
         final Place place = placesReader.byId(id);
         model.put("place", place);
