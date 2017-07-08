@@ -5773,6 +5773,14 @@ body.rtl .main-slider {
 
 /* custom */
 
+.interestContent.country-flag {
+  background: #eaeaea;
+}
+
+.interestContent.country-flag:hover {
+  background: #2196f3;
+}
+
 .breadcrumb-container {
 
 }
