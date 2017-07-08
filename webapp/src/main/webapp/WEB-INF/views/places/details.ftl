@@ -22,10 +22,10 @@
     <link href="/plugins/map/css/map.css" rel="stylesheet">
 
     <!-- GOOGLE FONT -->
-    <#--<link href="https://fonts.googleapis.com/css?family=Muli:200,300,400,600,700,800,900" rel="stylesheet">-->
-    <#--<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">-->
-    <#--<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">-->
-    <#--<link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Muli:200,300,400,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet">
 
     <!-- CUSTOM CSS -->
     <link href="/css/style.css" rel="stylesheet">
@@ -354,7 +354,7 @@
 <script src="/js/custom.js"></script>
 
 
-<#--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEDfNcQRmKQEyulDN8nGWjLYPm8s4YB58"></script>-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEDfNcQRmKQEyulDN8nGWjLYPm8s4YB58"></script>
 
 </body>
 

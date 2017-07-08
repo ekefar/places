@@ -25,7 +25,7 @@ public class PlacesFetcher {
 
     private static final long REQUST_DELAY = 5000;
 
-    private static final String KEY = "AIzaSyBUesV2KgJPKO1vWczzp3uglksfrRLXNds";
+    private static final String KEY = "AIzaSyByY27K_qk6NEZ5L2w8WssBh5BiMp-XbHY";
 
     private static final GeoApiContext GEO_CONTEXT = createGeoContext();
 
