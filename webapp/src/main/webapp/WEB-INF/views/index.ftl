@@ -70,7 +70,7 @@
     <section class="clearfix interestArea">
         <div class="container">
             <div class="page-header text-center">
-                <h2>Choose were you are? <small>Select your country to reveal best casinos in your location</small></h2>
+                <h2>Choose where you are? <small>Select your country to reveal best casinos in your location</small></h2>
             </div>
             <div class="row">
                 <div class="col-sm-3 col-xs-12">
