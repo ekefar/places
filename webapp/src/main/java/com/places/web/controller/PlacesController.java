@@ -21,11 +21,11 @@ public class PlacesController {
 
     @RequestMapping(value = "/{country}/{city}/", method = RequestMethod.GET)
     public String placesByCityPaged(@PathVariable("city") String city,
-                                    @RequestParam("page") Integer page,
+                                    @RequestParam(name = "page", required = false) Integer page,
                                     Map<String, Object> model) {
 
         int correctPage = page == null ? 0 : page - 1;
-        final PlacesReader.PageInfo pageInfo = new PlacesReader.PageInfo(correctPage - 1);
+        final PlacesReader.PageInfo pageInfo = new PlacesReader.PageInfo(correctPage);
         model.put("places", placesReader.listByCity(city, pageInfo));
         return "places/list";
     }

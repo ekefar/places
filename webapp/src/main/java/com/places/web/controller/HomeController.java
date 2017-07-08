@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.inject.Inject;
-import java.util.List;
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author : Alexander Serebriyan
@@ -27,10 +28,12 @@ public class HomeController {
     @RequestMapping(value = "/{country}/", method = RequestMethod.GET)
     public String getCountryPage(@PathVariable("country") String country,
                                        Map<String, Object> model) {
-        final List<String> cities = locationsReader.citiesByCountry(country);
+        final Set<String> cities = locationsReader.citiesByCountry(country);
         model.put("country", country);
-        model.put("cities", cities);
+        model.put("cities", new LinkedList(cities));
         return "locations/country";
     }
+
+
 
 }

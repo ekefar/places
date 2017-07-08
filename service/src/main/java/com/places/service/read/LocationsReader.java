@@ -4,7 +4,9 @@ import com.places.model.repository.PlacesRepository;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @author : Alexander Serebriyan
@@ -15,7 +17,16 @@ public class LocationsReader {
     @Inject
     private PlacesRepository repository;
 
-    public List<String> citiesByCountry(String country) {
-        return null;
+    private static Map<String, String> mapping = new HashMap<>();
+
+    static {
+        mapping.put("uk", "United Kingdom");
     }
+
+    public Set<String> citiesByCountry(String country) {
+
+        final String mapped = mapping.get(country);
+        return repository.findCitiesByCountry(mapped != null ? mapped : country);
+    }
+
 }

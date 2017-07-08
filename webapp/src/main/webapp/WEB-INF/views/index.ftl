@@ -22,10 +22,10 @@
     <link href="/plugins/map/css/map.css" rel="stylesheet">
 
     <!-- GOOGLE FONT -->
-    <link href="https://fonts.googleapis.com/css?family=Muli:200,300,400,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet">
+    <#--<link href="https://fonts.googleapis.com/css?family=Muli:200,300,400,600,700,800,900" rel="stylesheet">-->
+    <#--<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">-->
+    <#--<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">-->
+    <#--<link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet">-->
 
     <!-- CUSTOM CSS -->
     <link href="/css/style.css" rel="stylesheet">
@@ -105,7 +105,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-3 col-xs-12">
-                    <a href="category-grid-full.html" class="interestContent">
+                    <a href="/uk/" class="interestContent">
 					<span>
 						<i class="icon-listy icon-tea-cup-1"></i>
 						England
@@ -113,7 +113,7 @@
                     </a>
                 </div>
                 <div class="col-sm-3 col-xs-12">
-                    <a href="category-list-full.html" class="interestContent">
+                    <a href="/north-ireland/" class="interestContent">
 					<span>
 						<i class="icon-listy icon-building"></i>
 						North Ireland
@@ -121,7 +121,7 @@
                     </a>
                 </div>
                 <div class="col-sm-3 col-xs-12">
-                    <a href="category-grid.html" class="interestContent">
+                    <a href="/scotland/" class="interestContent">
 					<span>
 						<i class="icon-listy icon-martini"></i>
 						Scotland
@@ -129,7 +129,7 @@
                     </a>
                 </div>
                 <div class="col-sm-3 col-xs-12">
-                    <a href="category-list-left.html" class="interestContent">
+                    <a href="/welse/" class="interestContent">
 					<span>
 						<i class="icon-listy icon-car-1"></i>
 						Welse
