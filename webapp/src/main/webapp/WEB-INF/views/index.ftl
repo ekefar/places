@@ -54,7 +54,7 @@
 
 
     <!-- BANNER SECTION -->
-    <section class="clearfix homeBanner" style="background-image: url(img/banner/banner1.jpg);">
+    <section class="clearfix homeBanner banner-image">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
