@@ -37,7 +37,7 @@ public class Place {
     private String websiteUrl;
     private float rating;
     private List<String> types = new ArrayList<>();
-    private List<String> photos = new ArrayList<>();
+    private List<Photo> photos = new ArrayList<>();
     private List<Review> reviews = new ArrayList<>();
 
 
@@ -144,11 +144,11 @@ public class Place {
         this.types = types;
     }
 
-    public List<String> getPhotos() {
+    public List<Photo> getPhotos() {
         return photos;
     }
 
-    public void setPhotos(List<String> photos) {
+    public void setPhotos(List<Photo> photos) {
         this.photos = photos;
     }
 

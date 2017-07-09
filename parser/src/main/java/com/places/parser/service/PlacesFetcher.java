@@ -12,6 +12,8 @@ import org.slf4j.LoggerFactory;
 import javax.inject.Inject;
 import java.util.*;
 
+import static com.places.parser.service.ContextProvider.getGeoContext;
+
 
 /**
  * @author : Alexander Serebriyan
@@ -24,10 +26,6 @@ public class PlacesFetcher {
     private static final Logger LOG = LoggerFactory.getLogger(PlacesFetcher.class);
 
     private static final long REQUST_DELAY = 5000;
-
-    private static final String KEY = "AIzaSyByY27K_qk6NEZ5L2w8WssBh5BiMp-XbHY";
-
-    private static final GeoApiContext GEO_CONTEXT = createGeoContext();
 
     public static List<Place> fetchPlacesLimitless(Location location, int radius, Place.Type... types) {
         LOG.info("# Fetching places details avoiding google API limits. Initial location: {}", location);
@@ -147,14 +145,6 @@ public class PlacesFetcher {
         }
 
         return placeDetails;
-    }
-
-    private static GeoApiContext createGeoContext() {
-        return new GeoApiContext().setApiKey(KEY);
-    }
-
-    private static GeoApiContext getGeoContext() {
-        return GEO_CONTEXT;
     }
 
 }

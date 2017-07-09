@@ -2,6 +2,7 @@ package com.places.parser.service;
 
 import com.google.maps.model.*;
 import com.places.model.entity.Location;
+import com.places.model.entity.Photo;
 import com.places.model.entity.Place;
 import com.places.model.entity.Review;
 import org.slf4j.Logger;
@@ -42,7 +43,9 @@ public class PlaceDetailsTransformer {
         place.setRating(details.rating);
 
         if (details.photos != null) {
-            place.setPhotos(Arrays.stream(details.photos).map(p -> p.photoReference).collect(Collectors.toList()));
+            place.setPhotos(Arrays.stream(details.photos)
+                    .map(p -> new Photo(p.photoReference, p.width, p.height))
+                    .collect(Collectors.toList()));
         }
 
         if (details.reviews != null) {
