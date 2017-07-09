@@ -1,6 +1,8 @@
 package com.places.parser;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.amazonaws.auth.profile.ProfileCredentialsProvider;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
@@ -14,12 +16,14 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 public class SpringConfig {
 
 
-    @Value("${active.bucket}")
-    private String bucket;
-
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
     }
 
+    @Bean
+    public AmazonS3 amazonS3() {
+        return AmazonS3ClientBuilder.standard()
+                .withCredentials(new ProfileCredentialsProvider()).build();
+    }
 }
