@@ -19,8 +19,12 @@ public class S3PhotosPersister implements PhotosPersister {
     @Value("${active.bucket}")
     private String bucket;
 
+    private final AmazonS3 amazonS3;
+
     @Inject
-    private AmazonS3 amazonS3;
+    public S3PhotosPersister(AmazonS3 amazonS3) {
+        this.amazonS3 = amazonS3;
+    }
 
     @Override
     public void persist(String key, byte[] content) {

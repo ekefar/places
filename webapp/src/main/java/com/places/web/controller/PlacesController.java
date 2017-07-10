@@ -18,8 +18,12 @@ import java.util.Map;
 @Controller
 public class PlacesController {
 
+    private final PlacesReader placesReader;
+
     @Inject
-    private PlacesReader placesReader;
+    public PlacesController(PlacesReader placesReader) {
+        this.placesReader = placesReader;
+    }
 
     @RequestMapping(value = "/{country}/{city}/", method = RequestMethod.GET)
     public String placesByCityPaged(@PathVariable("city") String city,

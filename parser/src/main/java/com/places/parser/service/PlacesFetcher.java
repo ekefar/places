@@ -20,12 +20,16 @@ import static com.places.parser.service.ContextProvider.getGeoContext;
  */
 public class PlacesFetcher {
 
-    @Inject
-    private PhotosPersisterFactory photosPersisterFactory;
+    private final PhotosPersisterFactory photosPersisterFactory;
 
     private static final Logger LOG = LoggerFactory.getLogger(PlacesFetcher.class);
 
     private static final long REQUST_DELAY = 5000;
+
+    @Inject
+    public PlacesFetcher(PhotosPersisterFactory photosPersisterFactory) {
+        this.photosPersisterFactory = photosPersisterFactory;
+    }
 
     public static List<Place> fetchPlacesLimitless(Location location, int radius, Place.Type... types) {
         LOG.info("# Fetching places details avoiding google API limits. Initial location: {}", location);

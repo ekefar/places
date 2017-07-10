@@ -14,13 +14,17 @@ import java.util.Set;
 @Service
 public class LocationsReader {
 
-    @Inject
-    private PlacesRepository repository;
+    private final PlacesRepository repository;
 
     private static Map<String, String> mapping = new HashMap<>();
 
     static {
         mapping.put("uk", "United Kingdom");
+    }
+
+    @Inject
+    public LocationsReader(PlacesRepository repository) {
+        this.repository = repository;
     }
 
     public Set<String> citiesByCountry(String country) {

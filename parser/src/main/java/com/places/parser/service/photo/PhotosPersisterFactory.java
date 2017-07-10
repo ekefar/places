@@ -11,11 +11,15 @@ import javax.inject.Inject;
 @Service
 public class PhotosPersisterFactory {
 
-    @Inject
-    private LocalPhotosPersister localPhotosPersister;
+    private final LocalPhotosPersister localPhotosPersister;
+    private final S3PhotosPersister s3PhotosPersister;
 
     @Inject
-    private S3PhotosPersister s3PhotosPersister;
+    public PhotosPersisterFactory(LocalPhotosPersister localPhotosPersister,
+                                  S3PhotosPersister s3PhotosPersister) {
+        this.localPhotosPersister = localPhotosPersister;
+        this.s3PhotosPersister = s3PhotosPersister;
+    }
 
     public PhotosPersister instance(){
         return localPhotosPersister;

@@ -14,8 +14,12 @@ import java.util.List;
 @Service
 public class PlacesReader {
 
+    private final PlacesRepository repository;
+
     @Inject
-    private PlacesRepository repository;
+    public PlacesReader(PlacesRepository repository) {
+        this.repository = repository;
+    }
 
     public List<Place> list() {
         return repository.findAll();

@@ -18,8 +18,12 @@ import java.util.Set;
 @Controller
 public class HomeController {
 
+    private final LocationsReader locationsReader;
+
     @Inject
-    private LocationsReader locationsReader;
+    public HomeController(LocationsReader locationsReader) {
+        this.locationsReader = locationsReader;
+    }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Map<String, Object> model) {
