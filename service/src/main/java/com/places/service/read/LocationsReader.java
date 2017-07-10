@@ -28,7 +28,6 @@ public class LocationsReader {
     }
 
     public Set<String> citiesByCountry(String country) {
-
         final String mapped = mapping.get(country);
         return repository.findCitiesByCountry(mapped != null ? mapped : country);
     }
