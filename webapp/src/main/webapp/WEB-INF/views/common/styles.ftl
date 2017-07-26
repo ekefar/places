@@ -21,6 +21,7 @@
 
 <!-- CUSTOM CSS -->
 <link href="/css/style.css" rel="stylesheet">
+<link href="/css/custom-style.css" rel="stylesheet">
 
 <!-- FAVICON -->
 <link href="/img/favicon.png" rel="shortcut icon">

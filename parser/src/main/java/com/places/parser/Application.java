@@ -1,15 +1,19 @@
 package com.places.parser;
 
 
+import com.places.model.entity.Location;
 import com.places.model.entity.Place;
 import com.places.model.repository.PlacesRepository;
 import com.places.parser.service.PlacesFetcher;
+import com.places.parser.service.location.PredefinedLocation;
+import com.places.parser.service.location.PredefinedLocationReader;
 import com.places.parser.service.photo.PlacePhotosPersistenceManager;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.net.UnknownHostException;
-import java.util.Optional;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author : Alexander Serebriyan
@@ -19,7 +23,7 @@ public class Application {
 
     public static void main(String[] args) throws UnknownHostException {
 
-        /*final long start = System.currentTimeMillis();
+        final long start = System.currentTimeMillis();
 
         final List<PredefinedLocation> locations = PredefinedLocationReader.read();
 
@@ -34,9 +38,9 @@ public class Application {
         final PlacesRepository repository = getRepository();
         repository.save(places);
 
-        System.out.println("Done in: " + (System.currentTimeMillis() - start));*/
-        final Optional<Place> place = PlacesFetcher.fetchPlace("ChIJUSQbhSMhe0gRxQQboqAVjOw");
-        photosManager().manage(place.get());
+        System.out.println("Done in: " + (System.currentTimeMillis() - start));
+//        final Optional<Place> place = PlacesFetcher.fetchPlace("ChIJUSQbhSMhe0gRxQQboqAVjOw");
+//        photosManager().manage(place.get());
 //
 //        final Place savedPlace = repository.find("ChIJp9FD9LSmJ0ERVfQetGJx8QA");
     }

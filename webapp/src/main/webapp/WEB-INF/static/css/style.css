@@ -5770,29 +5770,3 @@ body.rtl .main-slider {
   direction: ltr; }
 
 /*# sourceMappingURL=maps/style.css.map */
-
-/* custom */
-
-.interestContent.country-flag {
-  background: #eaeaea;
-}
-
-.interestContent.country-flag:hover {
-  background: #2196f3;
-}
-
-.banner-image {
-    background-image: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.05) ),url(/img/banner/banner2.jpg);
-}
-
-
-.breadcrumb-container {
-
-}
-.breadcrumb a {
-  text-transform: capitalize;
-}
-
-section.central-block {
-    padding-top: 50px;
-}
