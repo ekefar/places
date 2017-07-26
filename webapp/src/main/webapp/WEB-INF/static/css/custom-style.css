@@ -12,11 +12,16 @@
 }
 
 
+
 .breadcrumb-container {
 
 }
 .breadcrumb a {
     text-transform: capitalize;
+}
+.breadcrumb a.active {
+    cursor: default;
+    color: darkgray;
 }
 
 section.central-block {
