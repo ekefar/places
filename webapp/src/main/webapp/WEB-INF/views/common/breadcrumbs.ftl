@@ -4,7 +4,7 @@
             <ol class="breadcrumb">
                 <#list breadcrumbs as crumb>
                     <li>
-                        <a href="/${crumb.getValue()}"
+                        <a href="${crumb.getValue()}"
                            <#if !crumb?has_next>class="active"</#if>>
                             ${crumb.getKey()}
                         </a>

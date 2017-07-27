@@ -22,13 +22,14 @@ public class BreadcrumbsBuilder {
 
         final Entry[] entries = new Entry[crumbs.length];
 
-        StringBuilder link = new StringBuilder();
+        StringBuilder link = new StringBuilder("/");
         for (int i = 0; i < crumbs.length; i++) {
             String crumb = crumbs[i];
             link.append(crumb.toLowerCase()).append("/");
             entries[i] = new SimpleEntry<>(crumb, link.toString());
         }
 
+        entries[entries.length-1].setValue("#");
         return build(entries);
     }
 }
