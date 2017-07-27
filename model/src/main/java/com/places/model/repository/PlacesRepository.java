@@ -44,11 +44,11 @@ public class PlacesRepository {
     }
 
     public List<Place> findByCity(String city, Pageable pagable) {
-        return mongoTemplate.find(query(where("city").is(city)).with(pagable), Place.class);
+        return mongoTemplate.find(query(where("city").regex(city, "i")).with(pagable), Place.class);
     }
 
     public Set<String> findCitiesByCountry(String country) {
-        final List<Place> placesByCountry = mongoTemplate.find(query(where("country").is(country)), Place.class);
+        final List<Place> placesByCountry = mongoTemplate.find(query(where("country").regex(country, "i")), Place.class);
         final HashSet<String> cities = new HashSet<>();
         for (Place place : placesByCountry) {
             cities.add(place.getCity());

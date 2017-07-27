@@ -48,7 +48,7 @@
 
                         <ul class="list-inline">
                             <#list cities as city>
-                                <li><a href="/${country}/${city}/">${city}</a></li>
+                                <li><a href="/${country?lower_case}/${city?lower_case}/">${city}</a></li>
                             </#list>
                         </ul>
                     </div>
