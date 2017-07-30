@@ -3,6 +3,7 @@ package com.places.parser.service;
 
 import com.places.model.entity.Location;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,14 +26,18 @@ public class CoordinatesCalculator {
         double currentLat = start.getLat();
         double currentLng = start.getLng();
         final Set<Location> locations = new HashSet<>();
+        final int roundingScale = 6;
         for (int i = 0; i < steps; i++) {
             for (int j = 0; j < steps; j++) {
-                locations.add(new Location(currentLat, currentLng));
-                currentLng += STEP_IN_COORDINATE_UNITS;
+                final double lat = BigDecimal.valueOf(currentLat).setScale(roundingScale, BigDecimal.ROUND_UP).doubleValue();
+                final double lng = BigDecimal.valueOf(currentLng).setScale(roundingScale, BigDecimal.ROUND_UP).doubleValue();
+                locations.add(new Location(lat, lng));
+                currentLng += (STEP_IN_COORDINATE_UNITS / Math.cos(currentLat*Math.PI/180));
             }
             currentLng = start.getLng();
             currentLat += STEP_IN_COORDINATE_UNITS;
         }
+        printLocations(locations);
         return locations;
     }
 
@@ -41,6 +46,11 @@ public class CoordinatesCalculator {
                 start.getLng() - (STEP_IN_COORDINATE_UNITS*shift / Math.cos(start.getLat()*Math.PI/180)));
     }
 
+    private static void printLocations(Set<Location> locations) {
+        for (Location location : locations) {
+            System.out.println(location.getLat() + ", " + location.getLng());
+        };
+    }
 
 
 }
