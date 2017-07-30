@@ -98,10 +98,10 @@
                     </a>
                 </div>
                 <div class="col-sm-3 col-xs-12">
-                    <a href="/north-ireland/" class="interestContent country-flag">
+                    <a href="/northern-ireland/" class="interestContent country-flag">
 					<span>
                         <i class="icon-listy flag-icon flag-icon-gb-nir"></i>
-						North Ireland
+						Northern Ireland
 					</span>
                     </a>
                 </div>
