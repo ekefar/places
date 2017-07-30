@@ -40,7 +40,7 @@ public class PlacesFetcher {
         final HashMap<String, Place> placesMap = new HashMap<>();
 
         for (Location loc : locations) {
-            final List<Place> placesFromLocation = fetchPlaces(loc, CoordinatesCalculator.STEP_IN_METERS, types);
+            final List<Place> placesFromLocation = fetchPlaces(loc, 5000, types);
             for (Place place : placesFromLocation) {
                 placesMap.put(place.getMapsId(), place);
             }
