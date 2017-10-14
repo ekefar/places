@@ -36,7 +36,7 @@ public class Application {
         }
 
         final PlacesRepository repository = getRepository();
-//        repository.save(places);
+        repository.save(places);
 
         System.out.println("Done in: " + (System.currentTimeMillis() - start));
 //        final Optional<Place> place = PlacesFetcher.fetchPlace("ChIJUSQbhSMhe0gRxQQboqAVjOw");

@@ -1,6 +1,9 @@
 package com.places.parser;
 
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
+import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import org.springframework.context.annotation.*;
@@ -12,9 +15,8 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 @Configuration
 @Import(com.places.model.SpringConfig.class)
 @ComponentScan(basePackages = "com.places.parser")
-@PropertySource("classpath:mongo.properties")
+@PropertySource({"classpath:parser.properties"})
 public class SpringConfig {
-
 
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
@@ -23,7 +25,10 @@ public class SpringConfig {
 
     @Bean
     public AmazonS3 amazonS3() {
+        BasicAWSCredentials awsCreds = new BasicAWSCredentials("AKIAIRPXQQFL522EQTJA",
+                "vwtw/6Hb4etNXuw5yTuTZN1BizDJJnoVZfqew9w5");
         return AmazonS3ClientBuilder.standard()
-                .withCredentials(new ProfileCredentialsProvider()).build();
+                .withRegion(Regions.EU_WEST_1)
+                .withCredentials(new AWSStaticCredentialsProvider(awsCreds)).build();
     }
 }
