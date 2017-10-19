@@ -24,7 +24,7 @@ public class PlacesFetcher {
 
     private static final Logger LOG = LoggerFactory.getLogger(PlacesFetcher.class);
 
-    private static final long REQUST_DELAY = 5000;
+    private static final long REQUST_DELAY = 1000;
 
     @Inject
     public PlacesFetcher(PhotosPersisterFactory photosPersisterFactory) {

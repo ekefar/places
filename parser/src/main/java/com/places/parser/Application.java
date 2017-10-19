@@ -23,7 +23,10 @@ public class Application {
 
     public static void main(String[] args) throws UnknownHostException {
 
-        final long start = System.currentTimeMillis();
+
+//        final Optional<Place> place = PlacesFetcher.fetchPlace("ChIJu2f9k7YcbkgRwrw4GGJIKoc");
+//
+       final long start = System.currentTimeMillis();
 
         final List<PredefinedLocation> locations = PredefinedLocationReader.read();
 

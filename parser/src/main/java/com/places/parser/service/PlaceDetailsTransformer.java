@@ -76,7 +76,7 @@ public class PlaceDetailsTransformer {
     }
 
     private static String parseCity(PlaceDetails placeDetails) {
-        return parseAddressComponent(placeDetails, AddressComponentType.POSTAL_TOWN);
+        return parseAddressComponent(placeDetails, AddressComponentType.LOCALITY);
     }
 
     private static String parseCountry(PlaceDetails placeDetails) {
