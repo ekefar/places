@@ -31,7 +31,7 @@ public class PlacesFetcher {
         this.photosPersisterFactory = photosPersisterFactory;
     }
 
-    public static List<Place> fetchPlacesLimitless(Location location, int radius, Place.Type... types) {
+    public static List<Place> fetchPlaces(Location location, int radius, Place.Type... types) {
         LOG.info("# Fetching places details avoiding google API limits. Initial location: {}", location);
         final Set<Location> locations = CoordinatesCalculator.calculateLocations(location, radius);
 
@@ -39,10 +39,13 @@ public class PlacesFetcher {
 
         final HashMap<String, Place> placesMap = new HashMap<>();
 
+        final HashSet<String> parsedIds = new HashSet<>();
+
         for (Location loc : locations) {
-            final List<Place> placesFromLocation = fetchPlaces(loc, CoordinatesCalculator.STEP_IN_METERS, types);
+            final List<Place> placesFromLocation = fetchPlaces(loc, CoordinatesCalculator.STEP_IN_METERS, parsedIds, types);
             for (Place place : placesFromLocation) {
                 placesMap.put(place.getMapsId(), place);
+                parsedIds.add(place.getMapsId());
             }
         }
 
@@ -50,7 +53,9 @@ public class PlacesFetcher {
     }
 
 
-    public static List<Place> fetchPlaces(Location location, int radius, Place.Type... types) {
+    private static List<Place> fetchPlaces(Location location, int radius,
+                                           Set<String> exclusions,
+                                           Place.Type... types) {
         LOG.info("# Fetching list of places near next location: {}", location);
         LOG.info("# Types to search: {}", types);
 
@@ -64,7 +69,8 @@ public class PlacesFetcher {
         LOG.info("# Search complete. Items found: {}", basicPlacesDetails.size());
         LOG.info("# Retrieving detailed info for each item...");
 
-        final List<Place> places = retrieveFullPlacesDetails(basicPlacesDetails);
+
+        final List<Place> places = retrieveFullPlacesDetails(basicPlacesDetails, exclusions);
 
         return places;
     }
@@ -90,10 +96,14 @@ public class PlacesFetcher {
         return Optional.empty();
     }
 
-    private static List<Place> retrieveFullPlacesDetails(List<PlacesSearchResult> basicDetailsList) {
+    private static List<Place> retrieveFullPlacesDetails(List<PlacesSearchResult> basicDetailsList,
+                                                         Set<String> exclusions) {
 
         final LinkedList<Place> places = new LinkedList<>();
         for (PlacesSearchResult placeDetails : basicDetailsList) {
+            if (exclusions.contains(placeDetails.placeId)) {
+                continue;
+            }
             fetchPlace(placeDetails.placeId).ifPresent(places::add);
         }
         return places;

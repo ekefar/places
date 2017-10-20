@@ -32,7 +32,7 @@ public class Application {
 
         final LinkedList<Place> places = new LinkedList<>();
         for (PredefinedLocation location : locations) {
-            places.addAll(PlacesFetcher.fetchPlacesLimitless(
+            places.addAll(PlacesFetcher.fetchPlaces(
                     new Location(location.getLat(), location.getLng()),
                     location.getRadius(),
                     Place.Type.CASINO));
