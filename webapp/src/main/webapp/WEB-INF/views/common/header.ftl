@@ -5,31 +5,31 @@
     <div class="nav-wrapper">
 
         <!-- NAVBAR -->
-        <nav id="menuBar" class="navbar navbar-default lightHeader" role="navigation">
+        <#--<nav id="menuBar" class="navbar navbar-default lightHeader" role="navigation">
             <div class="container">
 
-                <!-- Brand and toggle get grouped for better mobile display -->
+                <!-- Brand and toggle get grouped for better mobile display &ndash;&gt;
                 <div class="navbar-header">
-                   <#-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                   &lt;#&ndash; <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-                    </button>-->
-                    <#--<a class="navbar-brand" href="/"><img src="" alt="logo"></a>-->
+                    </button>&ndash;&gt;
+                    &lt;#&ndash;<a class="navbar-brand" href="/"><img src="" alt="logo"></a>&ndash;&gt;
                 </div>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
+                <!-- Collect the nav links, forms, and other content for toggling &ndash;&gt;
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                    <#--  <li class=""><a href="/">Home</a></li>
+                    &lt;#&ndash;  <li class=""><a href="/">Home</a></li>
                     <li class=""><a href="#">List</a></li>
                     <li class=""><a href="#">About</a></li>
-                    <li class=""><a href="#">Contact</a></li>-->
+                    <li class=""><a href="#">Contact</a></li>&ndash;&gt;
                     </ul>
                 </div>
 
             </div>
-        </nav>
+        </nav>-->
     </div>
 </header>
