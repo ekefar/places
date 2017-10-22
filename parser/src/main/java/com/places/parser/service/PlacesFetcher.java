@@ -23,7 +23,7 @@ public class PlacesFetcher {
 
     private static final Logger LOG = LoggerFactory.getLogger(PlacesFetcher.class);
 
-    private static final long REQUST_DELAY = 1000;
+    private static final long REQUST_DELAY = 2000;
 
     private Set<String> fetchedPlaceIds = new HashSet<>();
 
@@ -31,10 +31,18 @@ public class PlacesFetcher {
 
     public List<Place> fetchPlaces(List<Location> locations, Place.Type... types) {
 
+
         final LinkedList<Place> result = new LinkedList<>();
-        for (Location location : locations) {
-            final List<Place> places = fetchPlaces(location, types);
-            result.addAll(places);
+        try {
+            for (Location location : locations) {
+                final List<Place> places = fetchPlaces(location, types);
+                result.addAll(places);
+            }
+
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+
         }
 
         return result;

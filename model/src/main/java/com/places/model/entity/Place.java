@@ -213,7 +213,9 @@ public class Place {
         PHARMACY("pharmacy"),
         PHYSIOTHERAPIST("physiotherapist"),
         RESTAURANT("restaurant"),
-        SPA("spa");
+        SPA("spa"),
+        SHOE_STORE("shoe_store"),
+        CLOTHING_STORE("clothing_store");
 
         Type(final String type) {
             this.type = type;

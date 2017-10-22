@@ -15,6 +15,9 @@ import java.net.UnknownHostException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.places.model.entity.Place.Type.CLOTHING_STORE;
+import static com.places.model.entity.Place.Type.SHOE_STORE;
+
 /**
  * @author : Alexander Serebriyan
  */
@@ -35,7 +38,7 @@ public class Application {
         final List<Location> locations = predefinedLocations.stream()
                 .map(l -> new Location(l.getLat(), l.getLng(), l.getRadius()))
                 .collect(Collectors.toList());
-        final List<Place> places = fetcher.fetchPlaces(locations, Place.Type.CASINO);
+        final List<Place> places = fetcher.fetchPlaces(locations, SHOE_STORE, CLOTHING_STORE);
 
         final PlacesRepository repository = getRepository();
         repository.save(places);
