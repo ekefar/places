@@ -1,15 +1,15 @@
 package com.places.parser.service;
 
-import com.google.maps.*;
+import com.google.maps.GeoApiContext;
+import com.google.maps.NearbySearchRequest;
+import com.google.maps.PlaceDetailsRequest;
+import com.google.maps.PlacesApi;
 import com.google.maps.model.*;
 import com.places.model.entity.Location;
 import com.places.model.entity.Place;
-import com.places.parser.service.photo.PhotosPersister;
-import com.places.parser.service.photo.PhotosPersisterFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.inject.Inject;
 import java.util.*;
 
 import static com.places.parser.service.ContextProvider.getGeoContext;
@@ -20,42 +20,54 @@ import static com.places.parser.service.ContextProvider.getGeoContext;
  */
 public class PlacesFetcher {
 
-    private final PhotosPersisterFactory photosPersisterFactory;
 
     private static final Logger LOG = LoggerFactory.getLogger(PlacesFetcher.class);
 
     private static final long REQUST_DELAY = 1000;
 
-    @Inject
-    public PlacesFetcher(PhotosPersisterFactory photosPersisterFactory) {
-        this.photosPersisterFactory = photosPersisterFactory;
+    private Set<String> fetchedPlaceIds = new HashSet<>();
+
+    private int requestsCount = 0;
+
+    public List<Place> fetchPlaces(List<Location> locations, Place.Type... types) {
+
+        final LinkedList<Place> result = new LinkedList<>();
+        for (Location location : locations) {
+            final List<Place> places = fetchPlaces(location, types);
+            result.addAll(places);
+        }
+
+        return result;
     }
 
-    public static List<Place> fetchPlaces(Location location, int radius, Place.Type... types) {
+    public List<Place> fetchPlaces(Location location, Place.Type... types) {
         LOG.info("# Fetching places details avoiding google API limits. Initial location: {}", location);
-        final Set<Location> locations = CoordinatesCalculator.calculateLocations(location, radius);
+        final Set<Location> locations = CoordinatesCalculator.calculateLocations(location);
 
         LOG.info("# Transformed initial location into: {}", locations);
 
         final HashMap<String, Place> placesMap = new HashMap<>();
 
-        final HashSet<String> parsedIds = new HashSet<>();
-
         for (Location loc : locations) {
-            final List<Place> placesFromLocation = fetchPlaces(loc, CoordinatesCalculator.STEP_IN_METERS, parsedIds, types);
+            final List<Place> placesFromLocation = fetchPlaces(loc,
+                    CoordinatesCalculator.STEP_IN_METERS,
+                    this.fetchedPlaceIds, types);
             for (Place place : placesFromLocation) {
                 placesMap.put(place.getMapsId(), place);
-                parsedIds.add(place.getMapsId());
+                this.fetchedPlaceIds.add(place.getMapsId());
             }
         }
-
+        LOG.info("# Fetch complete. Total requests made: " + this.requestsCount);
         return new LinkedList<>(placesMap.values());
     }
 
+    public int getRequestsCount() {
+        return requestsCount;
+    }
 
-    private static List<Place> fetchPlaces(Location location, int radius,
-                                           Set<String> exclusions,
-                                           Place.Type... types) {
+    private List<Place> fetchPlaces(Location location, int radius,
+                                    Set<String> exclusions,
+                                    Place.Type... types) {
         LOG.info("# Fetching list of places near next location: {}", location);
         LOG.info("# Types to search: {}", types);
 
@@ -76,7 +88,7 @@ public class PlacesFetcher {
     }
 
 
-    public static Optional<Place> fetchPlace(final String id) {
+    public Optional<Place> fetchPlace(final String id) {
         LOG.info("# Fetching details for place with id: {}", id);
         final GeoApiContext context = getGeoContext();
         final PlaceDetailsRequest request = PlacesApi.placeDetails(context, id);
@@ -96,8 +108,8 @@ public class PlacesFetcher {
         return Optional.empty();
     }
 
-    private static List<Place> retrieveFullPlacesDetails(List<PlacesSearchResult> basicDetailsList,
-                                                         Set<String> exclusions) {
+    private List<Place> retrieveFullPlacesDetails(List<PlacesSearchResult> basicDetailsList,
+                                                  Set<String> exclusions) {
 
         final LinkedList<Place> places = new LinkedList<>();
         for (PlacesSearchResult placeDetails : basicDetailsList) {
@@ -118,22 +130,10 @@ public class PlacesFetcher {
         return placeTypes;
     }
 
-    private void storePhoto(String photoReference) {
-
-        try {
-            final PhotosPersister persister = photosPersisterFactory.instance();
-            final PhotoRequest photoRequest = PlacesApi.photo(getGeoContext(), photoReference);
-            final PhotoResult photo = photoRequest.await();
-            persister.persist("~/photos/" + photoReference, photo.imageData);
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
-    }
-
-    private static Optional<PlaceDetails> getPlaceDetails(PlaceDetailsRequest request) {
+    private Optional<PlaceDetails> getPlaceDetails(PlaceDetailsRequest request) {
         try {
             final PlaceDetails details = request.await();
+            this.requestsCount++;
             return Optional.of(details);
         } catch (Exception e) {
             e.printStackTrace();
@@ -142,15 +142,17 @@ public class PlacesFetcher {
         return Optional.empty();
     }
 
-    private static List<PlacesSearchResult> retrieveBasicPlacesDetails(NearbySearchRequest initialRequest) {
+    private List<PlacesSearchResult> retrieveBasicPlacesDetails(NearbySearchRequest initialRequest) {
         final LinkedList<PlacesSearchResult> placeDetails = new LinkedList<>();
 
         try {
             PlacesSearchResponse response = initialRequest.await();
+            this.requestsCount++;
             placeDetails.addAll(Arrays.asList(response.results));
             while (response.nextPageToken != null) {
                 Thread.sleep(REQUST_DELAY);
                 response = PlacesApi.nearbySearchNextPage(getGeoContext(), response.nextPageToken).await();
+                this.requestsCount++;
                 placeDetails.addAll(Arrays.asList(response.results));
             }
             return placeDetails;

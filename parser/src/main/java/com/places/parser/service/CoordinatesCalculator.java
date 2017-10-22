@@ -16,8 +16,8 @@ public class CoordinatesCalculator {
     public static final int STEP_IN_METERS = 500;
 
 
-    public static Set<Location> calculateLocations(Location start, int radius) {
-        final int topShift = radius / STEP_IN_METERS;
+    public static Set<Location> calculateLocations(Location start) {
+        final int topShift = start.getRadius() / STEP_IN_METERS;
         final int steps = topShift * 2 + 1;
         return calculateSquare(calculateNewStart(start, topShift), steps);
     }

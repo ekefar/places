@@ -12,8 +12,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.net.UnknownHostException;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author : Alexander Serebriyan
@@ -28,20 +28,20 @@ public class Application {
 //
        final long start = System.currentTimeMillis();
 
-        final List<PredefinedLocation> locations = PredefinedLocationReader.read();
+        final List<PredefinedLocation> predefinedLocations = PredefinedLocationReader.read();
 
-        final LinkedList<Place> places = new LinkedList<>();
-        for (PredefinedLocation location : locations) {
-            places.addAll(PlacesFetcher.fetchPlaces(
-                    new Location(location.getLat(), location.getLng()),
-                    location.getRadius(),
-                    Place.Type.CASINO));
-        }
+        final PlacesFetcher fetcher = new PlacesFetcher();
+
+        final List<Location> locations = predefinedLocations.stream()
+                .map(l -> new Location(l.getLat(), l.getLng(), l.getRadius()))
+                .collect(Collectors.toList());
+        final List<Place> places = fetcher.fetchPlaces(locations, Place.Type.CASINO);
 
         final PlacesRepository repository = getRepository();
         repository.save(places);
 
         System.out.println("Done in: " + (System.currentTimeMillis() - start));
+        System.out.println("Total requests made: " + fetcher.getRequestsCount());
 //        final Optional<Place> place = PlacesFetcher.fetchPlace("ChIJUSQbhSMhe0gRxQQboqAVjOw");
 //        photosManager().manage(place.get());
 //
