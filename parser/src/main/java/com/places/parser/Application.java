@@ -1,22 +1,15 @@
 package com.places.parser;
 
 
-import com.places.model.entity.Location;
 import com.places.model.entity.Place;
 import com.places.model.repository.PlacesRepository;
 import com.places.parser.service.PlacesFetcher;
-import com.places.parser.service.location.PredefinedLocation;
-import com.places.parser.service.location.PredefinedLocationReader;
 import com.places.parser.service.photo.PlacePhotosPersistenceManager;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.net.UnknownHostException;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static com.places.model.entity.Place.Type.CLOTHING_STORE;
-import static com.places.model.entity.Place.Type.SHOE_STORE;
+import java.util.Optional;
 
 /**
  * @author : Alexander Serebriyan
@@ -27,9 +20,10 @@ public class Application {
     public static void main(String[] args) throws UnknownHostException {
 
 
-//        final Optional<Place> place = PlacesFetcher.fetchPlace("ChIJu2f9k7YcbkgRwrw4GGJIKoc");
+//        final Optional<Place> place = new PlacesFetcher().fetchPlace("ChIJu2f9k7YcbkgRwrw4GGJIKoc");
+        final Optional<Place> place = new PlacesFetcher().fetchPlace("ChIJv9DDFm2m2EcRSEVmm54XqbI");
 //
-       final long start = System.currentTimeMillis();
+      /* final long start = System.currentTimeMillis();
 
         final List<PredefinedLocation> predefinedLocations = PredefinedLocationReader.read();
 
@@ -44,11 +38,13 @@ public class Application {
         repository.save(places);
 
         System.out.println("Done in: " + (System.currentTimeMillis() - start));
-        System.out.println("Total requests made: " + fetcher.getRequestsCount());
+        System.out.println("Total requests made: " + fetcher.getRequestsCount());*/
 //        final Optional<Place> place = PlacesFetcher.fetchPlace("ChIJUSQbhSMhe0gRxQQboqAVjOw");
 //        photosManager().manage(place.get());
 //
 //        final Place savedPlace = repository.find("ChIJp9FD9LSmJ0ERVfQetGJx8QA");
+
+        System.out.println("done");
     }
 
     private static PlacesRepository getRepository() {
