@@ -26,7 +26,6 @@ public class Application {
 
     public static void main(String[] args) throws UnknownHostException {
 
-
 //        final Optional<Place> place = new PlacesFetcher().fetchPlace("ChIJu2f9k7YcbkgRwrw4GGJIKoc");
 //        final Optional<Place> place = new PlacesFetcher().fetchPlace("ChIJv9DDFm2m2EcRSEVmm54XqbI");
 //

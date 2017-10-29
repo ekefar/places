@@ -89,12 +89,19 @@ public class PlaceDetailsTransformer {
         for (AddressComponent addressComponent : placeDetails.addressComponents) {
             for (AddressComponentType type : addressComponent.types) {
                 if (type == targetAddressType) {
-                    return addressComponent.longName;
+                    return asTitle(addressComponent.longName);
                 }
             }
         }
 
         return "";
+    }
+
+    // to lower case with initial capital
+    private static String asTitle(String str) {
+        final String lowerCased = str.toLowerCase();
+        final String firstChar = String.valueOf(lowerCased.charAt(0));
+        return lowerCased.replaceFirst(firstChar, firstChar.toUpperCase());
     }
 
     private static List<Review> fromPlaceDetailsReviewArray(PlaceDetails.Review[] detailsReview) {
