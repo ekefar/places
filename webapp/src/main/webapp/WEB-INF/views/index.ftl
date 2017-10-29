@@ -12,7 +12,7 @@
 </head>
 
 <body class="body-wrapper">
-<div class="page-loader" style="background: url(img/preloader.gif) center no-repeat #fff;"></div>
+<div class="page-loader" style="background: url(/img/preloader.gif) center no-repeat #fff;"></div>
 <div class="main-wrapper">
     <!-- HEADER -->
 
