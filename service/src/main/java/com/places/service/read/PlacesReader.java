@@ -2,6 +2,7 @@ package com.places.service.read;
 
 import com.places.model.entity.Place;
 import com.places.model.repository.PlacesRepository;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,7 @@ public class PlacesReader {
         return repository.findAll();
     }
 
-    public List<Place> listByCity(String city, PageInfo pageInfo ) {
+    public Page<Place> listByCity(String city, PageInfo pageInfo ) {
         return repository.findByCity(city, pageInfo.toPageable());
     }
 

@@ -43,7 +43,7 @@
             <div class="row">
                 <div class="col-sm-12 col-xs-12">
                     <div class="resultBar barSpaceAdjust">
-                        <h2>We found <span>${places?size}</span> Results for you</h2>
+                        <h2>We found <span>${total}</span> Results for you</h2>
 
                     </div>
 

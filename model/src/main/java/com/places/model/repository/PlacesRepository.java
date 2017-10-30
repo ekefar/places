@@ -2,8 +2,11 @@ package com.places.model.repository;
 
 import com.mongodb.BasicDBObject;
 import com.places.model.entity.Place;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -45,8 +48,15 @@ public class PlacesRepository {
         return mongoTemplate.findAll(Place.class);
     }
 
-    public List<Place> findByCity(String city, Pageable pagable) {
-        return mongoTemplate.find(query(where("city").regex(city, "i")).with(pagable), Place.class);
+    public Page<Place> findByCity(String city, Pageable pagable) {
+        final Query query = query(where("city").regex(city, "i"));
+        return getPage(pagable, query);
+    }
+
+    private Page<Place> getPage(Pageable pagable, Query query) {
+        final List<Place> items = mongoTemplate.find(query.with(pagable), Place.class);
+        final long count = mongoTemplate.count(query, Place.class);
+        return new PageImpl<>(items, pagable, count);
     }
 
     public Set<String> findCitiesByCountry(String country) {

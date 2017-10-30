@@ -2,7 +2,9 @@ package com.places.web.controller;
 
 import com.places.model.entity.Place;
 import com.places.service.read.PlacesReader;
+import com.places.service.read.PlacesReader.PageInfo;
 import com.places.web.BreadcrumbsBuilder;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,8 +34,11 @@ public class PlacesController {
                                     Map<String, Object> model) {
 
         int correctPage = page == null ? 0 : page - 1;
-        final PlacesReader.PageInfo pageInfo = new PlacesReader.PageInfo(correctPage);
-        model.put("places", placesReader.listByCity(city, pageInfo));
+        final PageInfo pageInfo = new PageInfo(correctPage);
+        final Page<Place> placesPage = placesReader.listByCity(city, pageInfo);
+        model.put("total", placesPage.getTotalElements());
+        model.put("page", page);
+        model.put("places", placesPage.getContent());
         model.put("city", city);
         model.put("country", country);
         model.put("breadcrumbs", BreadcrumbsBuilder.build(country, city));
