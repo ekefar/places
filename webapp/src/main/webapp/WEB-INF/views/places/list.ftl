@@ -43,7 +43,7 @@
             <div class="row">
                 <div class="col-sm-12 col-xs-12">
                     <div class="resultBar barSpaceAdjust">
-                        <h2>We found <span>${total}</span> Results for you</h2>
+                        <h2>We found <span>${totalItems}</span> Results for you</h2>
 
                     </div>
 
@@ -79,32 +79,7 @@
                 </div>
 
             </div>
-            <div class="row">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-6">
-                    <div class="paginationCommon blogPagination categoryPagination">
-                        <nav aria-label="Page navigation">
-                            <ul class="pagination">
-                                <li>
-                                    <a href="#" aria-label="Previous">
-                                        <span aria-hidden="true"><i class="fa fa-angle-left" aria-hidden="true"></i></span>
-                                    </a>
-                                </li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li>
-                                    <a href="#" aria-label="Next">
-                                        <span aria-hidden="true"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
+            <#include "../common/pagination.ftl">
         </div>
     </section>
 

@@ -36,8 +36,9 @@ public class PlacesController {
         int correctPage = page == null ? 0 : page - 1;
         final PageInfo pageInfo = new PageInfo(correctPage);
         final Page<Place> placesPage = placesReader.listByCity(city, pageInfo);
-        model.put("total", placesPage.getTotalElements());
-        model.put("page", page);
+        model.put("totalItems", placesPage.getTotalElements());
+        model.put("totalPages", placesPage.getTotalPages());
+        model.put("currentPage", correctPage + 1);
         model.put("places", placesPage.getContent());
         model.put("city", city);
         model.put("country", country);
