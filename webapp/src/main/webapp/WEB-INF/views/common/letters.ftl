@@ -3,32 +3,32 @@
         <div class="row">
             <div class="text-center" style="font-size: large">
 
-                    <a href="A">A</a>
-                    <a href="A">B</a>
-                    <a href="A">C</a>
-                    <a href="A">D</a>
-                    <a href="A">E</a>
-                    <a href="A">F</a>
-                    <a href="A">G</a>
-                    <a href="A">H</a>
-                    <a href="A">I</a>
-                    <a href="A">J</a>
-                    <a href="A">K</a>
-                    <a href="A">L</a>
-                    <a href="A">M</a>
-                    <a href="A">N</a>
-                    <a href="A">O</a>
-                    <a href="A">P</a>
-                    <a href="A">Q</a>
-                    <a href="A">R</a>
-                    <a href="A">S</a>
-                    <a href="A">T</a>
-                    <a href="A">U</a>
-                    <a href="A">V</a>
-                    <a href="A">W</a>
-                    <a href="A">X</a>
-                    <a href="A">Y</a>
-                    <a href="A">Z</a>
+                    <a href="?q=A">A</a>
+                    <a href="?q=B">B</a>
+                    <a href="?q=C">C</a>
+                    <a href="?q=D">D</a>
+                    <a href="?q=E">E</a>
+                    <a href="?q=F">F</a>
+                    <a href="?q=G">G</a>
+                    <a href="?q=H">H</a>
+                    <a href="?q=I">I</a>
+                    <a href="?q=J">J</a>
+                    <a href="?q=K">K</a>
+                    <a href="?q=L">L</a>
+                    <a href="?q=M">M</a>
+                    <a href="?q=N">N</a>
+                    <a href="?q=O">O</a>
+                    <a href="?q=P">P</a>
+                    <a href="?q=Q">Q</a>
+                    <a href="?q=R">R</a>
+                    <a href="?q=S">S</a>
+                    <a href="?q=T">T</a>
+                    <a href="?q=U">U</a>
+                    <a href="?q=V">V</a>
+                    <a href="?q=W">W</a>
+                    <a href="?q=X">X</a>
+                    <a href="?q=Y">Y</a>
+                    <a href="?q=Z">Z</a>
 
             </div>
         </div>
