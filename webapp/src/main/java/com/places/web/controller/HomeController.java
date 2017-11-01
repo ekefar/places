@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.inject.Inject;
 import java.util.LinkedList;
@@ -31,17 +32,18 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/{country}/", method = RequestMethod.GET)
-    public String getCountryPage(@PathVariable("country") String country,
-                                       Map<String, Object> model) {
-        final Set<String> cities = locationsReader.citiesByState(unURLify(country));  // TODO: change to country in future
-        model.put("country", country);
+    public String getCountryPage(@PathVariable("country") String state,
+                                 @RequestParam(value = "q", required = false) String startsWith,
+                                 Map<String, Object> model) {
+        final Set<String> cities = locationsReader.citiesByState(unURLify(state), startsWith);
+        model.put("country", state);
         model.put("cities", new LinkedList(cities));
-        model.put("breadcrumbs", BreadcrumbsBuilder.build(country));
+        model.put("breadcrumbs", BreadcrumbsBuilder.build(state));
         return "locations/country";
     }
 
     private String unURLify(String url) {
-        return String.join( " ", url.split("-"));
+        return String.join(" ", url.split("-"));
     }
 
 

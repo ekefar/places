@@ -10,10 +10,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
-import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Pattern;
 
 import static org.springframework.data.mongodb.core.query.Criteria.where;
@@ -67,10 +64,27 @@ public class PlacesRepository {
         return new LinkedHashSet<String>(cities);
     }
 
+
     public Set<String> findCitiesByState(String state) {
 
         final List cities = mongoTemplate.getCollection("places")
                 .distinct("city", new BasicDBObject("state", Pattern.compile(state, Pattern.CASE_INSENSITIVE)));
+
+        return new LinkedHashSet<String>(cities);
+    }
+
+    public Set<String> findCitiesByState(String state, String startsWith) {
+
+        final HashMap<String, Object> queryMap = new HashMap<>();
+        queryMap.put("state", Pattern.compile(state, Pattern.CASE_INSENSITIVE));
+
+        final HashMap<String, Object> regex = new HashMap<>();
+        regex.put("$regex", "^" + startsWith);  // like 'query%'
+        queryMap.put("city", regex);
+        final List cities = mongoTemplate.getCollection("places")
+                .distinct("city", new BasicDBObject(queryMap));
+
+
 
         return new LinkedHashSet<String>(cities);
     }

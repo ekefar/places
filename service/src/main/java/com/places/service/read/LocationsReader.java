@@ -37,8 +37,14 @@ public class LocationsReader {
     }
 
     public Set<String> citiesByState(String state) {
+        return citiesByState(state, "");
+    }
+
+    public Set<String> citiesByState(String state, String startsWith) {
+
         final long start = System.currentTimeMillis();
-        final Set<String> citiesByState = repository.findCitiesByState(state);
+        String query = startsWith == null ? "" : startsWith;
+        final Set<String> citiesByState = repository.findCitiesByState(state, query);
         LOG.info("# Cities by country fetched in: " + (System.currentTimeMillis() - start));
         return citiesByState;
     }
