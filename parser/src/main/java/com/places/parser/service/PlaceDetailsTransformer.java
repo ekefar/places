@@ -99,6 +99,9 @@ public class PlaceDetailsTransformer {
 
     // to lower case with initial capital
     private static String asTitle(String str) {
+        if (str == null || "".equals(str)) {
+            return str;
+        }
         final String lowerCased = str.toLowerCase();
         final String firstChar = String.valueOf(lowerCased.charAt(0));
         return lowerCased.replaceFirst(firstChar, firstChar.toUpperCase());
