@@ -5,7 +5,7 @@
     <!-- SITE TITTLE -->
 
     <#include "../common/meta.ftl">
-    <title>Country - Casinos List</title>
+    <title>Country - Stores List</title>
 
     <#include "../common/styles.ftl">
 

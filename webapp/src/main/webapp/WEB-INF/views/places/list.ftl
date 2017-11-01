@@ -5,7 +5,7 @@
     <!-- SITE TITTLE -->
 
     <#include "../common/meta.ftl">
-    <title>Casinos in ${city} - Casinos List</title>
+    <title>Stores in ${city} - Stores List</title>
 
     <#include "../common/styles.ftl">
 
@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="pageTitle">
-                        <h2>Casinos in ${city}</h2>
+                        <h2>Stores in ${city}</h2>
                     </div>
                 </div>
             </div>

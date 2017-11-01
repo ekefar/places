@@ -1,7 +1,7 @@
 <section class="clearfix thingsArea">
     <div class="container">
         <div class="page-header text-center">
-            <h2>Top casinos<small>These are some of the most popular casinos in UK</small></h2>
+            <h2>Top stores<small>These are some of the most popular stores in UK</small></h2>
         </div>
         <div class="row">
             <div class="col-xs-12">

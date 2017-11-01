@@ -17,7 +17,7 @@
                             </div>
                             <div class="col-sm-7 col-sm-pull-5 col-xs-12">
                                 <div class="copyRightText">
-                                    <p>Copyright &copy; 2017. All Rights Reserved by <a href="#">CasinosList</a></p>
+                                    <p>Copyright &copy; 2017. All Rights Reserved by <a href="#">StoresList</a></p>
                                 </div>
                             </div>
                         </div>
