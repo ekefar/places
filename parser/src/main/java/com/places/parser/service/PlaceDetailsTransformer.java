@@ -42,6 +42,7 @@ public class PlaceDetailsTransformer {
         place.setWebsiteUrl(details.website != null ? details.website.toString() : "");
         place.setRating(details.rating);
         place.setTypes(Arrays.asList(details.types));
+        place.setAddressComponents(Arrays.asList(details.addressComponents));
         if (details.photos != null) {
             place.setPhotos(Arrays.stream(details.photos)
                     .map(p -> new Photo(p.photoReference, p.width, p.height))

@@ -40,6 +40,8 @@ public class Place {
     private List<Photo> photos = new ArrayList<>();
     private List<Review> reviews = new ArrayList<>();
 
+    private List<Object> addressComponents = new ArrayList<>();
+
 
     public Place() {
     }
@@ -166,6 +168,14 @@ public class Place {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public List<Object> getAddressComponents() {
+        return addressComponents;
+    }
+
+    public void setAddressComponents(List<Object> addressComponents) {
+        this.addressComponents = addressComponents;
     }
 
     @Override
