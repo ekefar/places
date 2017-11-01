@@ -27,7 +27,7 @@
                     <div class="banerInfo">
                         <h1>Explore. Discover. Gamble.</h1>
                         <p>We will help to find the best casinos around you</p>
-                    </div>
+                    </div>£
                 </div>
             </div>
         </div>

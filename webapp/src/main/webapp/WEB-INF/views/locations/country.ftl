@@ -36,6 +36,7 @@
     <!-- BREADCRUMBS-->
     <#include "../common/breadcrumbs.ftl">
 
+    <#include "../common/letters.ftl">
 
     <!-- CITIES LIST -->
     <section class="clearfix allBusiness central-block">
