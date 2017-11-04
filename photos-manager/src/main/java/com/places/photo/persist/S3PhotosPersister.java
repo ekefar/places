@@ -2,6 +2,8 @@ package com.places.photo.persist;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,8 @@ import java.io.File;
  */
 @Service
 public class S3PhotosPersister extends AbstractPhotosPersister {
+
+    private static final Logger LOG = LoggerFactory.getLogger(S3PhotosPersister.class);
 
     @Value("${photos.bucket}")
     private String bucket;
@@ -27,6 +31,8 @@ public class S3PhotosPersister extends AbstractPhotosPersister {
     @Override
     public void persist(String key, byte[] content) {
         final File file = bytesToTempFile(content);
+
+        LOG.info("# Persisting photo on S3 with next key: " + key);
         amazonS3.putObject(new PutObjectRequest(bucket, key, file));
     }
 

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * @author : Alexander Serebriyan
@@ -33,6 +32,6 @@ public class PlacePhotosPersistenceManager {
     }
 
     private String getS3Path(Place place, Photo photo) {
-        return place.getMapsId() + "/" + UUID.randomUUID() + EXTENSION;
+        return place.getMapsId() + "/" + photo.getReference() + EXTENSION;
     }
 }
