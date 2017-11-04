@@ -156,7 +156,7 @@
 
 <#--Gallery-->
 
-    <#if photos?size gt 0>
+    <#if place.photoUrls?size gt 0>
         <section class="thingsArea" style="margin-top: -200px;">
             <div class="container">
                 <div class="text-center">
@@ -168,12 +168,12 @@
                             <!-- Carousel items -->
                             <div class="carousel-inner">
 
-                            <#list photos as photo>
+                            <#list place.photoUrls as photo>
                                 <div class="item row <#if photo?is_first> active</#if>">
                                     <div class="col-md-4 col-sm-6 col-xs-12">
                                         <div class="thingsBox">
                                             <div class="thingsImage">
-                                                <img src="${photo.reference}" alt="Image things">
+                                                <img src="${photo}" alt="Image things">
                                             </div>
                                         </div>
                                     </div>

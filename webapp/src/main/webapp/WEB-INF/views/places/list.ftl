@@ -52,7 +52,7 @@
                         <div class="row">
                             <div class="col-sm-5 col-xs-12">
                                 <div class="categoryImage">
-                                    <img src="/img/things/things-1.jpg" alt="Image category"
+                                    <img src="${place.thumbnailUrl}" alt="Image category"
                                          class="img-responsive img-rounded">
                                     <!--<span class="label label-primary">Verified</span>-->
                                 </div>
