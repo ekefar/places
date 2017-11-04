@@ -19,14 +19,21 @@ public class PlacePhotosPersistenceManager {
 
     private final PhotosPersisterFactory persisterFactory;
 
+    private long requestsCount = 0;
+
     @Inject
     public PlacePhotosPersistenceManager(PhotosPersisterFactory persisterFactory) {
         this.persisterFactory = persisterFactory;
     }
 
+    public long getRequestsCount() {
+        return requestsCount;
+    }
+
     public void manage(Place place) {
         final List<Photo> photos = place.getPhotos();
         for (Photo photo : photos) {
+            requestsCount++;
             final byte[] bytes = PlacePhotosFetcher.fetchPhoto(photo);
             persisterFactory.getPersister().persist(getPath(place, photo), bytes);
         }
