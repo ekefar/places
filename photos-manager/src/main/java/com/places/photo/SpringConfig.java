@@ -5,6 +5,7 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 /**
@@ -12,7 +13,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
  */
 @Configuration
 @Import(com.places.model.SpringConfig.class)
-@ComponentScan(basePackages = "com.places.parser")
+@ComponentScan(basePackages = "com.places")
 @PropertySource({"classpath:parser.properties"})
 public class SpringConfig {
 

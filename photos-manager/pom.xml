@@ -12,4 +12,36 @@
     <artifactId>photos-manager</artifactId>
 
 
+    <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3 -->
+
+    <dependencies>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-s3</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>places</groupId>
+            <artifactId>model</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>places</groupId>
+            <artifactId>service</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>places</groupId>
+            <artifactId>parser</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.maps</groupId>
+            <artifactId>google-maps-services</artifactId>
+        </dependency>
+    </dependencies>
+
+
+
+
 </project>

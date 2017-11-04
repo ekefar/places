@@ -16,27 +16,11 @@
         <dependency>
             <groupId>com.google.maps</groupId>
             <artifactId>google-maps-services</artifactId>
-            <version>0.1.20</version>
         </dependency>
 
         <dependency>
             <groupId>places</groupId>
             <artifactId>model</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3 -->
-        <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk-s3</artifactId>
-            <version>1.11.155</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-io -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>1.3.2</version>
         </dependency>
 
 

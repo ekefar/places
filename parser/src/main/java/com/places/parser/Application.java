@@ -7,7 +7,6 @@ import com.places.model.repository.PlacesRepository;
 import com.places.parser.service.PlacesFetcher;
 import com.places.parser.service.location.PredefinedLocation;
 import com.places.parser.service.location.PredefinedLocationReader;
-import com.places.persist.PlacePhotosPersistenceManager;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -45,11 +44,7 @@ public class Application {
 
         System.out.println("Done in: " + (System.currentTimeMillis() - start));
         System.out.println("Total requests made: " + fetcher.getRequestsCount());
-//        final Optional<Place> place = PlacesFetcher.fetchPlace("ChIJUSQbhSMhe0gRxQQboqAVjOw");
-//        photosManager().manage(place.get());
 //
-//        final Place savedPlace = repository.find("ChIJp9FD9LSmJ0ERVfQetGJx8QA");
-
         System.out.println("done");
     }
 
@@ -58,8 +53,5 @@ public class Application {
         return ctx.getBean(PlacesRepository.class);
     }
 
-    private static PlacePhotosPersistenceManager photosManager() {
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(SpringConfig.class);
-        return ctx.getBean(PlacePhotosPersistenceManager.class);
-    }
+
 }

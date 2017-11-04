@@ -38,14 +38,6 @@
             </exclusions>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/javax.persistence/persistence-api -->
-        <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>persistence-api</artifactId>
-            <version>1.0</version>
-        </dependency>
-
-
     </dependencies>
 
 </project>
