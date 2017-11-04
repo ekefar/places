@@ -46,7 +46,7 @@ public class PlacesRepository {
     }
 
     public Page<Place> findByCity(String city, Pageable pagable) {
-        final Query query = query(where("city").regex(city, "i"));
+        final Query query = query(where("city").regex("^" + city + "$", "i"));
         return getPage(pagable, query);
     }
 

@@ -1,7 +1,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="text-center" style="font-size: large">
+            <div class="text-center" style="font-size: x-large">
 
                     <a href="?q=A">A</a>
                     <a href="?q=B">B</a>
