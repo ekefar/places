@@ -1,7 +1,8 @@
-package com.places.parser.service.photo;
+package com.places.photo.persist;
 
 import com.places.model.entity.Photo;
 import com.places.model.entity.Place;
+import com.places.photo.fetch.PlacePhotosFetcher;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -29,6 +30,6 @@ public class PlacePhotosPersistenceManager {
     }
 
     private String getS3Path(Place place, Photo photo) {
-        return place.getMapsId() + "/" + photo.getReference() + ".jpg";
+        return place.getMapsId() + "/" + photo.getReference() + ".png";
     }
 }

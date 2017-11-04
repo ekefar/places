@@ -1,4 +1,4 @@
-package com.places.parser.service.photo;
+package com.places.photo.persist;
 
 
 import org.springframework.stereotype.Service;

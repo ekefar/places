@@ -7,7 +7,7 @@ import com.places.model.repository.PlacesRepository;
 import com.places.parser.service.PlacesFetcher;
 import com.places.parser.service.location.PredefinedLocation;
 import com.places.parser.service.location.PredefinedLocationReader;
-import com.places.parser.service.photo.PlacePhotosPersistenceManager;
+import com.places.persist.PlacePhotosPersistenceManager;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

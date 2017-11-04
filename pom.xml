@@ -13,6 +13,7 @@
         <module>parser</module>
         <module>service</module>
         <module>webapp</module>
+        <module>photos-manager</module>
     </modules>
 
     <properties>

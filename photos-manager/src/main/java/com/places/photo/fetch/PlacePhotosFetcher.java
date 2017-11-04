@@ -1,4 +1,4 @@
-package com.places.parser.service.photo;
+package com.places.photo.fetch;
 
 import com.google.maps.PhotoRequest;
 import com.google.maps.PlacesApi;

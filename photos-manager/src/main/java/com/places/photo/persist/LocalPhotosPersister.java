@@ -1,4 +1,4 @@
-package com.places.parser.service.photo;
+package com.places.photo.persist;
 
 import org.springframework.stereotype.Service;
 
@@ -6,9 +6,10 @@ import org.springframework.stereotype.Service;
  * @author : Alexander Serebriyan
  */
 @Service
-public class LocalPhotosPersister implements PhotosPersister {
+public class LocalPhotosPersister extends AbstractPhotosPersister {
+
     @Override
     public void persist(String path, byte[] content) {
-
+        storeBytes(path, content);
     }
 }
