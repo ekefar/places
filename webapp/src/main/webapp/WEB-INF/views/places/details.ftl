@@ -47,6 +47,16 @@
         </div>
     </section>
 
+    <!-- LISTINGS DETAILS IMAGE SECTION -->
+    <section class="clearfix paddingAdjustTopBottom">
+        <ul class="list-inline listingImage">
+            <#list photos as photo>
+                <li><img src="${photo.reference}" alt="Image Listing" class="img-responsive"></li>
+            </#list>
+        </ul>
+    </section>
+
+
 
     <!-- LISTINGS DETAILS INFO SECTION -->
     <section class="clearfix paddingAdjustTop">

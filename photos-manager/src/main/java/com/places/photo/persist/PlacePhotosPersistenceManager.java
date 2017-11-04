@@ -15,6 +15,7 @@ import java.util.List;
 public class PlacePhotosPersistenceManager {
 
     public final String EXTENSION = ".png";
+    public final String PREFIX = "places-photos";
 
     private final PhotosPersisterFactory persisterFactory;
 
@@ -27,11 +28,11 @@ public class PlacePhotosPersistenceManager {
         final List<Photo> photos = place.getPhotos();
         for (Photo photo : photos) {
             final byte[] bytes = PlacePhotosFetcher.fetchPhoto(photo);
-            persisterFactory.getPersister().persist(getS3Path(place, photo), bytes);
+            persisterFactory.getPersister().persist(getPath(place, photo), bytes);
         }
     }
 
-    private String getS3Path(Place place, Photo photo) {
-        return place.getMapsId() + "/" + photo.getReference() + EXTENSION;
+    private String getPath(Place place, Photo photo) {
+        return PREFIX + "/" + place.getMapsId() + "/" + photo.getReference() + EXTENSION;
     }
 }
