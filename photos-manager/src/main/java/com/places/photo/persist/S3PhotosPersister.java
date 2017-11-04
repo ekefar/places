@@ -14,7 +14,7 @@ import java.io.File;
 @Service
 public class S3PhotosPersister extends AbstractPhotosPersister {
 
-    @Value("${active.bucket}")
+    @Value("${photos.bucket}")
     private String bucket;
 
     private final AmazonS3 amazonS3;

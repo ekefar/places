@@ -10,8 +10,6 @@ import java.io.IOException;
  */
 public abstract class AbstractPhotosPersister implements PhotosPersister {
 
-    public final String EXTENSION = ".PNG";
-
     public abstract void persist(String path, byte[] content);
 
     File storeBytes(String path, byte[] bytes) {

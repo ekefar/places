@@ -7,12 +7,15 @@ import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @author : Alexander Serebriyan
  */
 @Service
 public class PlacePhotosPersistenceManager {
+
+    public final String EXTENSION = ".png";
 
     private final PhotosPersisterFactory persisterFactory;
 
@@ -30,6 +33,6 @@ public class PlacePhotosPersistenceManager {
     }
 
     private String getS3Path(Place place, Photo photo) {
-        return place.getMapsId() + "/" + photo.getReference() + ".png";
+        return place.getMapsId() + "/" + UUID.randomUUID() + EXTENSION;
     }
 }

@@ -21,7 +21,8 @@ public class PhotosPersisterFactory {
         this.s3PhotosPersister = s3PhotosPersister;
     }
 
-    public PhotosPersister getPersister(){
-        return localPhotosPersister;
+    public PhotosPersister getPersister() {
+//        return localPhotosPersister;
+        return s3PhotosPersister;
     }
 }
