@@ -14,18 +14,18 @@ import java.util.List;
 @Service
 public class PlacePhotosPersistenceManager {
 
-    private final S3PhotosPersister persister;
+    private final PhotosPersisterFactory persisterFactory;
 
     @Inject
-    public PlacePhotosPersistenceManager(S3PhotosPersister persister) {
-        this.persister = persister;
+    public PlacePhotosPersistenceManager(PhotosPersisterFactory persisterFactory) {
+        this.persisterFactory = persisterFactory;
     }
 
     public void manage(Place place) {
         final List<Photo> photos = place.getPhotos();
         for (Photo photo : photos) {
             final byte[] bytes = PlacePhotosFetcher.fetchPhoto(photo);
-            persister.persist(getS3Path(place, photo), bytes);
+            persisterFactory.getPersister().persist(getS3Path(place, photo), bytes);
         }
     }
 
