@@ -156,37 +156,39 @@
 
 <#--Gallery-->
 
-    <section class="thingsArea" style="margin-top: -200px;">
-        <div class="container">
-            <div class="text-center">
-                <h2>Gallery</small></h2>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <div id="thubmnailSlider" class="carousel slide thumbnailCarousel">
-                        <!-- Carousel items -->
-                        <div class="carousel-inner">
+    <#if photos?size gt 0>
+        <section class="thingsArea" style="margin-top: -200px;">
+            <div class="container">
+                <div class="text-center">
+                    <h2>Gallery</small></h2>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div id="thubmnailSlider" class="carousel slide thumbnailCarousel">
+                            <!-- Carousel items -->
+                            <div class="carousel-inner">
 
-                        <#list photos as photo>
-                            <div class="item row <#if photo?is_first> active</#if>">
-                                <div class="col-md-4 col-sm-6 col-xs-12">
-                                    <div class="thingsBox">
-                                        <div class="thingsImage">
-                                            <img src="${photo.reference}" alt="Image things">
+                            <#list photos as photo>
+                                <div class="item row <#if photo?is_first> active</#if>">
+                                    <div class="col-md-4 col-sm-6 col-xs-12">
+                                        <div class="thingsBox">
+                                            <div class="thingsImage">
+                                                <img src="${photo.reference}" alt="Image things">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                            </#list>
                             </div>
-                        </#list>
-                        </div>
 
-                        <a class="left carousel-control" href="#thubmnailSlider" data-slide="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
-                        <a class="right carousel-control" href="#thubmnailSlider" data-slide="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                            <a class="left carousel-control" href="#thubmnailSlider" data-slide="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+                            <a class="right carousel-control" href="#thubmnailSlider" data-slide="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </#if>
 
 
     <!-- FOOTER -->
