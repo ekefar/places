@@ -26,8 +26,31 @@ public class PhotosManager {
         final List<Place> places = placesRepository().findAll();
         final PlacePhotosPersistenceManager photosManager = photosManager();
 
+//        ChIJi2yscOMbdkgRl3vW_LSHEZ4
+
+        int index = 0;
         for (Place place : places) {
-            photosManager.manage(place);
+
+            if (place.getMapsId().equals("ChIJi2yscOMbdkgRl3vW_LSHEZ4")) {
+                break;
+            }
+            index++;
+        }
+
+        final List<Place> unhandled = places.subList(index, places.size());
+
+
+        for (Place place : unhandled) {
+
+            try {
+
+                photosManager.manage(place);
+
+            } catch (Exception e) {
+                LOG.error("Couldn't manage photos for: " + place.getId(), e);
+
+            }
+
         }
 
         LOG.info("# Fetching done in: " + (System.currentTimeMillis() - start));
