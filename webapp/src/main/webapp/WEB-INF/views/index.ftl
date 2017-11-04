@@ -76,7 +76,8 @@
             </div>
         </div>
     </section>
-
+    <!-- TOP SECTION -->
+<#include "top-places.ftl">
 
     <!-- FOOTER -->
     <#include "common/footer.ftl">
