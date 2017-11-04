@@ -1,13 +1,18 @@
 package com.places.service.read;
 
+import com.places.model.entity.Photo;
 import com.places.model.entity.Place;
 import com.places.model.repository.PlacesRepository;
+import com.places.service.read.dto.PlaceDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * @author : Alexander Serebriyan
@@ -22,16 +27,77 @@ public class PlacesReader {
         this.repository = repository;
     }
 
-    public List<Place> list() {
-        return repository.findAll();
+    public List<PlaceDTO> list() {
+        return toPlaceDtosList(repository.findAll());
     }
 
-    public Page<Place> listByCity(String city, PageInfo pageInfo ) {
-        return repository.findByCity(city, pageInfo.toPageable());
+    public PagedResult<PlaceDTO> listByCity(String city, PageInfo pageInfo) {
+        final Page<Place> places = repository.findByCity(city, pageInfo.toPageable());
+        final List<PlaceDTO> dtos = places.getContent().stream()
+                .map(this::toPlaceDto)
+                .collect(Collectors.toList());
+
+        return new PagedResult<>(dtos, places.getTotalElements(), places.getTotalPages());
     }
 
-    public Place byId(String id){
-        return repository.find(id);
+    public PlaceDTO byId(String id) {
+        return toPlaceDto(repository.find(id));
+    }
+
+    private List<PlaceDTO> toPlaceDtosList(List<Place> places) {
+        return places.stream()
+                .map(this::toPlaceDto)
+                .collect(Collectors.toList());
+    }
+
+    private PlaceDTO toPlaceDto(Place place) {
+        String photoUrl = place.getPhotos().size() > 0 ? preparepPhotoUrl(place, place.getPhotos().get(0)) : "";
+        return new PlaceDTO.Builder()
+                .setId(place.getId())
+                .setName(place.getName())
+                .setCountry(place.getCountry())
+                .setState(place.getState())
+                .setCity(place.getCity())
+                .setAddress(Optional.ofNullable(place.getAddress()).orElse(""))
+                .setLocation(place.getLocation())
+                .setMapsId(place.getMapsId())
+                .setMapUrl(Optional.ofNullable(place.getMapUrl()).orElse(""))
+                .setPhoneNumber(Optional.ofNullable(place.getPhoneNumber()).orElse(""))
+                .setPhotoUrls(preparePlacePhotoUrls(place))
+                .setRating(place.getRating())
+                .setReviews(place.getReviews())
+                .setOpeningHours(place.getOpeningHours())
+                .setThumbnailUrl(photoUrl)
+                .setWebsiteUrl(Optional.ofNullable(place.getWebsiteUrl()).orElse(""))
+                .build();
+    }
+
+    private String preparepPhotoUrl(Place place, Photo photo) {
+        final String cdnDomain = "d3rmegw3k8iy45.cloudfront.net";
+        final String rootFolder = "places-photos";
+        final String prefix = "https://" + cdnDomain + "/" + rootFolder + "/" + place.getMapsId() + "/";
+        final String extention = ".png";
+        return prefix + photo.getReference() + extention;
+    }
+
+    private List<String> preparePlacePhotoUrls(Place place) {
+        final LinkedList<String> photos = new LinkedList<>();
+        for (Photo photo : place.getPhotos()) {
+            photos.add(preparepPhotoUrl(place, photo));
+        }
+        return photos;
+    }
+
+    public static class PagedResult<T> {
+        public final List<T> content;
+        public final long totalElements;
+        public final int totalPages;
+
+        public PagedResult(List<T> content, long totalElements, int totalPages) {
+            this.content = content;
+            this.totalElements = totalElements;
+            this.totalPages = totalPages;
+        }
     }
 
     public static class PageInfo {

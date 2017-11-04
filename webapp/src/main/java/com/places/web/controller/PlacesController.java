@@ -1,11 +1,10 @@
 package com.places.web.controller;
 
-import com.places.model.entity.Photo;
-import com.places.model.entity.Place;
 import com.places.service.read.PlacesReader;
 import com.places.service.read.PlacesReader.PageInfo;
+import com.places.service.read.PlacesReader.PagedResult;
+import com.places.service.read.dto.PlaceDTO;
 import com.places.web.BreadcrumbsBuilder;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.inject.Inject;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -38,11 +35,11 @@ public class PlacesController {
 
         int correctPage = page == null ? 0 : page - 1;
         final PageInfo pageInfo = new PageInfo(correctPage);
-        final Page<Place> placesPage = placesReader.listByCity(city, pageInfo);
-        model.put("totalItems", placesPage.getTotalElements());
-        model.put("totalPages", placesPage.getTotalPages());
+        final PagedResult<PlaceDTO> placesPage = placesReader.listByCity(city, pageInfo);
+        model.put("totalItems", placesPage.totalElements);
+        model.put("totalPages", placesPage.totalPages);
         model.put("currentPage", correctPage + 1);
-        model.put("places", placesPage.getContent());
+        model.put("places", placesPage.content);
         model.put("city", city);
         model.put("country", country);
         model.put("breadcrumbs", BreadcrumbsBuilder.build(country, city));
@@ -54,23 +51,10 @@ public class PlacesController {
                                     @PathVariable("city") String city,
                                     @PathVariable("country") String country,
                                     Map<String, Object> model) {
-        final Place place = placesReader.byId(id);
+        final PlaceDTO place = placesReader.byId(id);
         model.put("place", place);
-        model.put("photos", preparePhotos(place));
+        model.put("photos", place.getPhotoUrls());
         model.put("breadcrumbs", BreadcrumbsBuilder.build(country, city, place.getName()));
         return "places/details";
-    }
-
-    private List<Photo> preparePhotos(Place place) {
-        final String cdnDomain = "d3rmegw3k8iy45.cloudfront.net";
-        final String rootFolder = "places-photos";
-        final String prefix = "https://" + cdnDomain + "/" + rootFolder +"/"+ place.getMapsId() + "/";
-        final String extention = ".png";
-        final LinkedList<Photo> photos = new LinkedList<>();
-        for (Photo photo : place.getPhotos()) {
-            final String link = prefix + photo.getReference() + extention;
-            photos.add(new Photo(link, photo.getWidth(), photo.getHeight()));
-        }
-        return photos;
     }
 }
