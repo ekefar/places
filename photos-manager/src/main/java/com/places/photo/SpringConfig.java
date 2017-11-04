@@ -12,9 +12,10 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
  * @author : Alexander Serebriyan
  */
 @Configuration
-@Import(com.places.model.SpringConfig.class)
-@ComponentScan(basePackages = "com.places")
-@PropertySource({"classpath:parser.properties"})
+@Import({com.places.model.SpringConfig.class,
+        com.places.service.SpringConfig.class})
+@ComponentScan(basePackages = "com.places.photo")
+@PropertySource({"classpath:photos.properties"})
 public class SpringConfig {
 
     @Bean
@@ -24,8 +25,8 @@ public class SpringConfig {
 
     @Bean
     public AmazonS3 amazonS3() {
-        BasicAWSCredentials awsCreds = new BasicAWSCredentials("AKIAJG63Q7VU7FGD6YNQ",
-                "/97OKgifZH47hH8dePLRU8J80VLhfADMWIS3s4Jq");
+        BasicAWSCredentials awsCreds = new BasicAWSCredentials("key",
+                "secret");
         return AmazonS3ClientBuilder.standard()
                 .withRegion(Regions.EU_WEST_1)
                 .withCredentials(new AWSStaticCredentialsProvider(awsCreds)).build();
