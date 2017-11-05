@@ -24,6 +24,8 @@ public class Place {
     private String city;
     @Indexed
     private String state;
+    @Indexed
+    private String district;
 
     // google maps specific
     @Indexed
@@ -64,6 +66,14 @@ public class Place {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
     }
 
     public String getMapsId() {
@@ -185,6 +195,7 @@ public class Place {
                 ", country='" + country + '\'' +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
+                ", district='" + district + '\'' +
                 ", mapsId='" + mapsId + '\'' +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
