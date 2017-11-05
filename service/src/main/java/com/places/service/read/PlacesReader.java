@@ -67,9 +67,35 @@ public class PlacesReader {
                 .setRating(place.getRating())
                 .setReviews(place.getReviews())
                 .setOpeningHours(place.getOpeningHours())
-                .setThumbnailUrl(photoUrl)
+                .setThumbnailUrl(prepareThumbnailUrl(place))
                 .setWebsiteUrl(Optional.ofNullable(place.getWebsiteUrl()).orElse(""))
                 .build();
+    }
+
+    // check 59f9717ccb91bd68e1527d7e
+    private String prepareThumbnailUrl(Place place) {
+        final List<Photo> photos = place.getPhotos();
+
+        if (photos.isEmpty()) {
+            return "";
+        }
+
+        int bestPhotoIndex = 0;
+        float targetRatio = 1.5f;    // width / height
+        float currentBestRatioDiff = 2f;
+        for (int i = 0; i < photos.size(); i++) {
+            final Photo photo = photos.get(i);
+            final float ratio = photo.getWidth() / photo.getHeight();
+            final float ratioDiff = Math.abs(targetRatio - ratio);
+            if (ratioDiff < currentBestRatioDiff) {
+                bestPhotoIndex = i;
+                currentBestRatioDiff = ratioDiff;
+            }
+        }
+
+        final Photo bestPhoto = photos.get(bestPhotoIndex);
+        return preparepPhotoUrl(place, bestPhoto);
+
     }
 
     private String preparepPhotoUrl(Place place, Photo photo) {

@@ -28,7 +28,7 @@ public class PhotosManager {
 
 //        ChIJi2yscOMbdkgRl3vW_LSHEZ4
 
-        int index = 0;
+/*        int index = 0;
         for (Place place : places) {
 
             if (place.getMapsId().equals("ChIJi2yscOMbdkgRl3vW_LSHEZ4")) {
@@ -37,21 +37,10 @@ public class PhotosManager {
             index++;
         }
 
-        final List<Place> unhandled = places.subList(index, places.size());
+        final List<Place> unhandled = places.subList(index, places.size());*/
 
 
-        for (Place place : unhandled) {
-
-            try {
-
-                photosManager.manage(place);
-
-            } catch (Exception e) {
-                LOG.error("Couldn't manage photos for: " + place.getId(), e);
-
-            }
-
-        }
+        photosManager.manage(places);
 
         LOG.info("# Fetching done in: " + (System.currentTimeMillis() - start));
         LOG.info("# Total requests made: " + photosManager.getRequestsCount());

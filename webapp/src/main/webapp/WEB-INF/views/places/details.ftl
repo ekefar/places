@@ -157,7 +157,7 @@
 <#--Gallery-->
 
     <#if place.photoUrls?size gt 0>
-        <section class="thingsArea" style="margin-top: -200px;">
+        <section class="thingsArea" style="margin-top: -170px;">
             <div class="container">
                 <div class="text-center">
                     <h2>Gallery</small></h2>
@@ -168,17 +168,17 @@
                             <!-- Carousel items -->
                             <div class="carousel-inner">
 
-                            <#list place.photoUrls as photo>
-                                <div class="item row <#if photo?is_first> active</#if>">
-                                    <div class="col-md-4 col-sm-6 col-xs-12">
-                                        <div class="thingsBox">
-                                            <div class="thingsImage">
-                                                <img src="${photo}" alt="Image things">
+                                <#list place.photoUrls as photo>
+                                    <div class="item row <#if photo?is_first> active</#if>">
+                                        <div class="col-md-4 col-sm-6 col-xs-12">
+                                            <div class="thingsBox">
+                                                <div class="thingsImage">
+                                                    <img src="${photo}" alt="Image things">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </#list>
+                                </#list>
                             </div>
 
                             <a class="left carousel-control" href="#thubmnailSlider" data-slide="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
