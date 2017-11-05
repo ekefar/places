@@ -26,9 +26,9 @@ public class PlacesParser {
 //        final Optional<Place> place = new PlacesFetcher().fetchPlace("ChIJu2f9k7YcbkgRwrw4GGJIKoc");
 //        final Optional<Place> place = new PlacesFetcher().fetchPlace("ChIJv9DDFm2m2EcRSEVmm54XqbI");
 //
-       final long start = System.currentTimeMillis();
-        prepareAddressesCSV();
-//        specifyDistrictForExistingPlaces();
+        final long start = System.currentTimeMillis();
+        specifyDistrictForExistingPlaces();
+
         /* final List<PredefinedLocation> predefinedLocations = PredefinedLocationReader.read();
 
         final PlacesFetcher fetcher = new PlacesFetcher();
@@ -103,24 +103,10 @@ public class PlacesParser {
 
         for (Place place : places) {
             final List<Object> addressComponents = place.getAddressComponents();
-            final String locality = parseAddressComponent(addressComponents, AddressComponentType.LOCALITY);
-            final String neighberhood = parseAddressComponent(addressComponents, AddressComponentType.NEIGHBORHOOD);
-            final String lev_2 = parseAddressComponent(addressComponents, AddressComponentType.ADMINISTRATIVE_AREA_LEVEL_2);
-
-            final boolean contains = addressContains(place, "Stratford");
-            place.setDistrict(locality);
+            final String neighborhood = parseAddressComponent(addressComponents, AddressComponentType.NEIGHBORHOOD);
+            place.setDistrict(neighborhood);
+            repository.save(place);
         }
-    }
-
-    private static boolean addressContains(Place place, String name) {
-        final List<Object> addressComponents = place.getAddressComponents();
-        for (Object addressComponentObj : addressComponents) {
-            final AddressComponent addressComponent = (AddressComponent) addressComponentObj;
-            final String longName = addressComponent.longName;
-            return name.equals(longName);
-        }
-
-        return false;
     }
 
     private static String parseAddressComponent(List<Object> addressComponents, AddressComponentType targetAddressType) {
