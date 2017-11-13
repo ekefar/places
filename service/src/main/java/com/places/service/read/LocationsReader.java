@@ -1,5 +1,6 @@
 package com.places.service.read;
 
+import com.places.model.repository.LocationsRepository;
 import com.places.model.repository.PlacesRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +19,8 @@ public class LocationsReader {
 
     private static final Logger LOG = LoggerFactory.getLogger(LocationsReader.class);
 
-    private final PlacesRepository repository;
+    private final PlacesRepository placesRepository;
+    private final LocationsRepository locationsRepository;
 
     private static Map<String, String> mapping = new HashMap<>();
 
@@ -27,13 +29,15 @@ public class LocationsReader {
     }
 
     @Inject
-    public LocationsReader(PlacesRepository repository) {
-        this.repository = repository;
+    public LocationsReader(PlacesRepository placesRepository,
+                           LocationsRepository locationsRepository) {
+        this.placesRepository = placesRepository;
+        this.locationsRepository = locationsRepository;
     }
 
     public Set<String> citiesByCountry(String country) {
         final String mapped = mapping.get(country);
-        return repository.findCitiesByCountry(mapped != null ? mapped : country);
+        return locationsRepository.findCitiesByCountry(mapped != null ? mapped : country);
     }
 
     public Set<String> citiesByState(String state) {
@@ -41,11 +45,17 @@ public class LocationsReader {
     }
 
     public Set<String> citiesByState(String state, String startsWith) {
-
         final long start = System.currentTimeMillis();
         String query = startsWith == null ? "" : startsWith;
-        final Set<String> citiesByState = repository.findCitiesByState(state, query);
+        final Set<String> citiesByState = placesRepository.findCitiesByState(state, query);
         LOG.info("# Cities by country fetched in: " + (System.currentTimeMillis() - start));
+        return citiesByState;
+    }
+
+    public Set<String> districtsByCity(String city) {
+        final long start = System.currentTimeMillis();
+        final Set<String> citiesByState = locationsRepository.findDistrictsByCity(city);
+        LOG.info("# Districts by city fetched in: " + (System.currentTimeMillis() - start));
         return citiesByState;
     }
 

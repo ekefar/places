@@ -56,22 +56,6 @@ public class PlacesRepository {
         return new PageImpl<>(items, pagable, count);
     }
 
-    public Set<String> findCitiesByCountry(String country) {
-
-        final List cities = mongoTemplate.getCollection("places")
-                .distinct("city", new BasicDBObject("country", Pattern.compile(country, Pattern.CASE_INSENSITIVE)));
-
-        return new LinkedHashSet<String>(cities);
-    }
-
-
-    public Set<String> findCitiesByState(String state) {
-
-        final List cities = mongoTemplate.getCollection("places")
-                .distinct("city", new BasicDBObject("state", Pattern.compile(state, Pattern.CASE_INSENSITIVE)));
-
-        return new LinkedHashSet<String>(cities);
-    }
 
     public Set<String> findCitiesByState(String state, String startsWith) {
 
@@ -83,8 +67,6 @@ public class PlacesRepository {
         queryMap.put("city", regex);
         final List cities = mongoTemplate.getCollection("places")
                 .distinct("city", new BasicDBObject(queryMap));
-
-
 
         return new LinkedHashSet<String>(cities);
     }

@@ -1,5 +1,6 @@
 package com.places.web.controller;
 
+import com.places.service.read.LocationsReader;
 import com.places.service.read.PlacesReader;
 import com.places.service.read.PlacesReader.PageInfo;
 import com.places.service.read.PlacesReader.PagedResult;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.inject.Inject;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author : Alexander Serebriyan
@@ -21,10 +23,13 @@ import java.util.Map;
 public class PlacesController {
 
     private final PlacesReader placesReader;
+    private final LocationsReader locationsReader;
 
     @Inject
-    public PlacesController(PlacesReader placesReader) {
+    public PlacesController(PlacesReader placesReader,
+                            LocationsReader locationsReader) {
         this.placesReader = placesReader;
+        this.locationsReader = locationsReader;
     }
 
     @RequestMapping(value = "/{country}/{city}/", method = RequestMethod.GET)
@@ -52,8 +57,11 @@ public class PlacesController {
                                     @PathVariable("country") String country,
                                     Map<String, Object> model) {
         final PlaceDTO place = placesReader.byId(id);
+
+        final Set<String> districts = locationsReader.districtsByCity(city);
         model.put("place", place);
         model.put("photos", place.getPhotoUrls());
+        model.put("districts", districts);
         model.put("breadcrumbs", BreadcrumbsBuilder.build(country, city, place.getName()));
         return "places/details";
     }

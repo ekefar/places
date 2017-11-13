@@ -116,6 +116,20 @@
                             </ul>
                         </div>
                     </#if>
+
+                    <div class="listSidebar">
+                        <h3>Districts</h3>
+                        <ul class="list-unstyled sidebarList">
+                            <#list districts as district>
+                                <li>
+                                    <span class="pull-right">
+                                        <a href="../${district}">${district}</a>
+                                    </span>
+                                </li>
+                            </#list>
+                        </ul>
+                    </div>
+
                 </div>
                 <div class="col-sm-8 col-xs-12">
                     <div class="listDetailsInfo">
