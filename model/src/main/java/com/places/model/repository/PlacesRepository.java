@@ -29,6 +29,10 @@ public class PlacesRepository {
         this.mongoTemplate = mongoTemplate;
     }
 
+    public void remove(Place place) {
+        mongoTemplate.remove(place);
+    }
+
     public void saveOrUpdate(Place place) {
         mongoTemplate.save(place);
     }
