@@ -29,7 +29,7 @@ public class PlacesRepository {
         this.mongoTemplate = mongoTemplate;
     }
 
-    public void save(Place place) {
+    public void saveOrUpdate(Place place) {
         mongoTemplate.save(place);
     }
 
