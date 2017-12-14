@@ -63,7 +63,7 @@ public class PlacesController {
         int correctPage = page == null ? 0 : page - 1;
         final PageInfo pageInfo = new PageInfo(correctPage);
         final Set<String> districts = locationsReader.districtsByCity(city);
-        final PagedResult<PlaceDTO> placesPage = placesReader.listByCity(city, pageInfo);
+        final PagedResult<PlaceDTO> placesPage = placesReader.listByCityAndDistrict(city, district, pageInfo);
         model.put("totalItems", placesPage.totalElements);
         model.put("totalPages", placesPage.totalPages);
         model.put("currentPage", correctPage + 1);

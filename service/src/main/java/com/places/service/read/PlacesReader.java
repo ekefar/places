@@ -40,6 +40,15 @@ public class PlacesReader {
         return new PagedResult<>(dtos, places.getTotalElements(), places.getTotalPages());
     }
 
+    public PagedResult<PlaceDTO> listByCityAndDistrict(String city, String district, PageInfo pageInfo) {
+        final Page<Place> places = repository.findByCityAndDistrict(city, district, pageInfo.toPageable());
+        final List<PlaceDTO> dtos = places.getContent().stream()
+                .map(this::toPlaceDto)
+                .collect(Collectors.toList());
+
+        return new PagedResult<>(dtos, places.getTotalElements(), places.getTotalPages());
+    }
+
     public PlaceDTO byId(String id) {
         return toPlaceDto(repository.find(id));
     }

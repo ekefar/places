@@ -50,7 +50,14 @@ public class PlacesRepository {
     }
 
     public Page<Place> findByCity(String city, Pageable pagable) {
-        final Query query = query(where("city").regex("^" + city + "$", "i"));
+        final Query query = query(where("city").regex(streightEquals(city), "i"));
+        return getPage(pagable, query);
+    }
+
+    public Page<Place> findByCityAndDistrict(String city, String district, Pageable pagable) {
+        final Query query = query(where("city")
+                .regex(streightEquals(city), "i")
+                .and("district").regex(streightEquals(district), "i"));
         return getPage(pagable, query);
     }
 
@@ -58,6 +65,10 @@ public class PlacesRepository {
         final List<Place> items = mongoTemplate.find(query.with(pagable), Place.class);
         final long count = mongoTemplate.count(query, Place.class);
         return new PageImpl<>(items, pagable, count);
+    }
+
+    private String streightEquals(String value) {
+        return "^" + value + "$";
     }
 
 
