@@ -53,16 +53,37 @@ public class PlacesController {
         return "places/list";
     }
 
-    @RequestMapping(value = "/{country}/{city}/{id}/", method = RequestMethod.GET)
-    public String placesByCityPaged(@PathVariable("id") String id,
-                                    @PathVariable("city") String city,
+    @RequestMapping(value = "/{country}/{city}/{district}", method = RequestMethod.GET)
+    public String placesByCityPaged(@PathVariable("city") String city,
                                     @PathVariable("country") String country,
+                                    @PathVariable("district") String district,
+                                    @RequestParam(name = "page", required = false) Integer page,
+                                    Map<String, Object> model) {
+
+        int correctPage = page == null ? 0 : page - 1;
+        final PageInfo pageInfo = new PageInfo(correctPage);
+        final Set<String> districts = locationsReader.districtsByCity(city);
+        final PagedResult<PlaceDTO> placesPage = placesReader.listByCity(city, pageInfo);
+        model.put("totalItems", placesPage.totalElements);
+        model.put("totalPages", placesPage.totalPages);
+        model.put("currentPage", correctPage + 1);
+        model.put("places", placesPage.content);
+        model.put("city", city);
+        model.put("country", country);
+        model.put("districts", districts);
+        model.put("district", district);
+        model.put("breadcrumbs", BreadcrumbsBuilder.build(country, city, district));
+        return "places/list";
+    }
+
+    @RequestMapping(value = "/place/{id}/", method = RequestMethod.GET)
+    public String placesByCityPaged(@PathVariable("id") String id,
                                     Map<String, Object> model) {
         final PlaceDTO place = placesReader.byId(id);
 
         model.put("place", place);
         model.put("photos", place.getPhotoUrls());
-        model.put("breadcrumbs", BreadcrumbsBuilder.build(country, city, place.getName()));
+        model.put("breadcrumbs", BreadcrumbsBuilder.build(place.getName()));
         return "places/details";
     }
 }

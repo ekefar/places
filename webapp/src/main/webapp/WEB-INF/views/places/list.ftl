@@ -25,7 +25,11 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="pageTitle">
-                        <h2>Stores in ${city}</h2>
+                        <h2>
+                            Stores in ${city}
+                            <#if district??> - ${district}</#if>
+
+                        </h2>
                     </div>
                 </div>
             </div>
@@ -40,44 +44,6 @@
     <section class="clerfix central-block">
         <div class="container">
             <div class="row">
-                <#--<div class="col-sm-8 col-xs-12">
-                    <div class="resultBar barSpaceAdjust">
-                        <h2>We found <span>8</span> Results for you</h2>
-                        <ul class="list-inline">
-                            <li><a href="category-list-full.html"><i class="fa fa-th" aria-hidden="true"></i></a></li>
-                            <li class="active"><a href="category-list-left.html"><i class="fa fa-th-list" aria-hidden="true"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="listContent">
-                        <div class="row">
-                            <div class="col-sm-5 col-xs-12">
-                                <div class="categoryImage">
-                                    <img src="img/things/things-1.jpg" alt="Image category" class="img-responsive img-rounded">
-                                    <span class="label label-primary">Verified</span>
-                                </div>
-                            </div>
-                            <div class="col-sm-7 col-xs-12">
-                                <div class="categoryDetails">
-                                    <ul class="list-inline rating">
-                                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                    </ul>
-                                    <h2><a href="blog-details.html" style="color: #222222">Glory Hole Doughnuts</a> <span class="likeCount"><i class="fa fa-heart-o" aria-hidden="true"></i> 10 k</span></h2>
-                                    <p>1569 Queen Street West <span class="placeName">Toronto</span></p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt  labore et dolore magna aliqua. </p>
-                                    <ul class="list-inline list-tag">
-                                        <li><a href="category-list-full.html">Hotel,</a></li>
-                                        <li><a href="category-list-full.html">Restaurant</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
-
 
             <#--RESULTS LIST-->
                 <div class="col-sm-9 col-xs-12">
@@ -114,7 +80,7 @@
                                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                                     </ul>
-                                    <h2><a href="/${country}/${city}/${place.id}/"
+                                    <h2><a href="/place/${place.id}/"
                                            style="color: #222222">${place.name}</a></h2>
                                     <p>${place.address} <span class="placeName">${place.city}</span></p>
 
@@ -136,7 +102,7 @@
                         <#list districts as district>
                             <li>
                                 <span class="pull-right">
-                                    <a href="../${district}">${district}</a>
+                                    <a href="/${country}/${city}/${district}">${district}</a>
                                 </span>
                             </li>
                         </#list>
