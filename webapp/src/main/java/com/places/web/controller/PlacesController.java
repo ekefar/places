@@ -40,6 +40,7 @@ public class PlacesController {
 
         int correctPage = page == null ? 0 : page - 1;
         final PageInfo pageInfo = new PageInfo(correctPage);
+        final Set<String> districts = locationsReader.districtsByCity(city);
         final PagedResult<PlaceDTO> placesPage = placesReader.listByCity(city, pageInfo);
         model.put("totalItems", placesPage.totalElements);
         model.put("totalPages", placesPage.totalPages);
@@ -47,6 +48,7 @@ public class PlacesController {
         model.put("places", placesPage.content);
         model.put("city", city);
         model.put("country", country);
+        model.put("districts", districts);
         model.put("breadcrumbs", BreadcrumbsBuilder.build(country, city));
         return "places/list";
     }
@@ -58,10 +60,8 @@ public class PlacesController {
                                     Map<String, Object> model) {
         final PlaceDTO place = placesReader.byId(id);
 
-        final Set<String> districts = locationsReader.districtsByCity(city);
         model.put("place", place);
         model.put("photos", place.getPhotoUrls());
-        model.put("districts", districts);
         model.put("breadcrumbs", BreadcrumbsBuilder.build(country, city, place.getName()));
         return "places/details";
     }
