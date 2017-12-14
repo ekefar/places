@@ -25,7 +25,7 @@ public class SpringConfig {
 
     @Bean
     public AmazonS3 amazonS3() {
-        BasicAWSCredentials awsCreds = new BasicAWSCredentials("AKIAJG63Q7VU7FGD6YNQ",
+        BasicAWSCredentials awsCreds = new BasicAWSCredentials("BKIAJG63Q7VU7FGD6YNQ",
                 "8a0Up8OjmeVAeJPploV1gC/zorfN3qNusAvggRV4");
         return AmazonS3ClientBuilder.standard()
                 .withRegion(Regions.EU_WEST_1)

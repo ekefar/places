@@ -33,15 +33,15 @@ public class PlacesReader {
 
     public PagedResult<PlaceDTO> listByCity(String city, PageInfo pageInfo) {
         final Page<Place> places = repository.findByCity(city, pageInfo.toPageable());
-        final List<PlaceDTO> dtos = places.getContent().stream()
-                .map(this::toPlaceDto)
-                .collect(Collectors.toList());
-
-        return new PagedResult<>(dtos, places.getTotalElements(), places.getTotalPages());
+        return toPageResults(places);
     }
 
     public PagedResult<PlaceDTO> listByCityAndDistrict(String city, String district, PageInfo pageInfo) {
         final Page<Place> places = repository.findByCityAndDistrict(city, district, pageInfo.toPageable());
+        return toPageResults(places);
+    }
+
+    private PagedResult<PlaceDTO> toPageResults(Page<Place> places) {
         final List<PlaceDTO> dtos = places.getContent().stream()
                 .map(this::toPlaceDto)
                 .collect(Collectors.toList());
