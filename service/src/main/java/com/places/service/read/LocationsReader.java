@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @author : Alexander Serebriyan
@@ -55,8 +56,11 @@ public class LocationsReader {
     public Set<String> districtsByCity(String city) {
         final long start = System.currentTimeMillis();
         final Set<String> citiesByState = locationsRepository.findDistrictsByCity(city);
+        final Set<String> withoutEmptyItems = citiesByState.stream()
+                .filter(s -> !"".equals(s))
+                .collect(Collectors.toSet());
         LOG.info("# Districts by city fetched in: " + (System.currentTimeMillis() - start));
-        return citiesByState;
+        return withoutEmptyItems;
     }
 
 }
