@@ -30,11 +30,18 @@ public class MigrationUtil {
         multipliers.put(4, 0.9f);
         multipliers.put(5, 1.0f);
 
+        final float noImageMultiplier = 0.5f;
 
         final PlacesRepository placesRepository = placesRepository();
         final List<Place> places = placesRepository.findAll();
         for (Place place : places) {
-            final float weightedRating = place.getRating() * multipliers.get(place.getReviews().size());
+            float weightedRating = place.getRating() * multipliers.get(place.getReviews().size());
+            if (place.getPhotos().isEmpty()) {
+                weightedRating *= noImageMultiplier;
+            }
+            if (weightedRating == 0 && !place.getPhotos().isEmpty()) {
+                weightedRating = 0.5f;
+            }
             place.setWeightedRating(weightedRating);
         }
 
@@ -56,7 +63,7 @@ public class MigrationUtil {
         }
 
         for (Place place : places) {
-            if (cityCounts.get(place.getCity())==1) {
+            if (cityCounts.get(place.getCity()) == 1) {
                 placesRepository.remove(place);
             }
         }
