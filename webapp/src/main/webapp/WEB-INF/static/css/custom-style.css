@@ -13,8 +13,9 @@
 
 
 
-.breadcrumb-container {
-
+.breadcrumb-container .breadcrumb {
+    margin-left: -15px;
+    margin-right: -15px;
 }
 .breadcrumb a {
     text-transform: capitalize;
