@@ -240,4 +240,34 @@ var owl = $('.owl-carousel.partnersLogoSlider');
   $('.close-btn').click(function () {
     $(this).parent().hide();
   });
+
+  //====================== details carousel =================
+    var images = $('#images-carousel');
+    console.log("applying carousel");
+    images.owlCarousel({
+        loop:true,
+        margin:28,
+        autoplay:true,
+        autoplayTimeout:6000,
+        autoplayHoverPause:true,
+        nav:false,
+        dots: true,
+        smartSpeed:300,
+        rtl:true,
+        responsive:{
+            320:{
+                slideBy: 1,
+                items:1
+            },
+            768:{
+                slideBy: 1,
+                items:2
+            },
+            992:{
+                slideBy: 1,
+                items:3
+            }
+        }
+    });
+
 });

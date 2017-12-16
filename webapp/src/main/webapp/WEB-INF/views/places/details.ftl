@@ -39,7 +39,6 @@
                                 <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
                             </ul>
                             <span>( ${place.reviews?size} Reviews )</span>
-                            <a href="#" class="btn btn-primary">Write a review</a>
                         </div>
                     </div>
                 </div>
@@ -165,25 +164,17 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <div id="thubmnailSlider" class="carousel slide thumbnailCarousel">
+                        <div class="carousel slide thumbnailCarousel">
                             <!-- Carousel items -->
-                            <div class="carousel-inner">
+                            <div id="images-carousel" class="owl-carousel">
 
                                 <#list place.photoUrls as photo>
-                                    <div class="item row <#if photo?is_first> active</#if>">
-                                        <div class="col-md-4 col-sm-6 col-xs-12">
-                                            <div class="thingsBox">
-                                                <div class="thingsImage">
-                                                    <img src="${photo}" alt="Image things">
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="thingsImage">
+                                        <img src="${photo}" alt="Image things">
                                     </div>
                                 </#list>
                             </div>
 
-                            <a class="left carousel-control" href="#thubmnailSlider" data-slide="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
-                            <a class="right carousel-control" href="#thubmnailSlider" data-slide="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
