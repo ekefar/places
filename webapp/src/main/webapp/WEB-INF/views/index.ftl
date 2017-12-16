@@ -83,7 +83,9 @@
     <#include "common/footer.ftl">
 </div>
 
-<#include "common/scripts.ftl">
+<#include "common/scripts.ftl">\
+<script src="/plugins/owl-carousel/owl.carousel.min.js"></script>
+
 </body>
 
 </html>

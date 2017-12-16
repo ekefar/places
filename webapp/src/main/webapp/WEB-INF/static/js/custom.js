@@ -270,4 +270,12 @@ var owl = $('.owl-carousel.partnersLogoSlider');
         }
     });
 
+
+/* index page top places carousels*/
+    $("#england-best-carousel").owlCarousel();
+    $("#ireland-best-carousel").owlCarousel();
+    $("#scotland-best-carousel").owlCarousel();
+    $("#wales-best-carousel").owlCarousel();
+
+
 });
