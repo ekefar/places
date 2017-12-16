@@ -246,7 +246,7 @@ var owl = $('.owl-carousel.partnersLogoSlider');
     console.log("applying carousel");
     images.owlCarousel({
         loop:true,
-        margin:28,
+        margin:20,
         autoplay:true,
         autoplayTimeout:6000,
         autoplayHoverPause:true,
@@ -273,10 +273,10 @@ var owl = $('.owl-carousel.partnersLogoSlider');
 
 
 /* index page top places carousels*/
-    $("#england-best-carousel").owlCarousel({lazyLoad : true});
-    $("#ireland-best-carousel").owlCarousel({lazyLoad : true});
-    $("#scotland-best-carousel").owlCarousel({lazyLoad : true});
-    $("#wales-best-carousel").owlCarousel({lazyLoad : true});
+    $("#england-best-carousel").owlCarousel({lazyLoad : true, margin: 10});
+    $("#ireland-best-carousel").owlCarousel({lazyLoad : true, margin: 10});
+    $("#scotland-best-carousel").owlCarousel({lazyLoad : true, margin: 10});
+    $("#wales-best-carousel").owlCarousel({lazyLoad : true, margin: 10});
 
 
 });
