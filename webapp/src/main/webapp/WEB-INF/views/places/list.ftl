@@ -20,7 +20,7 @@
 
 
     <!-- PAGE TITLE SECTION -->
-    <section class="clearfix pageTitleSection" style="background-image: url();">
+    <section class="clearfix pageTitleSection">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
