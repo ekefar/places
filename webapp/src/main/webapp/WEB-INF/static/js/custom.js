@@ -253,7 +253,7 @@ var owl = $('.owl-carousel.partnersLogoSlider');
         nav:false,
         dots: true,
         smartSpeed:300,
-        rtl:true,
+        rtl:false,
         responsive:{
             320:{
                 slideBy: 1,
