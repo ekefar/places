@@ -161,7 +161,7 @@ public class PlacesReader {
         }
 
         private Sort getDefaultSort() {
-            return new Sort(Direction.DESC, "rating");
+            return new Sort(Direction.DESC, "weightedRating");
         }
     }
 }
