@@ -25,23 +25,23 @@ public class MigrationUtil {
         final HashMap<Integer, Float> reviewKoeff = new HashMap<>();
         reviewKoeff.put(0, 0.5f);
         reviewKoeff.put(1, 1.0f);
-        reviewKoeff.put(2, 1.2f);
-        reviewKoeff.put(3, 1.3f);
-        reviewKoeff.put(4, 1.4f);
-        reviewKoeff.put(5, 1.5f);
+        reviewKoeff.put(2, 1.1f);
+        reviewKoeff.put(3, 1.15f);
+        reviewKoeff.put(4, 1.20f);
+        reviewKoeff.put(5, 1.25f);
 
         final HashMap<Integer, Float> photoKoeff = new HashMap<>();
         photoKoeff.put(0, 0.5f);
         photoKoeff.put(1, 1.0f);
-        photoKoeff.put(2, 1.05f);
+        photoKoeff.put(2, 1.0f);
         photoKoeff.put(3, 1.1f);
         photoKoeff.put(4, 1.15f);
-        photoKoeff.put(5, 1.2f);
-        photoKoeff.put(6, 1.25f);
-        photoKoeff.put(7, 1.3f);
-        photoKoeff.put(8, 1.35f);
-        photoKoeff.put(9, 1.4f);
-        photoKoeff.put(10, 1.45f);
+        photoKoeff.put(5, 1.15f);
+        photoKoeff.put(6, 1.2f);
+        photoKoeff.put(7, 1.2f);
+        photoKoeff.put(8, 1.25f);
+        photoKoeff.put(9, 1.25f);
+        photoKoeff.put(10, 1.3f);
 
         final PlacesRepository placesRepository = placesRepository();
         final List<Place> places = placesRepository.findAll();
