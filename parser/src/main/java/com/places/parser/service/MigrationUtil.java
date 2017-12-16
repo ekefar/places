@@ -22,23 +22,34 @@ public class MigrationUtil {
 
     public static void addWeightedRating() {
 
-        final HashMap<Integer, Float> multipliers = new HashMap<>();
-        multipliers.put(0, 0.5f);
-        multipliers.put(1, 0.6f);
-        multipliers.put(2, 0.7f);
-        multipliers.put(3, 0.8f);
-        multipliers.put(4, 0.9f);
-        multipliers.put(5, 1.0f);
+        final HashMap<Integer, Float> reviewKoeff = new HashMap<>();
+        reviewKoeff.put(0, 0.5f);
+        reviewKoeff.put(1, 1.0f);
+        reviewKoeff.put(2, 1.2f);
+        reviewKoeff.put(3, 1.3f);
+        reviewKoeff.put(4, 1.4f);
+        reviewKoeff.put(5, 1.5f);
 
-        final float noImageMultiplier = 0.5f;
+        final HashMap<Integer, Float> photoKoeff = new HashMap<>();
+        photoKoeff.put(0, 0.5f);
+        photoKoeff.put(1, 1.0f);
+        photoKoeff.put(2, 1.05f);
+        photoKoeff.put(3, 1.1f);
+        photoKoeff.put(4, 1.15f);
+        photoKoeff.put(5, 1.2f);
+        photoKoeff.put(6, 1.25f);
+        photoKoeff.put(7, 1.3f);
+        photoKoeff.put(8, 1.35f);
+        photoKoeff.put(9, 1.4f);
+        photoKoeff.put(10, 1.45f);
 
         final PlacesRepository placesRepository = placesRepository();
         final List<Place> places = placesRepository.findAll();
         for (Place place : places) {
-            float weightedRating = place.getRating() * multipliers.get(place.getReviews().size());
-            if (place.getPhotos().isEmpty()) {
-                weightedRating *= noImageMultiplier;
-            }
+
+            float weightedRating = place.getRating() * reviewKoeff.get(place.getReviews().size());
+            weightedRating *= photoKoeff.get(place.getPhotos().size());
+
             if (weightedRating == 0 && !place.getPhotos().isEmpty()) {
                 weightedRating = 0.5f;
             }
