@@ -197,6 +197,14 @@
 </div>
     <#include "../common/scripts.ftl">
 
+<script src="/plugins/counter-up/jquery.counterup.min.js"></script>
+<script src="/plugins/selectbox/jquery.selectbox-0.1.3.min.js"></script>
+<script src="/plugins/fancybox/jquery.fancybox.pack.js"></script>
+<script src="/plugins/owl-carousel/owl.carousel.min.js"></script>
+<script src="/plugins/map/js/infobox_packed.js"></script>
+<script src="/js/single-map.js"></script>
+<script src="/js/map.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEDfNcQRmKQEyulDN8nGWjLYPm8s4YB58"></script>
 </body>
 
 </html>
