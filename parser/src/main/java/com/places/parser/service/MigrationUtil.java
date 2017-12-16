@@ -20,6 +20,27 @@ import java.util.*;
  */
 public class MigrationUtil {
 
+    public static void addWeightedRating() {
+
+        final HashMap<Integer, Float> multipliers = new HashMap<>();
+        multipliers.put(0, 0.5f);
+        multipliers.put(1, 0.6f);
+        multipliers.put(2, 0.7f);
+        multipliers.put(3, 0.8f);
+        multipliers.put(4, 0.9f);
+        multipliers.put(5, 1.0f);
+
+
+        final PlacesRepository placesRepository = placesRepository();
+        final List<Place> places = placesRepository.findAll();
+        for (Place place : places) {
+            final float weightedRating = place.getRating() * multipliers.get(place.getReviews().size());
+            place.setWeightedRating(weightedRating);
+        }
+
+        placesRepository.saveOrUpdate(places);
+    }
+
     public static void removePlacesIfSingleInCity() {
         final HashMap<String, Integer> cityCounts = new HashMap<>();
         final PlacesRepository placesRepository = placesRepository();

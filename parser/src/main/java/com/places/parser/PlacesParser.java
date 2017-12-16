@@ -1,6 +1,8 @@
 package com.places.parser;
 
 
+import com.places.parser.service.MigrationUtil;
+
 import java.net.UnknownHostException;
 
 /**
@@ -14,7 +16,7 @@ public class PlacesParser {
 //        final Optional<Place> place = new PlacesFetcher().fetchPlace("ChIJu2f9k7YcbkgRwrw4GGJIKoc");
 //        final Optional<Place> place = new PlacesFetcher().fetchPlace("ChIJv9DDFm2m2EcRSEVmm54XqbI");
 //
-
+        MigrationUtil.addWeightedRating();
 //        final List<Place> places = new PlacesFetcher().fetchPlaces(
 //                new Location(52.907003, -1.503090), Place.Type.CAFE, Place.Type.BAR);
 //        final long start = System.currentTimeMillis();

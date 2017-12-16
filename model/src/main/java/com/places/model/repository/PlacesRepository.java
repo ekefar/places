@@ -41,6 +41,12 @@ public class PlacesRepository {
         mongoTemplate.insert(places, Place.class);
     }
 
+    public void saveOrUpdate(Collection<Place> places) {
+        for (Place place : places) {
+            mongoTemplate.save(place);
+        }
+    }
+
     public Place find(String id) {
         return mongoTemplate.findOne(query(where("_id").is(id)), Place.class);
     }
