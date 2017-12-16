@@ -55,6 +55,12 @@ public class PlacesRepository {
         return mongoTemplate.findAll(Place.class);
     }
 
+    public Page<Place> findByState(String state, Pageable pagable) {
+        final Query query = query(where("state").regex(streightEquals(state), "i"));
+        return getPage(pagable, query);
+    }
+
+
     public Page<Place> findByCity(String city, Pageable pagable) {
         final Query query = query(where("city").regex(streightEquals(city), "i"));
         return getPage(pagable, query);

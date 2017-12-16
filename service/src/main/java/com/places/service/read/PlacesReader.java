@@ -33,6 +33,11 @@ public class PlacesReader {
         return toPlaceDtosList(repository.findAll());
     }
 
+    public PagedResult<PlaceDTO> listByState(String state, PageInfo pageInfo) {
+        final Page<Place> places = repository.findByState(state, pageInfo.toPageable());
+        return toPageResults(places);
+    }
+
     public PagedResult<PlaceDTO> listByCity(String city, PageInfo pageInfo) {
         final Page<Place> places = repository.findByCity(city, pageInfo.toPageable());
         return toPageResults(places);

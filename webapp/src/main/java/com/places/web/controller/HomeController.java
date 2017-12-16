@@ -1,6 +1,7 @@
 package com.places.web.controller;
 
 import com.places.service.read.LocationsReader;
+import com.places.service.read.TopPlacesHelper;
 import com.places.web.BreadcrumbsBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,14 +21,21 @@ import java.util.Set;
 public class HomeController {
 
     private final LocationsReader locationsReader;
+    private final TopPlacesHelper topPlacesHelper;
 
     @Inject
-    public HomeController(LocationsReader locationsReader) {
+    public HomeController(LocationsReader locationsReader, TopPlacesHelper topPlacesHelper) {
         this.locationsReader = locationsReader;
+        this.topPlacesHelper = topPlacesHelper;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Map<String, Object> model) {
+        final int number = 10;
+        model.put("englandTop", topPlacesHelper.topPlacesByState(TopPlacesHelper.State.ENGLAND, number));
+        model.put("scotlandTop", topPlacesHelper.topPlacesByState(TopPlacesHelper.State.SCOTLAND, number));
+        model.put("walesTop", topPlacesHelper.topPlacesByState(TopPlacesHelper.State.WALES, number));
+        model.put("northernIrelandTop", topPlacesHelper.topPlacesByState(TopPlacesHelper.State.NORTHERN_IRELAND, number));
         return "index";
     }
 
