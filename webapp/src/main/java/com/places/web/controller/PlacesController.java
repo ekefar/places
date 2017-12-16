@@ -6,6 +6,8 @@ import com.places.service.read.PlacesReader.PageInfo;
 import com.places.service.read.PlacesReader.PagedResult;
 import com.places.service.read.dto.PlaceDTO;
 import com.places.web.BreadcrumbsBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,8 @@ import java.util.Set;
  */
 @Controller
 public class PlacesController {
+
+    private static final Logger LOG = LoggerFactory.getLogger(PlacesController.class);
 
     private final PlacesReader placesReader;
     private final LocationsReader locationsReader;
@@ -38,6 +42,9 @@ public class PlacesController {
                                     @RequestParam(name = "page", required = false) Integer page,
                                     Map<String, Object> model) {
 
+
+        LOG.info("# Displaying places by city: {}", city);
+
         int correctPage = page == null ? 0 : page - 1;
         final PageInfo pageInfo = new PageInfo(correctPage);
         final Set<String> districts = locationsReader.districtsByCity(city);
@@ -53,12 +60,15 @@ public class PlacesController {
         return "places/list";
     }
 
-    @RequestMapping(value = "/{country}/{city}/{district}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{country}/{city}/{district}/", method = RequestMethod.GET)
     public String placesByCityPaged(@PathVariable("city") String city,
                                     @PathVariable("country") String country,
                                     @PathVariable("district") String district,
                                     @RequestParam(name = "page", required = false) Integer page,
                                     Map<String, Object> model) {
+
+
+        LOG.info("# Displaying places by city {} and district {}", city, district);
 
         int correctPage = page == null ? 0 : page - 1;
         final PageInfo pageInfo = new PageInfo(correctPage);

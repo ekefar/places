@@ -102,7 +102,7 @@
                         <#list districts as district>
                             <li>
                                 <span class="pull-right">
-                                    <a href="/${country}/${city}/${district}">${district}</a>
+                                    <a href="/${country}/${city}/${district}/">${district}</a>
                                 </span>
                             </li>
                         </#list>
