@@ -11,56 +11,19 @@
         <div class="row">
             <div class="col-xs-12">
                 <div id="england-best-carousel">
-                    <div>
-                        <div class="img-wrap">
-                            <a href="#">
-                                <img src="img/things/things-2.jpg" class="img-responsive" alt="workimg">
-                            </a>
+                    <#list englandTop as place>
+                        <div>
+                            <div class="img-wrap">
+                                <a href="/place/${place.id}/">
+                                    <img src="${place.thumbnailUrl}" class="img-responsive" alt="workimg">
+                                </a>
+                            </div>
+                            <div class="place-description">
+                                <h3><a href="/place/${place.id}/"
+                                       style="color: #222222">${place.name}</a></h3>
+                            </div>
                         </div>
-                        <div class="place-description">
-                            <h3><a href="#">Place Name</a></h3>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="img-wrap">
-                            <a href="#">
-                                <img src="img/things/things-2.jpg" class="img-responsive" alt="workimg">
-                            </a>
-                        </div>
-                        <div class="place-description">
-                            <h3><a href="#">Place Name</a></h3>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="img-wrap">
-                            <a href="#">
-                                <img src="img/things/things-2.jpg" class="img-responsive" alt="workimg">
-                            </a>
-                        </div>
-                        <div class="place-description">
-                            <h3><a href="#">Place Name</a></h3>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="img-wrap">
-                            <a href="#">
-                                <img src="img/things/things-2.jpg" class="img-responsive" alt="workimg">
-                            </a>
-                        </div>
-                        <div class="place-description">
-                            <h3><a href="#">Place Name</a></h3>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="img-wrap">
-                            <a href="#">
-                                <img src="img/things/things-2.jpg" class="img-responsive" alt="workimg">
-                            </a>
-                        </div>
-                        <div class="place-description">
-                            <h3><a href="#">Place Name</a></h3>
-                        </div>
-                    </div>
+                    </#list>
                 </div>
             </div>
         </div>
@@ -75,56 +38,19 @@
         <div class="row">
             <div class="col-xs-12">
                 <div id="ireland-best-carousel">
-                    <div>
-                        <div class="img-wrap">
-                            <a href="#">
-                                <img src="img/things/things-2.jpg" class="img-responsive" alt="workimg">
-                            </a>
+                    <#list northernIrelandTop as place>
+                        <div>
+                            <div class="img-wrap">
+                                <a href="/place/${place.id}/">
+                                    <img src="${place.thumbnailUrl}" class="img-responsive" alt="workimg">
+                                </a>
+                            </div>
+                            <div class="place-description">
+                                <h3><a href="/place/${place.id}/"
+                                       style="color: #222222">${place.name}</a></h3>
+                            </div>
                         </div>
-                        <div class="place-description">
-                            <h3><a href="#">Place Name</a></h3>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="img-wrap">
-                            <a href="#">
-                                <img src="img/things/things-2.jpg" class="img-responsive" alt="workimg">
-                            </a>
-                        </div>
-                        <div class="place-description">
-                            <h3><a href="#">Place Name</a></h3>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="img-wrap">
-                            <a href="#">
-                                <img src="img/things/things-2.jpg" class="img-responsive" alt="workimg">
-                            </a>
-                        </div>
-                        <div class="place-description">
-                            <h3><a href="#">Place Name</a></h3>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="img-wrap">
-                            <a href="#">
-                                <img src="img/things/things-2.jpg" class="img-responsive" alt="workimg">
-                            </a>
-                        </div>
-                        <div class="place-description">
-                            <h3><a href="#">Place Name</a></h3>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="img-wrap">
-                            <a href="#">
-                                <img src="img/things/things-2.jpg" class="img-responsive" alt="workimg">
-                            </a>
-                        </div>
-                        <div class="place-description">
-                            <h3><a href="#">Place Name</a></h3>
-                        </div>
-                    </div>
+                    </#list>
                 </div>
             </div>
         </div>
@@ -139,56 +65,19 @@
         <div class="row">
             <div class="col-xs-12">
                 <div id="wales-best-carousel">
-                    <div>
-                        <div class="img-wrap">
-                            <a href="#">
-                                <img src="img/things/things-2.jpg" class="img-responsive" alt="workimg">
-                            </a>
+                    <#list walesTop as place>
+                        <div>
+                            <div class="img-wrap">
+                                <a href="/place/${place.id}/">
+                                    <img src="${place.thumbnailUrl}" class="img-responsive" alt="workimg">
+                                </a>
+                            </div>
+                            <div class="place-description">
+                                <h3><a href="/place/${place.id}/"
+                                       style="color: #222222">${place.name}</a></h3>
+                            </div>
                         </div>
-                        <div class="place-description">
-                            <h3><a href="#">Place Name</a></h3>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="img-wrap">
-                            <a href="#">
-                                <img src="img/things/things-2.jpg" class="img-responsive" alt="workimg">
-                            </a>
-                        </div>
-                        <div class="place-description">
-                            <h3><a href="#">Place Name</a></h3>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="img-wrap">
-                            <a href="#">
-                                <img src="img/things/things-2.jpg" class="img-responsive" alt="workimg">
-                            </a>
-                        </div>
-                        <div class="place-description">
-                            <h3><a href="#">Place Name</a></h3>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="img-wrap">
-                            <a href="#">
-                                <img src="img/things/things-2.jpg" class="img-responsive" alt="workimg">
-                            </a>
-                        </div>
-                        <div class="place-description">
-                            <h3><a href="#">Place Name</a></h3>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="img-wrap">
-                            <a href="#">
-                                <img src="img/things/things-2.jpg" class="img-responsive" alt="workimg">
-                            </a>
-                        </div>
-                        <div class="place-description">
-                            <h3><a href="#">Place Name</a></h3>
-                        </div>
-                    </div>
+                    </#list>
                 </div>
             </div>
         </div>
@@ -204,56 +93,19 @@
     <div class="row">
         <div class="col-xs-12">
             <div id="scotland-best-carousel">
-                <div>
-                    <div class="img-wrap">
-                        <a href="#">
-                            <img src="img/things/things-2.jpg" class="img-responsive" alt="workimg">
-                        </a>
+                <#list scotlandTop as place>
+                    <div>
+                        <div class="img-wrap">
+                            <a href="/place/${place.id}/">
+                                <img src="${place.thumbnailUrl}" class="img-responsive" alt="workimg">
+                            </a>
+                        </div>
+                        <div class="place-description">
+                            <h3><a href="/place/${place.id}/"
+                                   style="color: #222222">${place.name}</a></h3>
+                        </div>
                     </div>
-                    <div class="place-description">
-                        <h3><a href="#">Place Name</a></h3>
-                    </div>
-                </div>
-                <div>
-                    <div class="img-wrap">
-                        <a href="#">
-                            <img src="img/things/things-2.jpg" class="img-responsive" alt="workimg">
-                        </a>
-                    </div>
-                    <div class="place-description">
-                        <h3><a href="#">Place Name</a></h3>
-                    </div>
-                </div>
-                <div>
-                    <div class="img-wrap">
-                        <a href="#">
-                            <img src="img/things/things-2.jpg" class="img-responsive" alt="workimg">
-                        </a>
-                    </div>
-                    <div class="place-description">
-                        <h3><a href="#">Place Name</a></h3>
-                    </div>
-                </div>
-                <div>
-                    <div class="img-wrap">
-                        <a href="#">
-                            <img src="img/things/things-2.jpg" class="img-responsive" alt="workimg">
-                        </a>
-                    </div>
-                    <div class="place-description">
-                        <h3><a href="#">Place Name</a></h3>
-                    </div>
-                </div>
-                <div>
-                    <div class="img-wrap">
-                        <a href="#">
-                            <img src="img/things/things-2.jpg" class="img-responsive" alt="workimg">
-                        </a>
-                    </div>
-                    <div class="place-description">
-                        <h3><a href="#">Place Name</a></h3>
-                    </div>
-                </div>
+                </#list>
             </div>
         </div>
     </div>

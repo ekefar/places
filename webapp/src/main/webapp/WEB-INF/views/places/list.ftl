@@ -60,7 +60,7 @@
                                      style="width: 400px; height: 250px;">
                                     <#if place.thumbnailUrl != "" >
                                         <img src="${place.thumbnailUrl}" a
-                                             lt="Image category"
+                                             alt="Image category"
                                              class="img-responsive img-rounded"
                                              style="height: 100%; "
                                         >

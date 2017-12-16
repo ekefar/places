@@ -254,6 +254,7 @@ var owl = $('.owl-carousel.partnersLogoSlider');
         dots: true,
         smartSpeed:300,
         rtl:false,
+        lazyLoad: true,
         responsive:{
             320:{
                 slideBy: 1,
@@ -272,10 +273,10 @@ var owl = $('.owl-carousel.partnersLogoSlider');
 
 
 /* index page top places carousels*/
-    $("#england-best-carousel").owlCarousel();
-    $("#ireland-best-carousel").owlCarousel();
-    $("#scotland-best-carousel").owlCarousel();
-    $("#wales-best-carousel").owlCarousel();
+    $("#england-best-carousel").owlCarousel({lazyLoad : true});
+    $("#ireland-best-carousel").owlCarousel({lazyLoad : true});
+    $("#scotland-best-carousel").owlCarousel({lazyLoad : true});
+    $("#wales-best-carousel").owlCarousel({lazyLoad : true});
 
 
 });
