@@ -131,7 +131,7 @@
                         <#list place.reviews as review>
                             <div class="media media-comment">
                                 <div class="media-left">
-                                    <img src="/img/listing/list-user-1.jpg" class="media-object img-circle" alt="Image User">
+                                    <img src="/img/listing/user-2.png" class="media-object img-circle" alt="Image User">
                                 </div>
                                 <div class="media-body">
                                     <h4 class="media-heading">${review.authorName}</h4>
