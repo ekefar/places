@@ -26,20 +26,16 @@
     <section class="clearfix paddingAdjustBottom">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12">
+                <div class="col-xs-10">
                     <div class="listingTitleArea">
                         <h2>${place.name}</h2>
                         <p>${place.address}</p>
-                        <div class="listingReview">
-                            <ul class="list-inline rating">
-                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                            </ul>
-                            <span>( ${place.reviews?size} Reviews )</span>
-                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="listingTitleArea" style="text-align: center">
+                        <h2>${place.rating?string["0.0"]}</h2>
+                        <span>( based on ${place.reviews?size} review<#if place.reviews?size gt 1>s</#if>)</span>
                     </div>
                 </div>
             </div>
