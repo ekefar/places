@@ -6,6 +6,8 @@ import com.places.model.repository.PlacesRepository;
 import com.places.service.read.dto.PlaceDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -155,7 +157,11 @@ public class PlacesReader {
         }
 
         private PageRequest toPageable() {
-            return new PageRequest(this.page, this.size);
+            return new PageRequest(this.page, this.size, getDefaultSort());
+        }
+
+        private Sort getDefaultSort() {
+            return new Sort(Direction.DESC, "rating");
         }
     }
 }

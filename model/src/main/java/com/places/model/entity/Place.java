@@ -38,6 +38,7 @@ public class Place {
     private String mapUrl;
     private String websiteUrl;
     private float rating;
+    private float weightedRating;
     private List<String> types = new ArrayList<>();
     private List<Photo> photos = new ArrayList<>();
     private List<Review> reviews = new ArrayList<>();
@@ -188,6 +189,14 @@ public class Place {
         this.addressComponents = addressComponents;
     }
 
+    public float getWeightedRating() {
+        return weightedRating;
+    }
+
+    public void setWeightedRating(float weightedRating) {
+        this.weightedRating = weightedRating;
+    }
+
     @Override
     public String toString() {
         return "Place{" +
@@ -205,9 +214,8 @@ public class Place {
                 ", mapUrl='" + mapUrl + '\'' +
                 ", websiteUrl='" + websiteUrl + '\'' +
                 ", rating=" + rating +
+                ", weightedRating=" + weightedRating +
                 ", types=" + types +
-                ", photos=" + photos +
-                ", reviews=" + reviews +
                 '}';
     }
 

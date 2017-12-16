@@ -1,8 +1,6 @@
 package com.places.parser;
 
 
-import com.places.parser.service.MigrationUtil;
-
 import java.net.UnknownHostException;
 
 /**
@@ -21,7 +19,6 @@ public class PlacesParser {
 //                new Location(52.907003, -1.503090), Place.Type.CAFE, Place.Type.BAR);
 //        final long start = System.currentTimeMillis();
 
-        MigrationUtil.removePlacesIfSingleInCity();
 //        dumpAddressesCSV();
         /* final List<PredefinedLocation> predefinedLocations = PredefinedLocationReader.read();
 
