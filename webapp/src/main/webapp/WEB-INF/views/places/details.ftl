@@ -162,11 +162,11 @@
                     <div class="col-xs-12">
                         <div class="carousel slide thumbnailCarousel">
                             <!-- Carousel items -->
-                            <div id="images-carousel" class="owl-carousel">
+                            <div id="images-carousel" class="owl-carousel details">
 
                                 <#list place.photoUrls as photo>
-                                    <div class="thingsImage">
-                                        <img src="${photo}" alt="Image things">
+                                    <div class="thingsImage thumbnail-container">
+                                        <img src="${photo}" class="thumbnail-img" alt="Image things">
                                     </div>
                                 </#list>
                             </div>

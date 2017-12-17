@@ -56,13 +56,11 @@
                     <div class="listContent">
                         <div class="row">
                             <div class="col-sm-6 col-xs-12">
-                                <div class="categoryImage"
-                                     style="width: 400px; height: 250px;">
-                                    <#if place.thumbnailUrl != "" >
+                                <div class="categoryImage thumbnail-container">
+                                <#if place.thumbnailUrl != "" >
                                         <img src="${place.thumbnailUrl}" a
                                              alt="Image category"
-                                             class="img-responsive img-rounded"
-                                             style="height: 100%; "
+                                             class="img-responsive img-rounded thumbnail-img"
                                         >
                                     <#else>
                                         <img src="/img/things/things-1.jpg" alt="Image category"

@@ -13,9 +13,9 @@
                 <div id="england-best-carousel">
                     <#list englandTop as place>
                         <div>
-                            <div class="img-wrap">
+                            <div class="thumbnail-container">
                                 <a href="/place/${place.id}/">
-                                    <img src="${place.thumbnailUrl}" class="img-responsive" alt="workimg">
+                                    <img src="${place.thumbnailUrl}" class="img-responsive thumbnail-img" alt="workimg">
                                 </a>
                             </div>
                             <div class="place-description">
@@ -40,9 +40,9 @@
                 <div id="ireland-best-carousel">
                     <#list northernIrelandTop as place>
                         <div>
-                            <div class="img-wrap">
+                            <div class="thumbnail-container">
                                 <a href="/place/${place.id}/">
-                                    <img src="${place.thumbnailUrl}" class="img-responsive" alt="workimg">
+                                    <img src="${place.thumbnailUrl}" class="img-responsive thumbnail-img" alt="workimg">
                                 </a>
                             </div>
                             <div class="place-description">
@@ -67,9 +67,9 @@
                 <div id="wales-best-carousel">
                     <#list walesTop as place>
                         <div>
-                            <div class="img-wrap">
+                            <div class="thumbnail-container">
                                 <a href="/place/${place.id}/">
-                                    <img src="${place.thumbnailUrl}" class="img-responsive" alt="workimg">
+                                    <img src="${place.thumbnailUrl}" class="img-responsive thumbnail-img" alt="workimg">
                                 </a>
                             </div>
                             <div class="place-description">
@@ -95,9 +95,9 @@
             <div id="scotland-best-carousel">
                 <#list scotlandTop as place>
                     <div>
-                        <div class="img-wrap">
+                        <div class="thumbnail-container">
                             <a href="/place/${place.id}/">
-                                <img src="${place.thumbnailUrl}" class="img-responsive" alt="workimg">
+                                <img src="${place.thumbnailUrl}" class="img-responsive thumbnail-img" alt="workimg">
                             </a>
                         </div>
                         <div class="place-description">
