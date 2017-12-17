@@ -45,3 +45,7 @@ section.central-block {
 .owl-carousel.details .thumbnail-container {
     height: 320px;
 }
+
+.place-description {
+    padding-left: 10px;
+}
