@@ -1,0 +1,1 @@
+${name} located in ${city}

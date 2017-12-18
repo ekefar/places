@@ -1,17 +1,35 @@
 package com.places.service.util;
 
+import com.google.common.io.Resources;
+import com.places.service.read.dto.PlaceDTO;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.File;
+import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 /**
  * @author : Alexander Serebriyan
  */
 public class DescriptionGeneratorTest {
+
+
+    @Test
+    public void canProcessTemplate() throws URISyntaxException {
+        final File template = new File(Resources.getResource("test-template.ftl").toURI());
+
+        final PlaceDTO place = new PlaceDTO.Builder().setName("Target").setCity("London").build();
+        final Map<String, Object> model = DescriptionsGenerator.prepareModel(place);
+        final String text = DescriptionsGenerator.processTemplate(model, template);
+
+        assertEquals("Target located in London", text);
+    }
 
     @Test
     public void canExtractOptionsFromSnippet() {

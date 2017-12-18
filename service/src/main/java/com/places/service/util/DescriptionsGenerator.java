@@ -1,11 +1,15 @@
 package com.places.service.util;
 
 import com.places.service.read.dto.PlaceDTO;
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
+import freemarker.template.TemplateExceptionHandler;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.io.File;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -18,7 +22,40 @@ public class DescriptionsGenerator {
     public static final String SNIPPET_DELIMITER = "|";
 
     public static String generateForPlace(final PlaceDTO place) {
-        return "";
+        final Map<String, Object> model = prepareModel(place);
+        final String text = processTemplate(model, null);
+        return text;
+    }
+
+    static String processTemplate(Map model, File templateFile) {
+        Configuration configuration = prepareConfiguration();
+
+        try {
+            configuration.setDirectoryForTemplateLoading(templateFile.getParentFile());
+            Template template = configuration.getTemplate(templateFile.getName());
+            StringWriter stringWriter = new StringWriter();
+            template.process(model, stringWriter);
+            return stringWriter.toString();
+
+        } catch (IOException | TemplateException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    private static Configuration prepareConfiguration() {
+        Configuration configuration = new Configuration(Configuration.VERSION_2_3_23);
+        configuration.setDefaultEncoding("UTF-8");
+        configuration.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
+        configuration.setLogTemplateExceptions(false);
+        return configuration;
+    }
+
+    static Map<String, Object> prepareModel(PlaceDTO place) {
+        Map<String, Object> model = new HashMap<String, Object>();
+        model.put("name", place.getName());
+        model.put("city", place.getCity());
+        return model;
     }
 
     static String replaceSnippets(String text) {

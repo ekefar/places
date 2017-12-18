@@ -78,6 +78,12 @@
                 <artifactId>google-maps-services</artifactId>
                 <version>0.1.20</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>2.3.23</version>
+            </dependency>
             <!-- https://mvnrepo
             sitory.com/artifact/org.testng/testng -->
             <dependency>
