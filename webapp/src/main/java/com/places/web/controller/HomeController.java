@@ -31,7 +31,7 @@ public class HomeController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Map<String, Object> model) {
-        final int number = 9;
+        final int number = 10;
         model.put("englandTop", topPlacesHelper.topPlacesByState(TopPlacesHelper.State.ENGLAND, number));
         model.put("scotlandTop", topPlacesHelper.topPlacesByState(TopPlacesHelper.State.SCOTLAND, number));
         model.put("walesTop", topPlacesHelper.topPlacesByState(TopPlacesHelper.State.WALES, number));
