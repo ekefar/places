@@ -30,4 +30,16 @@ public class DescriptionGeneratorTest {
 
         Assert.assertTrue(snippets.contains("{first | second | third}"));
     }
+
+    @Test
+    public void canExtractMultippleSnippetsFromText() {
+
+        final String text = "Here goes some text with the snippet that has {first | second | third} option" +
+                " and I'm very {excited | happy} about this";
+
+        final List<String> snippets = DescriptionsGenerator.extractSnippets(text);
+
+        Assert.assertTrue(snippets.contains("{first | second | third}"));
+        Assert.assertTrue(snippets.contains("{excited | happy}"));
+    }
 }
