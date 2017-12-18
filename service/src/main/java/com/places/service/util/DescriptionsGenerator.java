@@ -3,6 +3,7 @@ package com.places.service.util;
 import com.places.service.read.dto.PlaceDTO;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,15 +21,29 @@ public class DescriptionsGenerator {
         return "";
     }
 
+    static String replaceSnippets(String text) {
+        final List<String> snippets = extractSnippets(text);
+
+        for (String snippet : snippets) {
+            final List<String> options = extractOptions(snippet);
+            Collections.shuffle(options);
+            final String randomOption = options.get(0);
+
+            text = text.replace(snippet, randomOption);
+        }
+
+        return text;
+    }
+
     static List<String> extractOptions(String snippet) {
-        final String noBrackets = snippet.replaceFirst("\\" + SNIPPET_OPENING, "")
-                .replaceFirst("\\" + SNIPPET_CLOSING, "");
+        final String noBrackets = snippet.replace(SNIPPET_OPENING, "")
+                .replace(SNIPPET_CLOSING, "");
 
         final String[] split = noBrackets.split("\\" + SNIPPET_DELIMITER);
         return Arrays.stream(split).map(String::trim).collect(Collectors.toList());
     }
 
-    public static List<String> extractSnippets(String text) {
+    static List<String> extractSnippets(String text) {
         final char[] chars = text.toCharArray();
         final char openingChar = SNIPPET_OPENING.toCharArray()[0];
         final char closingChar = SNIPPET_CLOSING.toCharArray()[0];
