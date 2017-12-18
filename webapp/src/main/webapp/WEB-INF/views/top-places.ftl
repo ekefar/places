@@ -81,18 +81,17 @@
                 </div>
             </div>
         </div>
-    </div>
 
-<#-- SCOTLAND BEST PLACES-->
-    <br><br><br>
-    <div class="page-header text-center">
-        <h2>Top stores in Scotland
-            <small>These are some of the most popular stores in Scotland</small>
-        </h2>
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div id="scotland-best-carousel">
+    <#-- SCOTLAND BEST PLACES-->
+        <br><br><br>
+        <div class="page-header text-center">
+            <h2>Top stores in Scotland
+                <small>These are some of the most popular stores in Scotland</small>
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div id="scotland-best-carousel">
                 <#list scotlandTop as place>
                     <div>
                         <div class="thumbnail-container">
@@ -106,6 +105,7 @@
                         </div>
                     </div>
                 </#list>
+                </div>
             </div>
         </div>
     </div>
