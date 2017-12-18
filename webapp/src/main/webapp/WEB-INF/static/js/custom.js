@@ -273,10 +273,28 @@ var owl = $('.owl-carousel.partnersLogoSlider');
 
 
 /* index page top places carousels*/
-    $("#england-best-carousel").owlCarousel({lazyLoad : true, margin: 10});
-    $("#ireland-best-carousel").owlCarousel({lazyLoad : true, margin: 10});
-    $("#scotland-best-carousel").owlCarousel({lazyLoad : true, margin: 10});
-    $("#wales-best-carousel").owlCarousel({lazyLoad : true, margin: 10});
+    var topSectionConfig = {
+        lazyLoad : true,
+        margin: 10,
+        responsive:{
+            320:{
+                slideBy: 1,
+                items:1
+            },
+            768:{
+                slideBy: 1,
+                items:2
+            },
+            992:{
+                slideBy: 1,
+                items:3
+            }
+        }
+    };
+    $("#england-best-carousel").owlCarousel(topSectionConfig);
+    $("#ireland-best-carousel").owlCarousel(topSectionConfig);
+    $("#scotland-best-carousel").owlCarousel(topSectionConfig);
+    $("#wales-best-carousel").owlCarousel(topSectionConfig);
 
 
 });
