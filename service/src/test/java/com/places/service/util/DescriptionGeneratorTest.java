@@ -11,7 +11,7 @@ import java.util.List;
 public class DescriptionGeneratorTest {
 
     @Test
-    public void extractOptionsFromSnippet() {
+    public void canExtractOptionsFromSnippet() {
         final String snippet = "{first | second | third}";
 
         final List<String> strings = DescriptionsGenerator.extractOptions(snippet);
@@ -19,5 +19,15 @@ public class DescriptionGeneratorTest {
         Assert.assertTrue(strings.contains("first"));
         Assert.assertTrue(strings.contains("second"));
         Assert.assertTrue(strings.contains("third"));
+    }
+
+    @Test
+    public void canExtractSnippetFromText() {
+
+        final String text = "Here goes some text with the snippet that has {first | second | third} option";
+
+        final List<String> snippets = DescriptionsGenerator.extractSnippets(text);
+
+        Assert.assertTrue(snippets.contains("{first | second | third}"));
     }
 }
