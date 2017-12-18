@@ -21,8 +21,24 @@ public class DescriptionGeneratorTest {
 
 
     @Test
+    public void canGenerateForPlace() throws URISyntaxException {
+        final File template = new File(Resources.getResource("template-with-snippets.ftl").toURI());
+
+        final String storeName = "Target";
+        final String city = "London";
+        final PlaceDTO place = new PlaceDTO.Builder().setName(storeName).setCity(city).build();
+        final String text = DescriptionsGenerator.generateForPlace(place, template);
+
+        assertTrue(text.contains(storeName));
+        assertTrue(text.contains(city));
+
+        assertTrue(text.contains("cozy") || text.contains("great"));
+        assertTrue(text.contains("beautiful") || text.contains("vivid"));
+    }
+
+    @Test
     public void canProcessTemplate() throws URISyntaxException {
-        final File template = new File(Resources.getResource("test-template.ftl").toURI());
+        final File template = new File(Resources.getResource("clean-template.ftl").toURI());
 
         final PlaceDTO place = new PlaceDTO.Builder().setName("Target").setCity("London").build();
         final Map<String, Object> model = DescriptionsGenerator.prepareModel(place);

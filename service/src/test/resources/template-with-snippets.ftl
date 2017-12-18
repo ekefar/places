@@ -1,0 +1,1 @@
+A {great|cozy} store ${name} located in {beautiful|vivid} ${city}

@@ -21,9 +21,9 @@ public class DescriptionsGenerator {
     public static final String SNIPPET_CLOSING = "}";
     public static final String SNIPPET_DELIMITER = "|";
 
-    public static String generateForPlace(final PlaceDTO place) {
+    public static String generateForPlace(final PlaceDTO place, File template) {
         final Map<String, Object> model = prepareModel(place);
-        final String text = processTemplate(model, null);
+        final String text = replaceSnippets(processTemplate(model, template));
         return text;
     }
 
