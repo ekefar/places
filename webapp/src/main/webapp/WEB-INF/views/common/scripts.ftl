@@ -4,6 +4,7 @@
 <script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="/plugins/smoothscroll/SmoothScroll.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
 
 <script src="/js/custom.js"></script>
 <#--<script src="/plugins/waypoints/waypoints.min.js"></script>-->

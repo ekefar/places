@@ -12,6 +12,8 @@
 <link href="/plugins/map/css/map.css" rel="stylesheet">
 <link href="/plugins/flag-icons/css/flag-icon.min.css" rel="stylesheet">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+
 
 <!-- GOOGLE FONT -->
 <!-- <link href="https://fonts.googleapis.com/css?family=Muli:200,300,400,600,700,800,900" rel="stylesheet"> -->

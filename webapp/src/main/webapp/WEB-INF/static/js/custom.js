@@ -296,5 +296,10 @@ var owl = $('.owl-carousel.partnersLogoSlider');
     $("#scotland-best-carousel").owlCarousel(topSectionConfig);
     $("#wales-best-carousel").owlCarousel(topSectionConfig);
 
+    /* ========= LIGHTBOX GALLERY ============*/
 
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
+    });
 });
