@@ -36,7 +36,7 @@
                 <div class="col-xs-3">
                     <div class="listingTitleArea" style="text-align: center">
                         <h2>${place.rating?string["0.0"]}</h2>
-                        <span>(based on ${place.reviews?size} review<#if place.reviews?size gt 1>s</#if>)</span>
+                        <#--<span>(based on ${place.reviews?size} review<#if place.reviews?size gt 1>s</#if>)</span>-->
                     </div>
                 </div>
             </div>
@@ -123,7 +123,9 @@
                             <p>Qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui </p>
                         </div>
 
-                        <div class="detailsInfoBox">
+
+                        <#--==== REVIEWS SECTION ========-->
+                       <#-- <div class="detailsInfoBox">
                             <h3>Reviews (${place.reviews?size})</h3>
                         <#list place.reviews as review>
                             <div class="media media-comment">
@@ -143,7 +145,8 @@
                                 </div>
                             </div>
                         </#list>
-                        </div>
+                        </div>-->
+                        <#--==== END OF REVIEWS SECTION ========-->
 
                     </div>
                 </div>
