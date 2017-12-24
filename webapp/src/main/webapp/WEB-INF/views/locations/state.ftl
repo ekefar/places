@@ -48,6 +48,30 @@
 
             <#if noQuery==true>
 
+                <#--------- TOP CITIES SECTION ---------->
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <h2 class="">Most Popular Cities in ${state}</h2>
+                    </div>
+
+                    <#list topCities as city>
+                        <div class="col-xs-12 col-sm-6 col-md-4"
+                             style="margin-bottom: 20px">
+                            <div class="thumbnail-container">
+                                <a href="/${state?lower_case}/${city?lower_case}/">
+                                    <img src="/img/cities/${city}"
+                                         class="img-responsive thumbnail-img"
+                                         alt="${city}">
+                                </a>
+                            </div>
+                            <div class="place-description ellipsize">
+                                <h3><a href="/${state?lower_case}/${city?lower_case}/">${city}</a></h3>
+                            </div>
+                        </div>
+                    </#list>
+                </div>
+                <#--------- TOP CITIES SECTION END ---------->
+
                 <#--------- TOP PLACES SECTION ---------->
                 <div class="row">
                     <div class="col-xs-12 text-center">

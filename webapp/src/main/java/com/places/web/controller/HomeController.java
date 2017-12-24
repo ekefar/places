@@ -49,7 +49,10 @@ public class HomeController {
 
         final String unURLifiedState = unURLify(state);
         final Set<String> cities = locationsReader.citiesByState(unURLifiedState, startsWith);
-        model.put("topPlaces", topPlacesHelper.topPlacesByState(State.guessFromValue(unURLifiedState), 9));
+        final State stateValue = State.guessFromValue(unURLifiedState);
+        final int topItemsCount = 9;
+        model.put("topPlaces", topPlacesHelper.topPlacesByState(stateValue, topItemsCount));
+        model.put("topCities", topPlacesHelper.topCitiesByState(stateValue, topItemsCount));
         model.put("state", state);
         model.put("cities", new LinkedList(cities));
         model.put("noQuery", StringUtils.isEmpty(startsWith));
