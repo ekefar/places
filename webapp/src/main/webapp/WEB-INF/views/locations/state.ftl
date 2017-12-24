@@ -55,7 +55,8 @@
                     </div>
 
                     <#list topPlaces as place>
-                        <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="col-xs-12 col-sm-6 col-md-4"
+                        style="margin-bottom: 20px">
                             <div class="thumbnail-container">
                                 <a href="/place/${place.id}/">
                                     <img src="${place.thumbnailUrl}"
@@ -63,7 +64,7 @@
                                          alt="${place.name}">
                                 </a>
                             </div>
-                            <div class="place-description">
+                            <div class="place-description ellipsize">
                                 <h3><a href="/place/${place.id}/"
                                        style="color: #222222">${place.name}</a></h3>
                             </div>

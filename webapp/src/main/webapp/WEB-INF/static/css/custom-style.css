@@ -48,3 +48,16 @@ section.central-block {
 .place-description {
     padding-left: 10px;
 }
+
+.ellipsize {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.ellipsize > * {
+    display: table-cell;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
