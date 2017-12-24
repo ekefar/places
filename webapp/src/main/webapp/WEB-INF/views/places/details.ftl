@@ -130,7 +130,7 @@
 
                                 <#list place.photoUrls as photo>
                                     <div class="thingsImage thumbnail-container">
-                                        <a href="${photo}?image=${photo?index}"
+                                        <a href="${photo}"
                                            data-toggle="lightbox"
                                            data-gallery="store-images-gallery">
                                             <img src="${photo}" class="thumbnail-img" alt="Image things">

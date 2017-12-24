@@ -302,4 +302,6 @@ var owl = $('.owl-carousel.partnersLogoSlider');
         event.preventDefault();
         $(this).ekkoLightbox();
     });
+
+    // $("[data-fancybox]").fancybox({});
 });
