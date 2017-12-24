@@ -83,31 +83,31 @@
                         <ul class="list-unstyled sidebarList">
                             <li>
                                 <span class="pull-left">Monday</span>
-                                <span class="pull-right">${place.openingHours["Monday"]}</span>
+                                <span class="pull-right">${place.openingHours["Monday"]?replace("–", "&ndash;")}</span>
                             </li>
                             <li>
                                 <span class="pull-left">Tuesday</span>
-                                <span class="pull-right">${place.openingHours["Tuesday"]}</span>
+                                <span class="pull-right">${place.openingHours["Tuesday"]?replace("–", "&ndash;")}</span>
                             </li>
                             <li>
                                 <span class="pull-left">Wednesday</span>
-                                <span class="pull-right">${place.openingHours["Wednesday"]}</span>
+                                <span class="pull-right">${place.openingHours["Wednesday"]?replace("–", "&ndash;")}</span>
                             </li>
                             <li>
                                 <span class="pull-left">Thursday</span>
-                                <span class="pull-right">${place.openingHours["Thursday"]}</span>
+                                <span class="pull-right">${place.openingHours["Thursday"]?replace("–", "&ndash;")}</span>
                             </li>
                             <li>
                                 <span class="pull-left">Friday</span>
-                                <span class="pull-right">${place.openingHours["Friday"]}</span>
+                                <span class="pull-right">${place.openingHours["Friday"]?replace("–", "&ndash;")}</span>
                             </li>
                             <li>
                                 <span class="pull-left">Saturday</span>
-                                <span class="pull-right">${place.openingHours["Saturday"]}</span>
+                                <span class="pull-right">${place.openingHours["Saturday"]?replace("–", "&ndash;")}</span>
                             </li>
                             <li>
                                 <span class="pull-left">Sunday</span>
-                                <span class="pull-right">${place.openingHours["Sunday"]}</span>
+                                <span class="pull-right">${place.openingHours["Sunday"]?replace("–", "&ndash;")}</span>
                             </li>
                         </ul>
                     </div>
