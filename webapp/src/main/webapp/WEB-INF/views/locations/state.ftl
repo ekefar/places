@@ -36,11 +36,10 @@
     <!-- BREADCRUMBS-->
     <#include "../common/breadcrumbs.ftl">
 
+    <hr>
     <#include "../common/letters.ftl">
 
-    <#---------- TOP PLACES SECTION ------------->
-
-    <#---------- TOP PLACES SECTION ------------->
+    <hr>
 
     <!-- CITIES LIST -->
     <section class="clearfix allBusiness central-block">
@@ -59,7 +58,7 @@
                              style="margin-bottom: 20px">
                             <div class="thumbnail-container">
                                 <a href="/${state?lower_case}/${city?lower_case}/">
-                                    <img src="/img/cities/${city}"
+                                    <img src="/img/cities/london.png"
                                          class="img-responsive thumbnail-img"
                                          alt="${city}">
                                 </a>
@@ -71,6 +70,8 @@
                     </#list>
                 </div>
                 <#--------- TOP CITIES SECTION END ---------->
+                <hr>
+                <br>
 
                 <#--------- TOP PLACES SECTION ---------->
                 <div class="row">
