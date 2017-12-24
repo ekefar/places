@@ -38,8 +38,8 @@ public class TopPlacesHelper {
     }
 
     private Map<State, List<String>> prepareTopCitiesMap() {
-        final HashMap<State, List<String>> citiesMap = new HashMap<>();
-        citiesMap.put(State.ENGLAND, Arrays.asList(
+        final HashMap<State, List<String>> stateCities = new HashMap<>();
+        stateCities.put(State.ENGLAND, Arrays.asList(
                 "London",
                 "Manchester",
                 "Birmingham",
@@ -52,7 +52,7 @@ public class TopPlacesHelper {
                 "Brighton"
         ));
 
-        citiesMap.put(State.SCOTLAND, Arrays.asList(
+        stateCities.put(State.SCOTLAND, Arrays.asList(
                 "Glasgow",
                 "Edinburgh",
                 "Aberdeen",
@@ -65,7 +65,7 @@ public class TopPlacesHelper {
                 "Midlothian"
         ));
 
-        citiesMap.put(State.WALES, Arrays.asList(
+        stateCities.put(State.WALES, Arrays.asList(
                 "Cardiff",
                 "Swansea",
                 "Newport",
@@ -78,7 +78,7 @@ public class TopPlacesHelper {
                 "Menai bridge"
         ));
 
-        citiesMap.put(State.NORTHERN_IRELAND, Arrays.asList(
+        stateCities.put(State.NORTHERN_IRELAND, Arrays.asList(
                 "Belfast",
                 "Newry",
                 "Londonderry",
@@ -91,7 +91,7 @@ public class TopPlacesHelper {
                 "Hillsborough"
         ));
 
-        return citiesMap;
+        return stateCities;
     }
 
     public enum State {
