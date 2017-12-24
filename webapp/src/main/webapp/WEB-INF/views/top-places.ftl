@@ -15,7 +15,9 @@
                         <div>
                             <div class="thumbnail-container">
                                 <a href="/place/${place.id}/">
-                                    <img src="${place.thumbnailUrl}" class="img-responsive thumbnail-img" alt="workimg">
+                                    <img src="${place.thumbnailUrl}"
+                                         class="img-responsive thumbnail-img"
+                                         alt="${place.name}">
                                 </a>
                             </div>
                             <div class="place-description">
@@ -42,7 +44,9 @@
                         <div>
                             <div class="thumbnail-container">
                                 <a href="/place/${place.id}/">
-                                    <img src="${place.thumbnailUrl}" class="img-responsive thumbnail-img" alt="workimg">
+                                    <img src="${place.thumbnailUrl}"
+                                         class="img-responsive thumbnail-img"
+                                         alt="${place.name}">
                                 </a>
                             </div>
                             <div class="place-description">
@@ -69,7 +73,9 @@
                         <div>
                             <div class="thumbnail-container">
                                 <a href="/place/${place.id}/">
-                                    <img src="${place.thumbnailUrl}" class="img-responsive thumbnail-img" alt="workimg">
+                                    <img src="${place.thumbnailUrl}"
+                                         class="img-responsive thumbnail-img"
+                                         alt="${place.name}">
                                 </a>
                             </div>
                             <div class="place-description">
@@ -96,7 +102,9 @@
                     <div>
                         <div class="thumbnail-container">
                             <a href="/place/${place.id}/">
-                                <img src="${place.thumbnailUrl}" class="img-responsive thumbnail-img" alt="workimg">
+                                <img src="${place.thumbnailUrl}"
+                                     class="img-responsive thumbnail-img"
+                                     alt="${place.name}">
                             </a>
                         </div>
                         <div class="place-description">

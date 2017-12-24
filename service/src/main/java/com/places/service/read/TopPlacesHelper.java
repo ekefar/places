@@ -39,6 +39,17 @@ public class TopPlacesHelper {
         State(String value) {
             this.value = value;
         }
+
+        public static State guessFromValue(String value) {
+            final String replaced = value.replace("-", " ");
+            for (State state : State.values()) {
+                if(state.value.equalsIgnoreCase(value)) {
+                    return state;
+                }
+            }
+
+            throw new IllegalArgumentException("Can't parse state from string: " + value);
+        }
     }
 
 }
