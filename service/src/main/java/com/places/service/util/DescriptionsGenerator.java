@@ -5,10 +5,11 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.StringWriter;
+import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -17,9 +18,34 @@ import java.util.stream.Collectors;
  */
 public class DescriptionsGenerator {
 
+    private static final Logger LOG = LoggerFactory.getLogger(DescriptionsGenerator.class);
+
     public static final String SNIPPET_OPENING = "{";
     public static final String SNIPPET_CLOSING = "}";
     public static final String SNIPPET_DELIMITER = "|";
+
+    public static String generateForPlace(final PlaceDTO place) {
+        try {
+
+            final Map<String, Object> model = prepareModel(place);
+            final File defaultTemplate = prepareDefaultTemplate();
+            final String text = replaceSnippets(processTemplate(model, defaultTemplate));
+            return text;
+        } catch (Exception e) {
+            LOG.error("Can't generate a description using a default template", e);
+            throw new RuntimeException(e);
+        }
+
+    }
+    private static File prepareDefaultTemplate() throws IOException {
+        final InputStream templateStream = DescriptionsGenerator.class.getResourceAsStream("/templates/place-details.ftl");
+        File tempFile = File.createTempFile("temp-templates/", String.valueOf(System.nanoTime()));
+        tempFile.deleteOnExit();
+        final FileOutputStream os = new FileOutputStream(tempFile);
+        IOUtils.copy(templateStream, os);
+        os.close();
+        return tempFile;
+    }
 
     public static String generateForPlace(final PlaceDTO place, File template) {
         final Map<String, Object> model = prepareModel(place);
@@ -55,6 +81,8 @@ public class DescriptionsGenerator {
         Map<String, Object> model = new HashMap<String, Object>();
         model.put("name", place.getName());
         model.put("city", place.getCity());
+        model.put("address", place.getAddress());
+        model.put("state", place.getState());
         return model;
     }
 

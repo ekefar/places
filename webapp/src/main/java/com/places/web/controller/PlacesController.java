@@ -5,6 +5,7 @@ import com.places.service.read.PlacesReader;
 import com.places.service.read.PlacesReader.PageInfo;
 import com.places.service.read.PlacesReader.PagedResult;
 import com.places.service.read.dto.PlaceDTO;
+import com.places.service.util.DescriptionsGenerator;
 import com.places.web.BreadcrumbsBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -90,8 +91,9 @@ public class PlacesController {
     public String placesByCityPaged(@PathVariable("id") String id,
                                     Map<String, Object> model) {
         final PlaceDTO place = placesReader.byId(id);
-
+        final String description = DescriptionsGenerator.generateForPlace(place);
         model.put("place", place);
+        model.put("description", description);
         model.put("photos", place.getPhotoUrls());
         model.put("breadcrumbs", BreadcrumbsBuilder.build(place.getName()));
         return "places/details";
