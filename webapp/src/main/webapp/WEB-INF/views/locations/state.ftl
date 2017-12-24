@@ -45,42 +45,52 @@
     <!-- CITIES LIST -->
     <section class="clearfix allBusiness central-block">
         <div class="container">
-            <div class="row">
-                <div class="col-xs-12 text-center">
-                    <h2 class="">Best Stores in ${state}</h2>
-                </div>
 
-                <#list topPlaces as place>
-                    <div class="col-xs-12 col-sm-6 col-md-4">
-                        <div class="thumbnail-container">
-                            <a href="/place/${place.id}/">
-                                <img src="${place.thumbnailUrl}"
-                                     class="img-responsive thumbnail-img"
-                                     alt="${place.name}">
-                            </a>
-                        </div>
-                        <div class="place-description">
-                            <h3><a href="/place/${place.id}/"
-                                   style="color: #222222">${place.name}</a></h3>
-                        </div>
-                    </div>
-                </#list>
-            </div>
+            <#if noQuery==true>
 
-            <div class="row">
-                <div class="col-sm-2">
-                </div>
-                <div class="col-sm-10">
-                    <div class="businessLink">
-                        <ul class="list-inline">
-                            <#list cities as city>
-                                <li><a href="/${state?lower_case}/${city?lower_case}/">${city}</a></li>
-                            </#list>
-                        </ul>
+                <#--------- TOP PLACES SECTION ---------->
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <h2 class="">Best Stores in ${state}</h2>
                     </div>
 
+                    <#list topPlaces as place>
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+                            <div class="thumbnail-container">
+                                <a href="/place/${place.id}/">
+                                    <img src="${place.thumbnailUrl}"
+                                         class="img-responsive thumbnail-img"
+                                         alt="${place.name}">
+                                </a>
+                            </div>
+                            <div class="place-description">
+                                <h3><a href="/place/${place.id}/"
+                                       style="color: #222222">${place.name}</a></h3>
+                            </div>
+                        </div>
+                    </#list>
                 </div>
-            </div>
+                <#--------- TOP PLACES SECTION END ---------->
+
+            <#else>
+
+                <#-------- LISTING BY LETTER SECTION ----------->
+                <div class="row">
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-10">
+                        <div class="businessLink">
+                            <ul class="list-inline">
+                                <#list cities as city>
+                                    <li><a href="/${state?lower_case}/${city?lower_case}/">${city}</a></li>
+                                </#list>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <#-------- LISTING BY LETTER SECTION END----------->
+            </#if>
         </div>
     </section>
 

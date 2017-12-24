@@ -5,6 +5,7 @@ import com.places.service.read.TopPlacesHelper;
 import com.places.service.read.TopPlacesHelper.State;
 import com.places.web.BreadcrumbsBuilder;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -51,6 +52,7 @@ public class HomeController {
         model.put("topPlaces", topPlacesHelper.topPlacesByState(State.guessFromValue(unURLifiedState), 9));
         model.put("state", state);
         model.put("cities", new LinkedList(cities));
+        model.put("noQuery", StringUtils.isEmpty(startsWith));
         model.put("breadcrumbs", BreadcrumbsBuilder.build(state));
         return "locations/state";
     }

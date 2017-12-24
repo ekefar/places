@@ -30,8 +30,7 @@ section.central-block {
 /* =========== thumbnail images  =======*/
 
 .thumbnail-container {
-    width: 400px;
-    height: 250px;
+    height: 220px;
     display: block;
     overflow: hidden;
 }

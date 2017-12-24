@@ -246,7 +246,7 @@ var owl = $('.owl-carousel.partnersLogoSlider');
     console.log("applying carousel");
     images.owlCarousel({
         loop:true,
-        margin:20,
+        margin:10,
         autoplay:true,
         autoplayTimeout:6000,
         autoplayHoverPause:true,
