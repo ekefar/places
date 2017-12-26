@@ -74,6 +74,7 @@ public class PlacesReader {
                 .setCountry(place.getCountry())
                 .setState(place.getState())
                 .setCity(place.getCity())
+                .setDistrict(place.getDistrict())
                 .setAddress(Optional.ofNullable(place.getAddress()).orElse(""))
                 .setLocation(place.getLocation())
                 .setMapsId(place.getMapsId())

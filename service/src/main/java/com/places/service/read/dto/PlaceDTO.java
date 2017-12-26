@@ -14,6 +14,7 @@ public class PlaceDTO {
     private final String country;
     private final String state;
     private final String city;
+    private final String district;
     private final Location location;
     private final String phoneNumber;
     private final String address;
@@ -26,7 +27,7 @@ public class PlaceDTO {
     private final List<Review> reviews;
 
     private PlaceDTO(String id, String mapsId, String name, String country, String state, String city,
-                     Location location, String phoneNumber,
+                     String district, Location location, String phoneNumber,
                      String address, String mapUrl, String websiteUrl, float rating, Map<String, String> openingHours,
                      String thumbnailUrl, List<String> photoUrls, List<Review> reviews) {
         this.id = id;
@@ -35,6 +36,7 @@ public class PlaceDTO {
         this.country = country;
         this.state = state;
         this.city = city;
+        this.district = district;
         this.location = location;
         this.phoneNumber = phoneNumber;
         this.address = address;
@@ -69,6 +71,10 @@ public class PlaceDTO {
 
     public String getCity() {
         return city;
+    }
+
+    public String getDistrict() {
+        return district;
     }
 
     public Location getLocation() {
@@ -118,6 +124,7 @@ public class PlaceDTO {
         private String country;
         private String state;
         private String city;
+        private String district;
         private Location location;
         private String phoneNumber;
         private String address;
@@ -142,6 +149,11 @@ public class PlaceDTO {
 
         public Builder setCity(String city) {
             this.city = city;
+            return this;
+        }
+
+        public Builder setDistrict(String district) {
+            this.district = district;
             return this;
         }
 
@@ -211,8 +223,8 @@ public class PlaceDTO {
         }
 
         public PlaceDTO build() {
-            return new PlaceDTO(id, mapsId, name, country, state, city, location, phoneNumber,
-                    address, mapUrl, websiteUrl, rating, openingHours, thumbnailUrl, photoUrls, reviews);
+            return new PlaceDTO(id, mapsId, name, country, state, city, district, location, phoneNumber,
+                                address, mapUrl, websiteUrl, rating, openingHours, thumbnailUrl, photoUrls, reviews);
         }
     }
 }

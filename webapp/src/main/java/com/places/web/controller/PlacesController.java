@@ -1,5 +1,6 @@
 package com.places.web.controller;
 
+import com.google.common.collect.Lists;
 import com.places.service.read.LocationsReader;
 import com.places.service.read.PlacesReader;
 import com.places.service.read.PlacesReader.PageInfo;
@@ -10,12 +11,14 @@ import com.places.web.BreadcrumbsBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.inject.Inject;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 
@@ -95,7 +98,15 @@ public class PlacesController {
         model.put("place", place);
         model.put("description", description);
         model.put("photos", place.getPhotoUrls());
-        model.put("breadcrumbs", BreadcrumbsBuilder.build(place.getName()));
+
+        final LinkedList<String> crumbs = new LinkedList<>();
+        crumbs.add(place.getState());
+        crumbs.add(place.getCity());
+        if (!StringUtils.isEmpty(place.getDistrict())) {
+            crumbs.add(place.getDistrict());
+        }
+        crumbs.add(place.getName());
+        model.put("breadcrumbs", BreadcrumbsBuilder.build(crumbs.toArray(new String[]{})));
         return "places/details";
     }
 }
